@@ -8,7 +8,6 @@ const productRoutes = require('./api/routes/product_route');
 const orderRoutes = require('./api/routes/order_route');
 
 
-
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
