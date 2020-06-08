@@ -1,7 +1,7 @@
 const product = require('../models/Product');
 const mongoose = require('mongoose');
 
-exports.list = (req, res, next)=>{
+exports.listProducts = (req, res, next)=>{
     product.find()
             .select('title price _id status imageName descreption')
             .exec()
@@ -27,7 +27,7 @@ exports.list = (req, res, next)=>{
             });
 };
 
-exports.insert = (req, res, next)=>{
+exports.insertProduct = (req, res, next)=>{
   
     const prod = new product({
         
