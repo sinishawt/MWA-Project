@@ -11,7 +11,6 @@ const adminRoutes = require('./api/routes/admin_route');
 const buyerRoutes = require('./api/routes/buyer_route');
 
 
-
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
