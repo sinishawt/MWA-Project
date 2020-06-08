@@ -7,12 +7,7 @@ const mongoose = require('mongoose');
 const productRoutes = require('./api/routes/product_route');
 const orderRoutes = require('./api/routes/order_route');
 
-// mongoose.connect(
-//     "mongodb+srv://memarez@gmail.com:"
-//      + process.env.MONGO_ATLAS_PW 
-//      + '@online-market-api-isj4r.mongodb.net/online-market-api?retryWrites=true&w=majority', {
-//         useUnifiedTopology: true, useNewUrlParser: true
-//      });
+
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended:false}));
