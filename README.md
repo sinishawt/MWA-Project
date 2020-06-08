@@ -1,6 +1,7 @@
 # MWA-Project
+- E-Commerce application using MEAN stack.
 
-##  usage
+## Usage
 - git clone https://github.com/sinishawt/MWA-Project.git
 - cd MWA-Project
 - git install
