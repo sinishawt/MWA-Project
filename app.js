@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 const productRoutes = require('./api/routes/product_route');
 const orderRoutes = require('./api/routes/order_route');
 const reviewRoutes = require('./api/routes/review_route');
+const adminRoutes = require('./api/routes/admin_route');
 
 
 
@@ -30,6 +31,7 @@ app.use((req, res, next) =>{
 app.use('/products', productRoutes);
 app.use('/order', orderRoutes);
 app.use('/review', reviewRoutes);
+app.use('/admin', adminRoutes);
 
 app.use((req, res, next) => {
     const error = new Error('Not Found');
