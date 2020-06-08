@@ -7,4 +7,5 @@
 - npm start
 
 ##  Group-6
-- <member here>
+- Birhane Gebre
+- write-here
