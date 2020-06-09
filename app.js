@@ -8,7 +8,7 @@ const productRoutes = require('./api/routes/product_route');
 const orderRoutes = require('./api/routes/order_route');
 const reviewRoutes = require('./api/routes/review_route');
 const adminRoutes = require('./api/routes/admin_route');
-
+const buyerRoutes = require('./api/routes/buyer_route');
 
 
 app.use(morgan('dev'));
@@ -28,10 +28,12 @@ app.use((req, res, next) =>{
     next();
 });
 //routes which handle requests
+app.use('/buyer', buyerRoutes);
 app.use('/products', productRoutes);
 app.use('/order', orderRoutes);
 app.use('/review', reviewRoutes);
 app.use('/admin', adminRoutes);
+
 
 app.use((req, res, next) => {
     const error = new Error('Not Found');

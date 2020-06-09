@@ -5,7 +5,7 @@ const uri = "mongodb+srv://mwa:mwaonilnemarket@online-market-api-isj4r.mongodb.n
 
 const connectDB = async() => {
     await mongoose.connect(uri, {useUnifiedTopology: true, useNewUrlParser: true});
-    console.log('DB connected....')
+    console.log('The Database is connected....')
 }
 
 module.exports = connectDB;
