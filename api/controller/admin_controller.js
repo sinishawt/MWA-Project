@@ -4,7 +4,6 @@ const Review = require('../models/Review');
 const dateNow = new Date();
 
 exports.viewPendingReviews = (req, res, next) => {
-
     Review.find({status: "Created"})
     .then(result => {   
         res.status(200).send(result);
