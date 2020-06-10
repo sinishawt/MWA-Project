@@ -52,3 +52,13 @@ exports.removeById = (req, res, next) => {
         res.status(500).send({ errMsg: err });
     });
 };
+
+exports.findReviewByProductId = (req, res, next) => {
+    Review.find({orderProductId: req.params.productId})  //add status posted to prevent unpost reetrival
+    .then(result => {   
+        res.status(200).send(result);
+    })
+    .catch(err => {
+        res.status(500).send({ errMsg: err });
+    });
+};
