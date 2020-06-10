@@ -10,6 +10,7 @@ const reviewRoutes = require('./api/routes/review_route');
 const adminRoutes = require('./api/routes/admin_route');
 const buyerRoutes = require('./api/routes/buyer_route');
 //const authRoutes = require('./api/routes/auth_route');
+const sellerRoutes = require('./api/routes/seller_route');
 
 
 app.use(morgan('dev'));
@@ -35,6 +36,7 @@ app.use('/products', productRoutes);
 app.use('/order', orderRoutes);
 app.use('/review', reviewRoutes);
 app.use('/admin', adminRoutes);
+app.use('/seller', sellerRoutes);
 
 
 app.use((req, res, next) => {
