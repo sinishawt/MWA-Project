@@ -13,6 +13,7 @@ router.get('/:reviewId', review_Controller.getById);
 router.patch('/:reviewId', review_Controller.patchById);
 router.delete('/:reviewId', review_Controller.removeById);
 
+router.get('/productReview/:productId', review_Controller.findReviewByProductId);
 
 
 module.exports = router;

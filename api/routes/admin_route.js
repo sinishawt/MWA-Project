@@ -7,4 +7,8 @@ router.get('/pendingReviews', admin_Controller.viewPendingReviews);
 router.post('/pendingReviews/:reviewId', admin_Controller.postReview);
 router.delete('/pendingReviews/:reviewId', admin_Controller.declineReview);
 
+router.get('/pendingSellers', admin_Controller.viewPendingSellers);
+router.post('/pendingSellers/:sellerId', admin_Controller.aceptSeller);
+router.delete('/pendingSellers/:sellerId', admin_Controller.denySeller);
+
 module.exports = router;
