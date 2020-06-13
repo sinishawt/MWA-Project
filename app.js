@@ -3,17 +3,27 @@ const app = express();
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+let session = require('express-session');
+let MongoStore = require('connect-mongo')(session)
 
 const productRoutes = require('./api/routes/product_route');
 const orderRoutes = require('./api/routes/order_route');
 const reviewRoutes = require('./api/routes/review_route');
 const adminRoutes = require('./api/routes/admin_route');
 const buyerRoutes = require('./api/routes/buyer_route');
+const shoppingCartRoutes = require('./api/routes/shopping_cart_route')
 
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
+app.use(session({
+    secret: 'mysuppersecrte',
+    resave: false,
+    saveUninitialized: false,
+    store: new MongoStore({mongooseConnection: mongoose.connection}),
+    cookie: {maxAge: 60 * 60 * 1000}
+}));
 
 // CORS error handling
 app.use((req, res, next) =>{
@@ -25,6 +35,7 @@ app.use((req, res, next) =>{
         res.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET')
         return res.status(200).json({});
     }
+    res.locals.session = req.session;
     next();
 });
 //routes which handle requests
@@ -33,6 +44,8 @@ app.use('/products', productRoutes);
 app.use('/order', orderRoutes);
 app.use('/review', reviewRoutes);
 app.use('/admin', adminRoutes);
+app.use('/shopingCart', shoppingCartRoutes);
+
 
 
 app.use((req, res, next) => {

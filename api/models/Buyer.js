@@ -35,5 +35,4 @@ const buyerSchema = mongoose.Schema({
     }]
 
 });
-
 module.exports = mongoose.model('Buyer', buyerSchema);

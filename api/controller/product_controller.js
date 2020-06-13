@@ -1,6 +1,7 @@
 const product = require('../models/Product');
 const mongoose = require('mongoose');
 
+
 exports.listProducts = (req, res, next)=>{
     product.find()
             .select('title price _id status imageName descreption')
