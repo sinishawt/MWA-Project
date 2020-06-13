@@ -4,7 +4,8 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 let session = require('express-session');
-let MongoStore = require('connect-mongo')(session)
+
+let MongoStore = require('connect-mongo')(session);
 
 const productRoutes = require('./api/routes/product_route');
 const orderRoutes = require('./api/routes/order_route');
@@ -24,7 +25,7 @@ app.use(session({
     store: new MongoStore({mongooseConnection: mongoose.connection}),
     cookie: {maxAge: 60 * 60 * 1000}
 }));
-
+//app.use(flash());
 // CORS error handling
 app.use((req, res, next) =>{
     res.header('Access-Control-Allow-Origin', '*')
