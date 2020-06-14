@@ -5,7 +5,7 @@ const sellerSchema = mongoose.Schema({
     name : { type: String, required : true},
     email : { type : String, required : true },
     pwd : { type : String, required : true },
-    role : { type : String , required : true },
+    role : { type : String , default: "Seller", required : true },
     status: {type: String, default: 'Pending',required: false},
     products : [{
         type : mongoose.Schema.Types.ObjectId,
