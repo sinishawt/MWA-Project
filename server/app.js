@@ -1,3 +1,10 @@
+/**
+ * MWA Project  
+ * Online-shopping application using MEAN stack
+ * Since june 2020
+ * Team-6 
+ */
+
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
@@ -27,8 +34,8 @@ app.use(session({
     secret: 'mysuppersecrte',
     resave: false,
     saveUninitialized: false,
-    store: new MongoStore({mongooseConnection: mongoose.connection}),
-    cookie: {maxAge: 60 * 60 * 1000}
+    store: new MongoStore({ mongooseConnection: mongoose.connection }),
+    cookie: { maxAge: 60 * 60 * 1000 }
 }));
 //app.use(flash());
 // CORS error handling

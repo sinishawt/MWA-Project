@@ -1,17 +1,39 @@
+1. First ordered list item
+2. Another item
+  ⋅⋅* Unordered sub-list. 
+1. Actual numbers don't matter, just that it's a number
+  ⋅⋅1. Ordered sub-list
+4. And another item.
+
+
 # MWA-Project
-- E-Commerce application using MEAN stack.
 
-## Usage
-- git clone https://github.com/sinishawt/MWA-Project.git
-- cd MWA-Project
-- git install
-- npm start
+## Installation steps.
 
-##  Group-6
-- Birhane Gebre
-- write-here
+1. Pull the repository
 
-##  next task
-> model(mongodb collection) : since we are going to use NoSQL(mongodb) then there will be no or very
-> few relations in the collections(tables) and probably most of the documents will be embedded into few collections, 
-> so, we have to focus more on that since model or collectoin disign is the core and  the rest (controller, router and services) are dependent on it.
+- Client: 
+  - npm install 
+  - ng serve
+
+- Server: 
+  - npm install
+  - npm start
+
+- listens on localhost:3000 and localhost:4200 respectively
+
+
+## pushing to github 
+To avoid merge conflict flow the following when you do push
+
+- git pull
+
+- git add *
+- git commit -m "task description here"
+
+- git pull   
+
+- git push
+
+
+>notice: the 'git pull' command is going to be executed twice 
