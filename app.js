@@ -4,7 +4,6 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 let session = require('express-session');
-
 let MongoStore = require('connect-mongo')(session);
 
 const productRoutes = require('./api/routes/product_route');
