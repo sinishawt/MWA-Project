@@ -7,7 +7,7 @@ const buyerSchema = mongoose.Schema({
     Name : { type: String, required : true},
     Email : { type : String, required : true },
     PWD : { type : String, required : true },
-    Role : { type : String , required : true },
+    Role : { type : String , default: "Buyer", required : true },
     follows : [{
         type : Schema.Types.ObjectId,
         ref : 'Follow',

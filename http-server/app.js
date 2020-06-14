@@ -16,6 +16,7 @@ const shoppingCartRoutes = require('./api/routes/shopping_cart_route')
 
 //const authRoutes = require('./api/routes/auth_route');
 const sellerRoutes = require('./api/routes/seller_route');
+const addressRoutes = require('./api/routes/address_route');
 
 
 
@@ -52,6 +53,7 @@ app.use('/review', reviewRoutes);
 app.use('/admin', adminRoutes);
 app.use('/shopingCart', shoppingCartRoutes);
 app.use('/seller', sellerRoutes);
+app.use('/address', addressRoutes);
 
 
 

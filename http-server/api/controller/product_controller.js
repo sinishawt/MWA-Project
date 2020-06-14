@@ -7,13 +7,14 @@ exports.listProducts = (req, res, next)=>{
             .select('title price _id status imageName descreption')
             .exec()
             .then(docs => {
-                console.log(docs);
-                const response ={
-                    count: docs.length,
-                    products: docs
-                };
+                res.status(200).send(docs);
+                // console.log(docs);
+                // const response ={
+                //     count: docs.length,
+                //     products: docs
+               // };
                // if(docs.length >= 0){
-                    res.status(200).json(response);
+                    //res.status(200).send(reviews);
                 // } else{
                 //     res.status(404).json({
                 //         message: 'No entries found'
