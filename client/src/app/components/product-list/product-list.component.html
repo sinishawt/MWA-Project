@@ -12,11 +12,11 @@
   </div>
     <div class="col-lg-9">
       <app-coursel></app-coursel>
-      
-      <div class="row">     
+
+      <div class="row">
           <div class="col-lg-4 col-md-6 mb-4" *ngFor="let items of products">
             <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a> 
+              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
               <div class="card-body">
                   <h4 class="card-title">
                       <a href="#">{{items.title}}</a>
@@ -26,6 +26,7 @@
               </div>
               <div class="card-footer">
                   <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                  <a href="shopingCart/add-to-cart/{{items.id}}" type="button" class="btn btn-primary">Add to Shopping Cart</a>
               </div>
             </div>
           </div>

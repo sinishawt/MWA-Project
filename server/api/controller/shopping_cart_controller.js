@@ -17,6 +17,7 @@ exports.addShoppingCart = (req, res, next)=>{
         res.redirect('/');
     });
 };
+
 exports.shoppingCart = (req, res, next) => {
     if(!req.session.cart){
         res.status(404).json({message: 'No Items in the Shopping Cart'});
