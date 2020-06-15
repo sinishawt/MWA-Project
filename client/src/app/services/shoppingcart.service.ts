@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {Product} from '../common/product';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -16,6 +17,11 @@ export class ShoppingCartService {
 
   getShoppingCart(): Observable<any> {
     return this.httpClient.get<any>(this.baseUrl);
+  }
+
+  addToShoppingCart(id : string): Observable<any> {
+    alert(id);
+    return this.httpClient.get<any>(this.baseUrl + id);
   }
 
 }
