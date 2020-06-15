@@ -74,3 +74,13 @@ exports.findProductsBySellerId = (req, res, next) => {
         res.status(500).send({errMsg: err});
     });
 };
+
+exports.addProductsBySellerId = (req, res, next) => {
+    Product.create(req.body)
+    .then(result => {
+        res.status(201).send({id: result._id, message: "Succesfuly Created"});
+    })
+    .catch(err => {
+        res.status(500).send({errMsg: err});
+    });
+};
