@@ -24,6 +24,8 @@ const authRoutes = require('./api/routes/auth_route');
 const sellerRoutes = require('./api/routes/seller_route');
 const addressRoutes = require('./api/routes/address_route');
 const userRoutes = require('./api/routes/user_route');
+//middleware
+const authMiddleware = require('./api/middleware/authJwt');
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -51,8 +53,7 @@ app.use((req, res, next) => {
 });
 //routes which handle requests
 app.use('/signin', authRoutes);
-//app.use("/buyer", verifyToken, buyerRoutes);  
-//app.use("/buyer", middleware.verifyToken, buyerRoutes);  
+//app.use("/buyer", authMiddleware.verifyToken, buyerRoutes);  
 app.use('/buyer', buyerRoutes);
 app.use('/seller', sellerRoutes);
 app.use('/admin', adminRoutes);
@@ -62,6 +63,10 @@ app.use('/review', reviewRoutes);
 app.use('/shopingCart', shoppingCartRoutes);
 app.use('/address', addressRoutes);
 app.use('/user', userRoutes);
+
+// app.use('/signin', (req, res, next) => {
+//    res.send({ message: " hello working here " });
+// });
 
 app.use((req, res, next) => {
     const error = new Error('Not Found');
