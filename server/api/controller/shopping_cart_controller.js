@@ -14,7 +14,8 @@ exports.addShoppingCart = (req, res, next)=>{
         cart.add(product, product.id);
         req.session.cart = cart;
         console.log(req.session.cart);
-        res.send("beko")
+       // res.send("beko")
+       res.redirect('/');
     });
 };
 

@@ -25,8 +25,6 @@ const sellerRoutes = require('./api/routes/seller_route');
 const addressRoutes = require('./api/routes/address_route');
 const userRoutes = require('./api/routes/user_route');
 
-
-
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -35,6 +33,7 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     store: new MongoStore({ mongooseConnection: mongoose.connection }),
+   
     cookie: { maxAge: 180 * 60 * 1000 }
 }));
 //app.use(flash());
