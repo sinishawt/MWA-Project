@@ -25,16 +25,17 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- <tr *ngFor="let product of products">
-                    <td>{{review.comment}}</td>
-                    <td>{{review.buyerId}}</td>
-                    <td>{{review.stars}}</td>
-                    <td>{{review.createdDate | date: 'MM/dd/yyyy'}}</td>
-                    <td><button class="btn btn-success" (click)="approveComment(review)"> Approve</button> </td>
+                <tr *ngFor="let product of products">
+                    <td>{{product.title}}</td>
+                    <td>{{product.price}}</td>
+                    <td>{{product.status}}</td>
+                    <td>{{product.imageName}}</td>
+                    <td>{{product.descreption}}</td>
+                    <!-- <td><button class="btn btn-success" (click)="approveComment(review)"> Approve</button> </td>
                     <td>
                         <button class="btn btn-warning" (click)="declineComment(review)" style="margin-left: 20px;"> Decline</button>
-                    </td>
-                </tr> -->
+                    </td> -->
+                </tr>
             </tbody>
         </table>
     </div>

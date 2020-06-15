@@ -14,7 +14,11 @@ export class ManageProductsComponent implements OnInit {
   constructor(private router: Router, private sellerService: SellerService) { }
 
   ngOnInit(): void {
-    
+    this.sellerService.getProducts('test')
+    .subscribe(data => {
+      this.products = data;
+      //console.log(data.result);
+    });
   }
 
   getProductsOfSeller(product: Product): void {
