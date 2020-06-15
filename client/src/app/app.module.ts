@@ -9,6 +9,9 @@ import {ProductService} from './services/product.service';
 import { CourselComponent } from './common/coursel';
 import { NavComponent } from './common/navbar';
 import { SideBarComponent } from './common/sidebar';
+import { AdminComponent } from './components/admin/admin.component';
+import { ViewPendingSellersComponent } from './components/admin/view-pending-sellers/view-pending-sellers.component';
+import { ViewPendingReviewsComponent } from './components/admin/view-pending-reviews/view-pending-reviews.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,10 @@ import { SideBarComponent } from './common/sidebar';
     ProductListComponent,
     CourselComponent,
     NavComponent,
-    SideBarComponent
+    SideBarComponent,
+    AdminComponent,
+    ViewPendingSellersComponent,
+    ViewPendingReviewsComponent
   ],
   imports: [
     BrowserModule,

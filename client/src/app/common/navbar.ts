@@ -3,8 +3,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-nav',
-  templateUrl:'./navbar.html' 
-  ,
+  templateUrl:'./navbar.html',
   styles: []
 })
 export class NavComponent implements OnInit {
