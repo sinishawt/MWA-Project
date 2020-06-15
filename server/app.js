@@ -24,6 +24,16 @@ const authRoutes = require('./api/routes/auth_route');
 const sellerRoutes = require('./api/routes/seller_route');
 const addressRoutes = require('./api/routes/address_route');
 const userRoutes = require('./api/routes/user_route');
+const buyer = require('./api/models/Buyer');
+
+app.use((req, res, next) => {
+    buyer.findById('5ee7f4966ee3f657846b17c6')
+        .then(userInDB => {
+            req.buyer = userInDB;
+            next();
+        })
+        .catch(err => console.log(err));
+});
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -59,6 +69,7 @@ app.use('/admin', adminRoutes);
 app.use('/products', productRoutes);
 app.use('/order', orderRoutes);
 app.use('/review', reviewRoutes);
+app.use('/addShopingCart', shoppingCartRoutes);
 app.use('/shopingCart', shoppingCartRoutes);
 app.use('/address', addressRoutes);
 app.use('/user', userRoutes);

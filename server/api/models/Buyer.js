@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Product = require('../models/Product');
 
 var Schema = mongoose.Schema;
 
@@ -15,11 +16,26 @@ const buyerSchema = mongoose.Schema({
         ref : 'Follow',
         required : false
     }],
-    cart : [{
-        type :Schema.Types.ObjectId,
-        ref : 'ShoppingCart',
-        required : false
-    }],
+
+    cart:{
+        items: [{
+            productId: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'Product',
+                required: true
+            },
+            qty: {
+                type: Number,
+                required: true
+            },
+            price: {
+                type: Number,
+                required: true
+            }
+        }],
+        totalQty: Number,
+        totalPrice: Number
+    },
     orders : [{
         type : Schema.Types.ObjectId,
         ref : 'Order',
@@ -35,6 +51,38 @@ const buyerSchema = mongoose.Schema({
         ref : 'Billing',
         required : false
     }]
-
 });
+
+buyerSchema.methods.addToCart = async function(productId) {
+ 
+    const product = await Product.findById(productId);
+    
+    if (product) {
+        const cart = this.cart;
+        const isExisting = cart.items.findIndex(objInItems => new String(objInItems.productId).trim() === new String(product._id).trim());
+        if (isExisting >= 0) {
+            cart.items[isExisting].qty += 1;
+            cart.items[isExisting].price = cart.items[isExisting].price + product.price;
+        } else {
+            cart.items.push({ productId: product._id, qty: 1, price: product.price });
+        }
+        if (!cart.totalPrice) {
+            cart.totalPrice = 0;
+            
+        }
+        if (!cart.totalQty) {
+            cart.totalQty = 0;
+        }
+        cart.totalPrice += product.price;
+        cart.totalQty += 1;
+        
+        console.log("Total quantity", cart.totalQty);
+        return this.save();
+    }
+
+};
+
+
+
+
 module.exports = mongoose.model('Buyer', buyerSchema);

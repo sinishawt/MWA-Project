@@ -5,6 +5,7 @@ const Product = require('../models/Product');
 const mongoose = require('mongoose');
 const shoppingCartController = require('../controller/shopping_cart_controller');
 
+router.post('/:id', shoppingCartController.addToShoppingCart);
 router.get('/add-to-cart/:id', shoppingCartController.addShoppingCart);
 router.get('/listShoppingCart', shoppingCartController.shoppingCart);
 
