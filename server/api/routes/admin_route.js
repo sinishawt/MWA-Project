@@ -8,6 +8,7 @@ router.post('/pendingReviews/:reviewId', admin_Controller.postReview);
 router.delete('/pendingReviews/:reviewId', admin_Controller.declineReview);
 
 router.get('/pendingSellers', admin_Controller.viewPendingSellers);
+router.get('/pendingSellers/:userId', admin_Controller.viewSellerByUserId);
 router.post('/pendingSellers/:sellerId', admin_Controller.aceptSeller);
 router.delete('/pendingSellers/:sellerId', admin_Controller.denySeller);
 

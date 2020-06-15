@@ -1,6 +1,7 @@
 const Admin = require('../models/Admin');
 const Review = require('../models/Review');
 const Seller = require('../models/Seller');
+const User = require('../models/User');
 
 const dateNow = new Date();
 
@@ -44,6 +45,16 @@ exports.viewPendingSellers = (req, res, next) => {
         res.status(500).send({ errMsg: err });
     });
 };
+
+exports.viewSellerByUserId = (req, res, next) => {
+    User.findById(req.params.userId)
+    .then(result => {
+        res.status(200).send(result);
+    })
+    .catch(err => {
+        res.status(500).send({errMsg: err});
+    });
+}; 
 
 exports.aceptSeller = (req, res, next) => {
     Seller.findByIdAndUpdate(req.params.sellerId, {status: "Active"})
