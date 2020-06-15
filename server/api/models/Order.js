@@ -11,6 +11,7 @@ const orderSchema = mongoose.Schema({
     deliveryDate: {type: Date, required: true},
 
     shippedDate: {type: Date, required: true},
+
     buyerId : {
         type :Schema.Types.ObjectId,
 
