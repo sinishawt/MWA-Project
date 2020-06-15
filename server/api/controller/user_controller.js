@@ -1,6 +1,7 @@
 const User = require('../models/User');
 const Buyer = require('../models/Buyer');
 const Seller = require('../models/Seller');
+const bcrypt = require('bcryptjs');
 
 exports.insert = (req, res, next) => {
    // console.log("*******" + );
@@ -10,14 +11,18 @@ exports.insert = (req, res, next) => {
     // }else {
     //     req.body.status = "Pending";
     // }
+
+    const hashedPassword = bcrypt.hashSync(req.body.password, 8);
+    req.body.password = hashedPassword;
+
     User.create(req.body)
     .then(result => {
         if(result.role === "Buyer"){
-            Buyer.create({userId: result._id}).catch(err => {
+            Buyer.create({_id: result._id}).catch(err => {
                 res.status(500).send({errMsg: err});
             });
         }else if(result.role === "Seller"){
-            Seller.create({userId: result._id}).catch(err => {
+            Seller.create({_id: result._id}).catch(err => {
                 res.status(500).send({errMsg: err});
             });
         }
