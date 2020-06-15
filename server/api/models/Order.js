@@ -1,15 +1,20 @@
 
 
 const mongoose = require('mongoose');
-
+var Schema = mongoose.Schema;
 const orderSchema = mongoose.Schema({
-    _id: mongoose.Schema.Types.ObjectId,
+
+   // _id: mongoose.Schema.Types.ObjectId,
+
     status: { type: String, required: true},
+
     deliveryDate: {type: Date, required: true},
+
     shippedDate: {type: Date, required: true},
     buyerId : {
         type :Schema.Types.ObjectId,
-        ref : 'buyer',
+
+        ref : 'Buyer',
         required : false
     },
 
@@ -29,7 +34,7 @@ const orderSchema = mongoose.Schema({
         type :Schema.Types.ObjectId,
         ref : 'Billing',
         required : false
-    },
+    }
 
 });
 

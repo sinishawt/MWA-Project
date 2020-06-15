@@ -1,5 +1,7 @@
 const order = require('../models/Order');
 
+
+
 exports.insert = (req,res,next) =>{
     order.create(req.body)
         .then(result =>{
