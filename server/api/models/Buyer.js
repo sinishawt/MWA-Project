@@ -3,11 +3,13 @@ const mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 const buyerSchema = mongoose.Schema({
-    _id: { type : Number , required : true},
-    Name : { type: String, required : true},
-    Email : { type : String, required : true },
-    PWD : { type : String, required : true },
-    Role : { type : String , default: "Buyer", required : true },
+    // _id: { type : Number , required : true},
+    // Name : { type: String, required : true},
+    // Email : { type : String, required : true },
+    // PWD : { type : String, required : true },
+    // Role : { type : String , default: "Buyer", required : true },
+    userId: {type: Schema.Types.ObjectId, required: true},
+
     follows : [{
         type : Schema.Types.ObjectId,
         ref : 'Follow',
