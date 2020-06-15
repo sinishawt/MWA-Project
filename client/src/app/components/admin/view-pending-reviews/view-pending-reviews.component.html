@@ -1,1 +1,28 @@
 <p>view-pending-reviews works!</p>
+
+<div class="col-md-12">
+    <h2 style="margin: auto"> Pending Reviews</h2>
+    
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Comment</th>
+                <th>Buyer Id</th>
+                <th>Star</th>
+                <th>Date</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let review of reviews">
+                <td>{{review.comment}}</td>
+                <td>{{review.buyerId}}</td>
+                <td>{{review.stars}}</td>
+                <td>{{review.createdDate | date: 'MM/dd/yyyy'}}</td>
+                <td><button class="btn btn-success" (click)="approveComment(review._id)"> Approve</button>
+                    <button class="btn btn-warning" (click)="declineComment(review._id)" style="margin-left: 20px;"> Decline</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

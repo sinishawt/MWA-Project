@@ -13,7 +13,7 @@ exports.insert = (req, res, next) => {
     User.create(req.body)
     .then(result => {
         if(result.role === "Buyer"){
-            Buyer.create({userId: result._id}).catch(err => {
+            Buyer.create({_id: result._id}).catch(err => {
                 res.status(500).send({errMsg: err});
             });
         }else if(result.role === "Seller"){

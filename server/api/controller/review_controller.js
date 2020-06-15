@@ -11,7 +11,7 @@ exports.insert = (req, res, next) => {
 };
 
 exports.list = (req, res, next) => {
-    Review.find()
+    Review.find({status: 'Created'})
     .then(reviews => {
         res.status(200).send(reviews);
     })
