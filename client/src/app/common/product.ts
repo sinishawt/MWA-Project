@@ -1,5 +1,8 @@
+
+
 export class Product {
-  id: Number;
+  [x: string]: any;
+  id: any;
   title: String;
   price: Number;
   status: String;
