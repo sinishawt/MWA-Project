@@ -20,12 +20,10 @@ const adminRoutes = require('./api/routes/admin_route');
 const buyerRoutes = require('./api/routes/buyer_route');
 const shoppingCartRoutes = require('./api/routes/shopping_cart_route')
 
-//const authRoutes = require('./api/routes/auth_route');
+const authRoutes = require('./api/routes/auth_route');
 const sellerRoutes = require('./api/routes/seller_route');
 const addressRoutes = require('./api/routes/address_route');
 const userRoutes = require('./api/routes/user_route');
-
-
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -52,18 +50,18 @@ app.use((req, res, next) => {
     next();
 });
 //routes which handle requests
-//app.use('/auth', authRoutes);
+app.use('/signin', authRoutes);
+//app.use("/buyer", verifyToken, buyerRoutes);  
+//app.use("/buyer", middleware.verifyToken, buyerRoutes);  
 app.use('/buyer', buyerRoutes);
+app.use('/seller', sellerRoutes);
+app.use('/admin', adminRoutes);
 app.use('/products', productRoutes);
 app.use('/order', orderRoutes);
 app.use('/review', reviewRoutes);
-app.use('/admin', adminRoutes);
 app.use('/shopingCart', shoppingCartRoutes);
-app.use('/seller', sellerRoutes);
 app.use('/address', addressRoutes);
 app.use('/user', userRoutes);
-
-
 
 app.use((req, res, next) => {
     const error = new Error('Not Found');
@@ -74,7 +72,9 @@ app.use((error, req, res, next) => {
     res.status(error.status || 500);
     res.json({
         error: {
-            message: error.message
+            message: error.message,
+            location: " last : unknow error"
+                //message: "unknow error "
         }
     });
 });
