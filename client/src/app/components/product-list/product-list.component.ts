@@ -25,9 +25,7 @@ export class ProductListComponent implements OnInit {
   }
 
   addCart(items: Product)  {
-    
-       // alert(items.descreption);
-      this.shoppingService.addToShoppingCart(items._id);
+      this.shoppingService.addToShoppingCart(items._id).subscribe(res => res);
       console.log(items._id);
   }
 }
