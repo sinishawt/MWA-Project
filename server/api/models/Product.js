@@ -7,7 +7,7 @@ const productSchema = mongoose.Schema({
     status: {type: String, required: true},
     imageName: {type: String, required: true},
     descreption: {type: String, required: true},
-    sellerId: {type: String, required: true},
+    sellerId: {type: mongoose.Schema.Types.ObjectId, required: true},
 });
 
 module.exports = mongoose.model('product', productSchema);

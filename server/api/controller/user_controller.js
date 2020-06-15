@@ -1,6 +1,7 @@
 const User = require('../models/User');
 const Buyer = require('../models/Buyer');
 const Seller = require('../models/Seller');
+const bcrypt = require('bcryptjs');
 
 exports.insert = (req, res, next) => {
    // console.log("*******" + );
@@ -10,6 +11,10 @@ exports.insert = (req, res, next) => {
     // }else {
     //     req.body.status = "Pending";
     // }
+
+    const hashedPassword = bcrypt.hashSync(req.body.password, 8);
+    req.body.password = hashedPassword;
+
     User.create(req.body)
     .then(result => {
         if(result.role === "Buyer"){

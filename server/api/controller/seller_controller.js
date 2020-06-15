@@ -1,4 +1,5 @@
 const Seller = require('../models/Seller');
+const Product = require('../models/Product');
 // const User = require('../models/User');
 
 // exports.registerAsSeller = (req, res, next) => {
@@ -61,5 +62,15 @@ exports.removeById = (req, res, next) => {
     })
     .catch(err => {
         res.status(500).send({ errMsg: err });
+    });
+};
+
+exports.findProductsBySellerId = (req, res, next) => {
+    Product.find({sellerId: req.params.sellerId})
+    .then(result => {
+        res.status(200).send(result);
+    })
+    .catch(err => {
+        res.status(500).send({errMsg: err});
     });
 };

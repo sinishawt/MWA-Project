@@ -8,4 +8,5 @@ export class Product {
   status: String;
   imageName: string;
   descreption: String;
+  sellerId: any;
 }
