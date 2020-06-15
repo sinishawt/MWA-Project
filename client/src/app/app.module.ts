@@ -12,6 +12,7 @@ import { SideBarComponent } from './common/sidebar';
 import { AdminComponent } from './components/admin/admin.component';
 import { ViewPendingSellersComponent } from './components/admin/view-pending-sellers/view-pending-sellers.component';
 import { ViewPendingReviewsComponent } from './components/admin/view-pending-reviews/view-pending-reviews.component';
+import { AdminSideBarComponent } from './common/sidebar.admin';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ViewPendingReviewsComponent } from './components/admin/view-pending-rev
     CourselComponent,
     NavComponent,
     SideBarComponent,
+    AdminSideBarComponent,
     AdminComponent,
     ViewPendingSellersComponent,
     ViewPendingReviewsComponent

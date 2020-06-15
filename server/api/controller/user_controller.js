@@ -17,7 +17,7 @@ exports.insert = (req, res, next) => {
                 res.status(500).send({errMsg: err});
             });
         }else if(result.role === "Seller"){
-            Seller.create({userId: result._id}).catch(err => {
+            Seller.create({_id: result._id}).catch(err => {
                 res.status(500).send({errMsg: err});
             });
         }
