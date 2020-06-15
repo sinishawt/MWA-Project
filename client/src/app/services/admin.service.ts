@@ -11,13 +11,18 @@ export class AdminService {
 
   constructor(private http: HttpClient) { }
 
-  baseUrl: string = 'http://localhost:3000/review/';
+  baseUrl: string = 'http://localhost:3000/admin/';
 
   getReviews(): Observable<any> {
-    return this.http.get(this.baseUrl);
+    return this.http.get(this.baseUrl + 'pendingReviews');
   }
 
   approveReview(id: string): Observable<ApiResponse> {
-    return this.http.post<ApiResponse>(this.baseUrl + id, id);
+    console.log(this.baseUrl + 'pendingReviews/' + id);
+    return this.http.post<ApiResponse>(this.baseUrl + 'pendingReviews/' + id, id);
+  }
+
+  denyReview(id: string): Observable<any> {
+    return this.http.delete(this.baseUrl + 'pendingReviews/' + id);
   }
 }

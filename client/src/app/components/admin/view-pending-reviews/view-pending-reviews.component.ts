@@ -22,17 +22,20 @@ export class ViewPendingReviewsComponent implements OnInit {
     });
   };
 
-  approveComment(_id: string): void {
+  approveComment(review: Review): void {
    // this.router.navigate(['add-user']);
-   this.adminService.approveReview(_id);
-   console.log(_id);
+   this.adminService.approveReview(review._id)
+   .subscribe(data => {
+     this.reviews = this.reviews.filter(r => r !== review);
+   });
+   
   };
 
-  declineComment(_id: string): void {
-    // this.apiService.deleteUser(user._id)
-    //   .subscribe(data => {
-    //     this.users = this.users.filter(u => u !== user);
-    //   })
+  declineComment(review: Review): void {
+    this.adminService.denyReview(review._id)
+    .subscribe(data => {
+      this.reviews = this.reviews.filter(r => r !== review);
+    });
   };
 
 }

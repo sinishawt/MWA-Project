@@ -19,8 +19,8 @@
                 <td>{{review.buyerId}}</td>
                 <td>{{review.stars}}</td>
                 <td>{{review.createdDate | date: 'MM/dd/yyyy'}}</td>
-                <td><button class="btn btn-success" (click)="approveComment(review._id)"> Approve</button>
-                    <button class="btn btn-warning" (click)="declineComment(review._id)" style="margin-left: 20px;"> Decline</button>
+                <td><button class="btn btn-success" (click)="approveComment(review)"> Approve</button>
+                    <button class="btn btn-warning" (click)="declineComment(review)" style="margin-left: 20px;"> Decline</button>
                 </td>
             </tr>
         </tbody>
