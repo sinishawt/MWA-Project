@@ -11,6 +11,8 @@ const config = require('../config/key');
 
 exports.verifyToken = (req, res, next) => {
     // console.log(req.headers);
+    //validation 
+    //if (!username || !password || users[username] !== password) {
 
     const authHeader = req.headers['authorization'];
     if (!authHeader) {
