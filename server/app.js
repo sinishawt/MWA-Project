@@ -52,7 +52,7 @@ app.use((req, res, next) => {
     next();
 });
 //routes which handle requests
-app.use('/signin', authRoutes);
+app.use('/auth', authRoutes);
 //app.use("/buyer", authMiddleware.verifyToken, buyerRoutes);  
 app.use('/buyer', buyerRoutes);
 app.use('/seller', sellerRoutes);
@@ -64,9 +64,7 @@ app.use('/shopingCart', shoppingCartRoutes);
 app.use('/address', addressRoutes);
 app.use('/user', userRoutes);
 
-// app.use('/signin', (req, res, next) => {
-//    res.send({ message: " hello working here " });
-// });
+
 
 app.use((req, res, next) => {
     const error = new Error('Not Found');

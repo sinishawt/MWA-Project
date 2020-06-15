@@ -11,6 +11,7 @@ const config = require('../config/key');
 
 exports.verifyToken = (req, res, next) => {
     // console.log(req.headers);
+
     const authHeader = req.headers['authorization'];
     if (!authHeader) {
         return res.status(403).send(new ApiResponse(403, 'error', { err: 'No Token Provided!' }));
