@@ -6,7 +6,9 @@ import { AdminComponent } from './components/admin/admin.component';
 import { SignUpComponent } from './components/signup/signup.component';
 import { ViewPendingSellersComponent } from './components/admin/view-pending-sellers/view-pending-sellers.component';
 import { ViewPendingReviewsComponent } from './components/admin/view-pending-reviews/view-pending-reviews.component';
-import { LoginComponent } from './components/login/login.component'
+import { SellerComponent } from './components/seller/seller.component';
+import { ManageProductsComponent } from './components/seller/manage-products/manage-products.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 const routes: Routes = [
@@ -46,7 +48,17 @@ const routes: Routes = [
     {
       path: 'admin/view-pending-reviews',
       component: ViewPendingReviewsComponent
-    }
+    },
+    {
+      path: 'seller',
+      component: SellerComponent
+    },
+    {
+      path: 'seller/manage-products',
+      component: ManageProductsComponent
+    },
+    
+    
   ]
 }
 

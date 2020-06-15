@@ -6,8 +6,8 @@ const sellerSchema = mongoose.Schema({
     // email : { type : String, required : true },
     // pwd : { type : String, required : true },
     // role : { type : String , default: "Seller", required : true },
+    _id: {type: mongoose.Schema.Types.ObjectId, required: true},
     status: {type: String, default: 'Pending',required: false},
-    userId: {type: mongoose.Schema.Types.ObjectId, required: true},
 
     products : [{
         type : mongoose.Schema.Types.ObjectId,
@@ -16,7 +16,7 @@ const sellerSchema = mongoose.Schema({
     }],
     orders : [{
         type : mongoose.Schema.Types.ObjectId,
-        ref : 'Order',
+        ref : 'order',
         required : false
     }]
 });

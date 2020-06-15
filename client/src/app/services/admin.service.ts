@@ -18,11 +18,24 @@ export class AdminService {
   }
 
   approveReview(id: string): Observable<ApiResponse> {
-    console.log(this.baseUrl + 'pendingReviews/' + id);
+   // console.log(this.baseUrl + 'pendingReviews/' + id);
     return this.http.post<ApiResponse>(this.baseUrl + 'pendingReviews/' + id, id);
   }
 
   denyReview(id: string): Observable<any> {
     return this.http.delete(this.baseUrl + 'pendingReviews/' + id);
+  }
+
+  getSellers(): Observable<any> {
+    return this.http.get(this.baseUrl + 'pendingSellers');
+  }
+
+  approveSeller(id: string): Observable<ApiResponse> {
+    console.log(this.baseUrl + 'pendingSellers/' + id);
+    return this.http.post<ApiResponse>(this.baseUrl + 'pendingSellers/' + id, id);
+  }
+
+  denySeller(id: string): Observable<any> {
+    return this.http.delete(this.baseUrl + 'pendingSellers/' + id);
   }
 }

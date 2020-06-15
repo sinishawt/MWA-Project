@@ -17,6 +17,11 @@ import { ViewPendingReviewsComponent } from './components/admin/view-pending-rev
 import { SignUpComponent } from './components/signup/signup.component';
 import { LoginComponent } from './components/login/login.component';
 
+import { AdminSideBarComponent } from './common/sidebar.admin';
+import { SellerComponent } from './components/seller/seller.component';
+import { ManageProductsComponent } from './components/seller/manage-products/manage-products.component';
+import { MaintainOrdersComponent } from './components/seller/maintain-orders/maintain-orders.component';
+import { SellerSideBarComponent } from './common/sidebar.seller';
 
 @NgModule({
   declarations: [
@@ -25,11 +30,16 @@ import { LoginComponent } from './components/login/login.component';
     CourselComponent,
     NavComponent,
     SideBarComponent,
+    AdminSideBarComponent,
+    SellerSideBarComponent,
     AdminComponent,
     ViewPendingSellersComponent,
     ViewPendingReviewsComponent,
     SignUpComponent,
-    LoginComponent
+    LoginComponent,
+    SellerComponent,
+    ManageProductsComponent,
+    MaintainOrdersComponent
   ],
   imports: [
     BrowserModule,

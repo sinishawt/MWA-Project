@@ -1,5 +1,5 @@
 # MWA-Project
-- onlineshoping like amazon with limited features
+- onlineshopping like amazon with limited features
 
 ## Installation steps.
 

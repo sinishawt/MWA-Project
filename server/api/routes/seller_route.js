@@ -6,6 +6,8 @@ const seller_Controller = require('../controller/seller_controller');
 router.get('/', seller_Controller.list);
 router.post('/', seller_Controller.insert);
 
+router.get('/products/:sellerId', seller_Controller.findProductsBySellerId);
+
 //get by id
 router.get('/:sellerId', seller_Controller.getById);
 router.patch('/:sellerId', seller_Controller.patchById);
