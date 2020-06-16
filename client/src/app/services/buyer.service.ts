@@ -9,7 +9,7 @@ import { Review } from '../common/review';
 })
 export class buyerService {
 
-  private baseUrl = 'http://localhost:3000/cart/addToCart/'
+  private baseUrl = 'http://localhost:3000/cart/'
 
   private reviewURL = 'http://localhost:3000/review/'
   
@@ -26,7 +26,7 @@ export class buyerService {
 
   addToShoppingCart(id : string): Observable<any> {
     alert(id);
-    return this.httpClient.get<any>(this.baseUrl + id);
+    return this.httpClient.post<any>(this.baseUrl + 'addToCart/' + id, id);
   }
 
   getReviewList(id : String) : Observable<any> {
