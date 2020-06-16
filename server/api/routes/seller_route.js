@@ -13,6 +13,12 @@ router.get('/products/edit/:productId', seller_Controller.getById);
 router.patch('/products/edit/:productId', seller_Controller.patchById);
 router.delete('/products/edit/:productId', seller_Controller.removeById);
 
+router.get('/orders/:sellerId', seller_Controller.findOrderBySellerId);
+router.get('/orders/edit/:orderId', seller_Controller.getOrderById);
+router.patch('/orders/edit/:orderId', seller_Controller.patchOrderById);
+router.delete('/orders/edit/:orderId', seller_Controller.cancelOrder);
+//router.put('/orders/edit/:status', seller_Controller);
+
 //get by id
 router.get('/:sellerId', seller_Controller.getById);
 router.patch('/:sellerId', seller_Controller.patchById);
