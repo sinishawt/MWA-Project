@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import {FormsModule} from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +14,9 @@ import { SideBarComponent } from './common/sidebar';
 import { AdminComponent } from './components/admin/admin.component';
 import { ViewPendingSellersComponent } from './components/admin/view-pending-sellers/view-pending-sellers.component';
 import { ViewPendingReviewsComponent } from './components/admin/view-pending-reviews/view-pending-reviews.component';
+import { SignUpComponent } from './components/signup/signup.component';
+import { LoginComponent } from './components/login/login.component';
+
 import { AdminSideBarComponent } from './common/sidebar.admin';
 import { SellerComponent } from './components/seller/seller.component';
 import { ManageProductsComponent } from './components/seller/manage-products/manage-products.component';
@@ -30,6 +35,8 @@ import { SellerSideBarComponent } from './common/sidebar.seller';
     AdminComponent,
     ViewPendingSellersComponent,
     ViewPendingReviewsComponent,
+    SignUpComponent,
+    LoginComponent,
     SellerComponent,
     ManageProductsComponent,
     MaintainOrdersComponent
@@ -37,7 +44,9 @@ import { SellerSideBarComponent } from './common/sidebar.seller';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]

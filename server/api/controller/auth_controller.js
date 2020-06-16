@@ -13,18 +13,30 @@ exports.signin = async(req, res, next) => {
             console.log("req.body.password : " + req.body.password);
             console.log("user.password : " + user.password);
 
-            //const isValid = await bcrypt.compare(req.body.password, user.password);
-            var isValid;
-            if (req.body.password.trim() === user.password.trim()) {
-                isValid = true;
-            }
+            const isValid = await bcrypt.compare(req.body.password, user.password);
+            /// var isValid;
+            // if (req.body.password.trim() === user.password.trim()) {
+            //     isValid = true;
+            // }
             console.log("isValid : " + isValid);
 
             if (isValid) {
-                const token = jwt.sign({ data: req.body.email }, config.jwtKey, {
-                    expiresIn: config.jwtExpirySeconds
+                const token = jwt.sign({ data: req.body.email },
+                    config.jwtKey, {
+                        expiresIn: config.jwtExpirySeconds
+                    });
+
+                //req.body.use = 
+                res.json({
+                    'token': token,
+                    'expiresIn': config.jwtExpirySeconds,
+                    user: user
                 });
-                res.status(200).send(new ApiResponse(200, 'success', { token: token, expiresIn: config.jwtExpirySeconds, user: user }));
+                // res.status(200).send(new ApiResponse(200, 'success', {
+                //     token: token,
+                //     expiresIn: config.jwtExpirySeconds,
+                //     user: user
+                // }));
             } else {
                 res.status(401).send(new ApiResponse(401, 'error', { err: 'email or password not exist : 1' }));
             }

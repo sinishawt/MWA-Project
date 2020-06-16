@@ -41,18 +41,21 @@ const buyerSchema = mongoose.Schema({
         ref : 'Order',
         required : false
     }],
-    gainedPoints : [{
-        type : Schema.Types.ObjectId,
-        ref : 'GainPoints',
-        required : false
-    }],
+    // gainedPoints : [{
+    //     type : Schema.Types.ObjectId,
+    //     ref : 'GainPoints',
+    //     required : false
+    // }],
+
+    gainedPoints :{type: Number, required: true},
+
+
     billings : [{
         type : Schema.Types.ObjectId,
         ref : 'Billing',
         required : false
     }]
 });
-
 buyerSchema.methods.addToCart = async function(productId) {
  
     const product = await Product.findById(productId);
@@ -84,3 +87,4 @@ buyerSchema.methods.addToCart = async function(productId) {
 
 
 module.exports = mongoose.model('Buyer', buyerSchema);
+
