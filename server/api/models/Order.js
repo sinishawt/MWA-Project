@@ -18,7 +18,7 @@ const orderSchema = mongoose.Schema({
         type :Schema.Types.ObjectId,
 
         ref : 'Buyer',
-        required : false
+        required : true
     },
 
     sellerId: {

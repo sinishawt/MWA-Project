@@ -1,5 +1,3 @@
-
-
 const User = require('../models/User');
 const Buyer = require('../models/Buyer');
 const Seller = require('../models/Seller');
