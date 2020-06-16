@@ -28,6 +28,7 @@ import { BuyerComponent } from './components/buyer/buyer.component';
 import { ViewCartComponent } from './components/buyer/view-cart/view-cart.component';
 import { BuyerSideBarComponent } from './common/sidebar.buyer';
 import { EditProductComponent } from './components/seller/manage-products/edit-product/edit-product.component';
+import { EditOrderComponent } from './components/seller/maintain-orders/edit-order/edit-order.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { EditProductComponent } from './components/seller/manage-products/edit-p
     AddProductComponent,
     BuyerComponent,
     ViewCartComponent,
-    EditProductComponent
+    EditProductComponent,
+    EditOrderComponent
   ],
   imports: [
     BrowserModule,

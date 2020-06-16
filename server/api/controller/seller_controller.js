@@ -1,5 +1,6 @@
 const Seller = require('../models/Seller');
 const Product = require('../models/Product');
+const Order = require('../models/Order');
 // const User = require('../models/User');
 
 // exports.registerAsSeller = (req, res, next) => {
@@ -75,8 +76,28 @@ exports.findProductsBySellerId = (req, res, next) => {
     });
 };
 
+exports.findOrderBySellerId = (req, res, next) => {
+    Order.find({sellerId: req.params.sellerId})
+    .then(result => {
+        res.status(200).send(result);
+    })
+    .catch(err => {
+        res.status(500).send({errMsg: err});
+    });
+};
+
 exports.getById = (req, res, next) => {
     Product.findById(req.params.productId)
+        .then(result => {
+            res.status(200).send(result);
+        })
+        .catch(err => {
+            res.status(500).send({errMsg: err});
+        });
+};
+
+exports.getOrderById = (req, res, next) => {
+    Order.findById(req.params.orderId)
         .then(result => {
             res.status(200).send(result);
         })
@@ -98,6 +119,19 @@ exports.patchById = (req, res, next) => {
     });
 };
 
+exports.patchOrderById = (req, res, next) => {
+    Order.findById(req.params.orderId)
+    .then(review => {
+        for(let i in req.body){
+            review[i] = req.body[i];
+        }
+        return review.save();
+    })
+    .then(result => {
+        res.status(204).send({})
+    });
+};
+
 exports.removeById = (req, res, next) => {
     Product.findByIdAndDelete(req.params.productId)
     .then(result => {
@@ -107,6 +141,16 @@ exports.removeById = (req, res, next) => {
         res.status(500).send({ errMsg: err });
     });
 };
+
+exports.cancelOrder = (req, res, next) => {
+    Order.findByIdAndUpdate(req.params.orderId, {status: "Canceled"})
+    .then(result => {
+        res.status(200).send(result);
+    })
+    .catch(err => {
+        res.status(500).send({ errMsg: err });
+    });
+}
 
 exports.addProductsBySellerId = (req, res, next) => {
     console.log('*****************' + req.body);
