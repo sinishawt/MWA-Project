@@ -23,5 +23,20 @@ export class SellerService {
     return this.http.post<any>(this.baseUrl + 'products/', product);
   }
 
+  getProductById(id: string): Observable<any> {
+    return this.http.get<any>(this.baseUrl + 'products/edit/' + id);
+  }
+
+  updateProduct(product: Product): Observable<ApiResponse> {
+    return this.http.patch<any>(this.baseUrl + 'products/edit/' + product._id, product);
+  }
+
+  deleteProduct(id: string): Observable<any> {
+    return this.http.delete<any>(this.baseUrl + 'products/edit/' + id);
+  }
+  // updateProduct(product: Product): Observable<any> {
+  //   return this.http.
+  // }
+
 
 }

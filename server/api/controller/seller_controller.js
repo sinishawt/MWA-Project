@@ -75,6 +75,39 @@ exports.findProductsBySellerId = (req, res, next) => {
     });
 };
 
+exports.getById = (req, res, next) => {
+    Product.findById(req.params.productId)
+        .then(result => {
+            res.status(200).send(result);
+        })
+        .catch(err => {
+            res.status(500).send({errMsg: err});
+        });
+};
+
+exports.patchById = (req, res, next) => {
+    Product.findById(req.params.productId)
+    .then(review => {
+        for(let i in req.body){
+            review[i] = req.body[i];
+        }
+        return review.save();
+    })
+    .then(result => {
+        res.status(204).send({})
+    });
+};
+
+exports.removeById = (req, res, next) => {
+    Product.findByIdAndDelete(req.params.productId)
+    .then(result => {
+        res.status(200).send(result);
+    })
+    .catch(err => {
+        res.status(500).send({ errMsg: err });
+    });
+};
+
 exports.addProductsBySellerId = (req, res, next) => {
     console.log('*****************' + req.body);
     // Product.create(req.body)

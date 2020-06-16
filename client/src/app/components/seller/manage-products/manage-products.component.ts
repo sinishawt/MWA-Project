@@ -33,4 +33,17 @@ export class ManageProductsComponent implements OnInit {
     this.router.navigate(['seller/manage-products/add-products']);
   }
 
+  editProduct(product: Product): void {
+    window.localStorage.removeItem('editProductId');
+    window.localStorage.setItem('editProductId', product._id.toString());
+    this.router.navigate(['seller/manage-products/edit-products']);
+  }
+
+  deleteProduct(product: Product): void {
+    console.log('user', product);
+    this.sellerService.deleteProduct(product._id)
+      .subscribe(data => {
+        this.products = this.products.filter(u => u !== product);
+      })
+  };
 }
