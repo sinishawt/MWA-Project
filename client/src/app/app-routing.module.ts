@@ -9,6 +9,7 @@ import { ViewPendingReviewsComponent } from './components/admin/view-pending-rev
 import { SellerComponent } from './components/seller/seller.component';
 import { ManageProductsComponent } from './components/seller/manage-products/manage-products.component';
 import { LoginComponent } from './components/login/login.component';
+import { ViewProductsComponent } from './components/view-products/view-products.component'
 
 
 const routes: Routes = [
@@ -29,6 +30,12 @@ const routes: Routes = [
     {
       path: 'signup',
       component: SignUpComponent
+    },
+
+    {
+      path : 'viewProduct',
+      component : ViewProductsComponent
+
     },
 
     {

@@ -22,6 +22,7 @@ import { SellerComponent } from './components/seller/seller.component';
 import { ManageProductsComponent } from './components/seller/manage-products/manage-products.component';
 import { MaintainOrdersComponent } from './components/seller/maintain-orders/maintain-orders.component';
 import { SellerSideBarComponent } from './common/sidebar.seller';
+import { ViewProductsComponent } from './components/view-products/view-products.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { SellerSideBarComponent } from './common/sidebar.seller';
     LoginComponent,
     SellerComponent,
     ManageProductsComponent,
-    MaintainOrdersComponent
+    MaintainOrdersComponent,
+    ViewProductsComponent
   ],
   imports: [
     BrowserModule,
