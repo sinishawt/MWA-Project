@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Order } from '../../../common/order';
 
 @Component({
   selector: 'app-maintain-orders',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MaintainOrdersComponent implements OnInit {
 
+  orders: Order[];
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  cancelOrder(order: Order): void {
+
+  }
+
+  changeOrderStatus(order: Order): void {
+
   }
 
 }

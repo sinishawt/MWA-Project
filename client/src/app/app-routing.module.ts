@@ -13,6 +13,7 @@ import { BuyerComponent } from './components/buyer/buyer.component';
 import { ViewCartComponent } from './components/buyer/view-cart/view-cart.component';
 import { LoginComponent } from './components/login/login.component';
 import { EditProductComponent } from './components/seller/manage-products/edit-product/edit-product.component';
+import { MaintainOrdersComponent } from './components/seller/maintain-orders/maintain-orders.component';
 
 
 const routes: Routes = [
@@ -68,6 +69,10 @@ const routes: Routes = [
     {
       path: 'seller/manage-products/edit-products',
       component: EditProductComponent
+    },
+    {
+      path: 'seller/maintain-order',
+      component: MaintainOrdersComponent
     },
     {
       path: 'buyer',
