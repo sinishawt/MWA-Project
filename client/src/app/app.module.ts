@@ -17,6 +17,11 @@ import { SellerComponent } from './components/seller/seller.component';
 import { ManageProductsComponent } from './components/seller/manage-products/manage-products.component';
 import { MaintainOrdersComponent } from './components/seller/maintain-orders/maintain-orders.component';
 import { SellerSideBarComponent } from './common/sidebar.seller';
+import { AddProductComponent } from './components/seller/manage-products/add-product/add-product.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { BuyerComponent } from './components/buyer/buyer.component';
+import { ViewCartComponent } from './components/buyer/view-cart/view-cart.component';
+import { BuyerSideBarComponent } from './common/sidebar.buyer';
 
 @NgModule({
   declarations: [
@@ -27,17 +32,22 @@ import { SellerSideBarComponent } from './common/sidebar.seller';
     SideBarComponent,
     AdminSideBarComponent,
     SellerSideBarComponent,
+    BuyerSideBarComponent,
     AdminComponent,
     ViewPendingSellersComponent,
     ViewPendingReviewsComponent,
     SellerComponent,
     ManageProductsComponent,
-    MaintainOrdersComponent
+    MaintainOrdersComponent,
+    AddProductComponent,
+    BuyerComponent,
+    ViewCartComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]

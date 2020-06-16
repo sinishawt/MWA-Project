@@ -76,11 +76,45 @@ exports.findProductsBySellerId = (req, res, next) => {
 };
 
 exports.addProductsBySellerId = (req, res, next) => {
-    Product.create(req.body)
-    .then(result => {
-        res.status(201).send({id: result._id, message: "Succesfuly Created"});
-    })
-    .catch(err => {
-        res.status(500).send({errMsg: err});
+    console.log('*****************' + req.body);
+    // Product.create(req.body)
+    // .then(result => {
+    //     res.status(201).send({id: result._id});
+    // })
+    // .catch(err => {
+    //     res.status(500).send({errMsg: err});
+    // });
+    const prod = new Product({
+        
+        //_id: new mongoose.Types.ObjectId(),
+        title: req.body.title,
+        catagoryId: req.body.catagory,
+        price: req.body.price,
+        imageName: req.body.imageName,
+        descreption: req.body.description,
+        sellerId: req.body.sellerId
     });
+
+    prod.save()
+            .then(result => {
+                console.log(result);
+                res.status(200).json({
+                    message: 'Product inserted Successfully',
+                    createdProduct: {
+                        title: result.title,
+                        catagoryId: result.catagoryId,
+                        price: result.price,
+                        status: result.status,
+                        imageName: result.imageName,
+                        descreption: result.descreption,
+                        sellerId: result.sellerId
+                    }
+                });
+            })
+            .catch(err => {
+                console.log(err);
+                res.status(500).json({
+                    error: err
+                })
+            });  
 };
