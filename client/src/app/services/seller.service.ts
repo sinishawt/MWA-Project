@@ -14,12 +14,12 @@ export class SellerService {
   baseUrl: string = 'http://localhost:3000/seller/';
 
   getProducts(id: string): Observable<any> {    //////////////////Cahange to dynamic value
-    console.log(this.baseUrl + 'products/' + '5ee773e74f720d6af4eed445');
+   // console.log(this.baseUrl + 'products/' + '5ee773e74f720d6af4eed445');
     return this.http.get(this.baseUrl + 'products/' + '5ee773e74f720d6af4eed445');
   }
 
   addProduct(product: Product): Observable<any> {
-    console.log(product);
+    //console.log(product);
     return this.http.post<any>(this.baseUrl + 'products/', product);
   }
 
