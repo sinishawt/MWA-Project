@@ -56,10 +56,10 @@ const buyerSchema = mongoose.Schema({
         required : false
     }]
 });
+
 buyerSchema.methods.addToCart = async function(productId) {
  
     const product = await Product.findById(productId);
-    console.log("Pro Mem: ", productId);
     if (product) {
         const cart = this.cart;
         const isExisting = cart.items.findIndex(objInItems => new String(objInItems.productId).trim() === new String(product._id).trim());

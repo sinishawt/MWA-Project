@@ -11,7 +11,7 @@ import { Session } from 'protractor';
 })
 export class ShoppingCartService {
 
-  private baseUrl = 'http://localhost:3000/cart/addToCart/'
+  private baseUrl = 'http://localhost:3000/cart/'
 
   constructor(private httpClient: HttpClient) { }
 
@@ -23,7 +23,7 @@ export class ShoppingCartService {
 
   addToShoppingCart(id : string): Observable<any> {
     alert(id);
-    return this.httpClient.get<any>(this.baseUrl + id);
+    return this.httpClient.post<any>(this.baseUrl + 'addToCart/' + id, id);
   }
 
 }

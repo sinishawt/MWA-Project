@@ -5,8 +5,8 @@ const mongoose = require('mongoose');
 exports.addToShoppingCart = (req, res, next) => {
   
     req.buyer.addToCart(req.params.id)
-        .then(() => {
-            res.redirect('/');
+            .then(docs => {
+                res.status(200).send(docs.cart);
         }).catch(err => console.log(err));
 }
 
@@ -15,7 +15,7 @@ exports.getCart = (req, res, next) => {
         .populate()
         .execPopulate()
         .then(docs => {
-          res.status(200).send(docs);
+          res.status(200).send(docs.cart);
             
         })
         .catch(err => console.log(err));
