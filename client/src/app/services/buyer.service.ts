@@ -14,6 +14,7 @@ export class buyerService {
   private reviewURL = 'http://localhost:3000/review/'
   
   private retrieveURL = 'http://localhost:3000/review/productReview/'
+  
 
   constructor(private httpClient: HttpClient) { }
 
