@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Cart } from '../../../common/Cart';
+
 
 @Component({
   selector: 'app-view-cart',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewCartComponent implements OnInit {
 
+  items: Cart[];
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  deleteFromCart(id: string){
+
+  }
+  order(){
+
   }
 
 }

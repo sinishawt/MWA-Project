@@ -15,6 +15,28 @@
         </div>
     <div class="col-lg-9">
         <p>my cart</p>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Price</th>
+                    <th>Quantitiy</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of items">
+                    <td>{{item.productId}}</td>
+                    <td>{{item.price}}</td>
+                    <td>{{item.qty}}</td>
+                    <td><button class="btn btn-success" (click)="deleteFromCart(item)">Delete </button> </td>
+                </tr>
+            </tbody>
+        </table>
+        <p>Total Price</p>
+        <button class="btn btn-danger" style="width:300px" (click)="order()"> Order</button>
+
     </div>
     </div>
 </div>

@@ -22,6 +22,7 @@ import { SellerComponent } from './components/seller/seller.component';
 import { ManageProductsComponent } from './components/seller/manage-products/manage-products.component';
 import { MaintainOrdersComponent } from './components/seller/maintain-orders/maintain-orders.component';
 import { SellerSideBarComponent } from './common/sidebar.seller';
+import { ViewProductsComponent } from './components/view-products/view-products.component';
 import { AddProductComponent } from './components/seller/manage-products/add-product/add-product.component';
 
 import { BuyerComponent } from './components/buyer/buyer.component';
@@ -48,6 +49,7 @@ import { EditOrderComponent } from './components/seller/maintain-orders/edit-ord
     SellerComponent,
     ManageProductsComponent,
     MaintainOrdersComponent,
+    ViewProductsComponent,
     AddProductComponent,
     BuyerComponent,
     ViewCartComponent,

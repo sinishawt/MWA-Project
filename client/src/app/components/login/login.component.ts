@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { LoginServiceService } from '../../services/login-service.service'
+import { authenticationService } from '../../services/authentication.service'
 
 
 @Component({
@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
 
   addForm: FormGroup;
 
-  constructor(private router: Router,private formBuilder: FormBuilder, private loginService : LoginServiceService) { }
+  constructor(private router: Router,private formBuilder: FormBuilder, private authenticationService : authenticationService) { }
 
   ngOnInit(): void {
     this.addForm = this.formBuilder.group({
@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    this.loginService.login(this.addForm.value)
+    this.authenticationService.login(this.addForm.value)
       .subscribe(data => {
         console.log(data);
       });
