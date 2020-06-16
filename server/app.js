@@ -20,12 +20,24 @@ const adminRoutes = require('./api/routes/admin_route');
 const buyerRoutes = require('./api/routes/buyer_route');
 const shoppingCartRoutes = require('./api/routes/shopping_cart_route')
 
+
+//const authRoutes = require('./api/routes/auth_route');
 const authRoutes = require('./api/routes/auth_route');
 const sellerRoutes = require('./api/routes/seller_route');
 const addressRoutes = require('./api/routes/address_route');
 const userRoutes = require('./api/routes/user_route');
-//middleware
-const authMiddleware = require('./api/middleware/authJwt');
+const signupRoutes = require('./api/routes/signUp');
+const buyer = require('./api/models/Buyer');
+
+app.use((req, res, next) => {
+    buyer.findById('5ee7f4966ee3f657846b17c6')
+        .then(userInDB => {
+            req.buyer = userInDB;
+            next();
+        })
+        .catch(err => console.log(err));
+});
+
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -35,6 +47,7 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     store: new MongoStore({ mongooseConnection: mongoose.connection }),
+   
     cookie: { maxAge: 180 * 60 * 1000 }
 }));
 //app.use(flash());
@@ -60,10 +73,11 @@ app.use('/admin', adminRoutes);
 app.use('/products', productRoutes);
 app.use('/order', orderRoutes);
 app.use('/review', reviewRoutes);
+app.use('/cart', shoppingCartRoutes);
 app.use('/shopingCart', shoppingCartRoutes);
 app.use('/address', addressRoutes);
 app.use('/user', userRoutes);
-
+app.use('/signup' , signupRoutes);
 
 
 app.use((req, res, next) => {
