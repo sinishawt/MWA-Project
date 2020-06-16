@@ -25,7 +25,8 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this.authenticationService.login(this.addForm.value)
       .subscribe(data => {
-        console.log(data);
+        window.localStorage.removeItem("userInfo");
+        window.localStorage.setItem("userInfo", data);
       });
   }
 
