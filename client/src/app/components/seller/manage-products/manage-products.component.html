@@ -11,6 +11,8 @@
         </div>
     <div class="col-lg-9">
         <h2>Manage Prodcuts</h2>
+
+        <button class="btn btn-danger" style="width:300px" (click)="addProduct()"> Add Product</button>
         
         <table class="table table-striped">
             <thead>
@@ -31,10 +33,10 @@
                     <td>{{product.status}}</td>
                     <td>{{product.imageName}}</td>
                     <td>{{product.descreption}}</td>
-                    <!-- <td><button class="btn btn-success" (click)="approveComment(review)"> Approve</button> </td>
+                    <td><button class="btn btn-success" (click)="editProduct(product)"> Edit</button> </td>
                     <td>
-                        <button class="btn btn-warning" (click)="declineComment(review)" style="margin-left: 20px;"> Decline</button>
-                    </td> -->
+                        <button class="btn btn-warning" (click)="deleteProduct(product)" style="margin-left: 20px;"> Delete</button>
+                    </td>
                 </tr>
             </tbody>
         </table>

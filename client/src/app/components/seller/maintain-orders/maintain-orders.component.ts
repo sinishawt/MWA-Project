@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Order } from '../../../common/order';
+import { Router } from "@angular/router";
+import { SellerService } from '../../../services/seller.service';
 
 @Component({
   selector: 'app-maintain-orders',
@@ -7,9 +10,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MaintainOrdersComponent implements OnInit {
 
-  constructor() { }
+  orders: Order[];
+
+  constructor(private router: Router, private sellerService: SellerService) { }
 
   ngOnInit(): void {
+    this.sellerService.getOrders('test')
+    .subscribe(data => {
+      this.orders = data;
+      //console.log(data.result);
+    });
+  }
+
+  cancelOrder(order: Order): void {
+
+  }
+
+  changeOrderStatus(order: Order): void {
+
   }
 
 }

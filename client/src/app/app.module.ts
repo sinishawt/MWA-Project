@@ -23,6 +23,13 @@ import { ManageProductsComponent } from './components/seller/manage-products/man
 import { MaintainOrdersComponent } from './components/seller/maintain-orders/maintain-orders.component';
 import { SellerSideBarComponent } from './common/sidebar.seller';
 import { ViewProductsComponent } from './components/view-products/view-products.component';
+import { AddProductComponent } from './components/seller/manage-products/add-product/add-product.component';
+
+import { BuyerComponent } from './components/buyer/buyer.component';
+import { ViewCartComponent } from './components/buyer/view-cart/view-cart.component';
+import { BuyerSideBarComponent } from './common/sidebar.buyer';
+import { EditProductComponent } from './components/seller/manage-products/edit-product/edit-product.component';
+import { EditOrderComponent } from './components/seller/maintain-orders/edit-order/edit-order.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +40,7 @@ import { ViewProductsComponent } from './components/view-products/view-products.
     SideBarComponent,
     AdminSideBarComponent,
     SellerSideBarComponent,
+    BuyerSideBarComponent,
     AdminComponent,
     ViewPendingSellersComponent,
     ViewPendingReviewsComponent,
@@ -41,7 +49,12 @@ import { ViewProductsComponent } from './components/view-products/view-products.
     SellerComponent,
     ManageProductsComponent,
     MaintainOrdersComponent,
-    ViewProductsComponent
+    ViewProductsComponent,
+    AddProductComponent,
+    BuyerComponent,
+    ViewCartComponent,
+    EditProductComponent,
+    EditOrderComponent
   ],
   imports: [
     BrowserModule,
