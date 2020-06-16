@@ -9,23 +9,24 @@ import { Review } from '../common/review';
 })
 export class buyerService {
 
-  private baseUrl = 'http://localhost:3000/cart/addToCart/'
+  private baseUrl = 'http://localhost:3000/cart/'
 
   private reviewURL = 'http://localhost:3000/review/'
   
   private retrieveURL = 'http://localhost:3000/review/productReview/'
+  
 
   constructor(private httpClient: HttpClient) { }
 
 
-  getShoppingCart(): Observable<any> {
-    return this.httpClient.get<any>(this.baseUrl);
+  getShoppingCart(id: string): Observable<any> {
+    return this.httpClient.get<any>(this.baseUrl + 'getCart/' + id);
   }
 
 
   addToShoppingCart(id : string): Observable<any> {
     alert(id);
-    return this.httpClient.get<any>(this.baseUrl + id);
+    return this.httpClient.post<any>(this.baseUrl + 'addToCart/' + id, id);
   }
 
   getReviewList(id : String) : Observable<any> {
