@@ -3,7 +3,7 @@ import {Product} from '../../common/product';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ProductService } from '../../services/product.service';
-import { ReviewService } from '../../services/review.service';
+import { buyerService } from '../../services/buyer.service';
 import {Review} from '../../common/review';
 
 @Component({
@@ -20,7 +20,7 @@ export class ViewProductsComponent implements OnInit {
   addForm: FormGroup;
   
   
-  constructor(private formBuilder: FormBuilder, private router: Router, private productService : ProductService,private reviewService : ReviewService) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private productService : ProductService,private buyerService : buyerService) { }
 
   ngOnInit(): void {
     let productId = window.localStorage.getItem("productId");
@@ -37,9 +37,8 @@ export class ViewProductsComponent implements OnInit {
       this.description = data.descreption;
     });
 
-    this.reviewService.getReviewList()
+    this.buyerService.getReviewList(productId)
     .subscribe(data =>{
-      data = data.filter(data => data.orderProductId.toString() == productId);
       this.reviews = data;
     });
 
@@ -53,7 +52,7 @@ export class ViewProductsComponent implements OnInit {
   }
 
   onSubmit() {
-    this.reviewService.addReview(this.addForm.value)
+    this.buyerService.addReview(this.addForm.value)
       .subscribe(data => {
         this.router.navigate(['']);
       });
