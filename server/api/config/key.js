@@ -1,4 +1,4 @@
 module.exports = {
     'jwtKey': 'mykey',
-    'jwtExpirySeconds': 300
+    'jwtExpirySeconds': 3600
 };

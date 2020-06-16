@@ -24,6 +24,7 @@ const authRoutes = require('./api/routes/auth_route');
 const sellerRoutes = require('./api/routes/seller_route');
 const addressRoutes = require('./api/routes/address_route');
 const userRoutes = require('./api/routes/user_route');
+const authMiddleware = require('./api/middleware/authJwt');
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -33,7 +34,7 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     store: new MongoStore({ mongooseConnection: mongoose.connection }),
-   
+
     cookie: { maxAge: 180 * 60 * 1000 }
 }));
 //app.use(flash());
@@ -50,19 +51,25 @@ app.use((req, res, next) => {
     res.locals.session = req.session;
     next();
 });
-//routes which handle requests
+
+//routers without authMiddleware
 app.use('/auth', authRoutes);
-//app.use("/buyer", authMiddleware.verifyToken, buyerRoutes);  
+app.use('/user', userRoutes);
+//routers pass through  authMiddleware
+
+//app.use("/buyer", authMiddleware.verifyToken, buyerRoutes);
+//app.use("/products", authMiddleware.verifyToken, productRoutes);
+
+app.use('/products', productRoutes);
+app.use('/buyer', buyerRoutes);
 app.use('/buyer', buyerRoutes);
 app.use('/seller', sellerRoutes);
 app.use('/admin', adminRoutes);
-app.use('/products', productRoutes);
+
 app.use('/order', orderRoutes);
 app.use('/review', reviewRoutes);
 app.use('/shopingCart', shoppingCartRoutes);
 app.use('/address', addressRoutes);
-app.use('/user', userRoutes);
-
 
 
 app.use((req, res, next) => {
@@ -74,9 +81,7 @@ app.use((error, req, res, next) => {
     res.status(error.status || 500);
     res.json({
         error: {
-            message: error.message,
-            location: " last : unknow error"
-                //message: "unknow error "
+            message: error.message
         }
     });
 });
