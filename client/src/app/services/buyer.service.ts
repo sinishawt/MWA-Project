@@ -19,8 +19,8 @@ export class buyerService {
   constructor(private httpClient: HttpClient) { }
 
 
-  getShoppingCart(): Observable<any> {
-    return this.httpClient.get<any>(this.baseUrl);
+  getShoppingCart(id: string): Observable<any> {
+    return this.httpClient.get<any>(this.baseUrl + 'getCart/' + id);
   }
 
 
