@@ -8,9 +8,11 @@ const orderSchema = mongoose.Schema({
 
     status: { type: String, required: true},
 
-    deliveryDate: {type: Date, required: true},
+    orderDate: {type: Date, required: false},
 
-    shippedDate: {type: Date, required: true},
+    deliveryDate: {type: Date, required: false},
+
+    shippedDate: {type: Date, required: false},
 
     buyerId : {
         type :Schema.Types.ObjectId,

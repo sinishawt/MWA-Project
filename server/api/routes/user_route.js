@@ -12,5 +12,4 @@ router.patch('/:sellerId', user_Controller.patchById);
 router.delete('/:sellerId', user_Controller.removeById);
 
 
-
 module.exports = router;

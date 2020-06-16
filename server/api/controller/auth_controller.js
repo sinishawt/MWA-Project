@@ -7,32 +7,35 @@ const jwt = require('jsonwebtoken');
 const config = require('../config/key');
 
 exports.signin = async(req, res, next) => {
-    console.log("inside sign()");
+    console.log("authentication: sign() ....");
     try {
         const user = await User.findOne({ email: req.body.email });
         if (user) {
-            //console.log(user);        
-            console.log("req.body.password : " + req.body.password);
-            console.log("user.password : " + user.password);
+            const isValid = await bcrypt.compare(req.body.password, user.password);
 
-            //const isValid = await bcrypt.compare(req.body.password, user.password);
-            var isValid;
-            if (req.body.password.trim() === user.password.trim()) {
-                isValid = true;
-            }
-            console.log("isValid : " + isValid);
+            // console.log("isValid : " + isValid);
 
             if (isValid) {
-                const token = jwt.sign({ data: req.body.email }, config.jwtKey, {
+                const token = jwt.sign({ data: req.body.email },
+                    config.jwtKey, {
+                        expiresIn: config.jwtExpirySeconds
+                    });
+
+                user.password = 'not-visible';
+                //store user info in req.body 
+                req.user = user;
+                // console.log(user);
+                res.status(200).send(new ApiResponse(200, 'success', {
+                    token: token,
                     expiresIn: config.jwtExpirySeconds
-                });
-                res.status(200).send(new ApiResponse(200, 'success', { token: token, expiresIn: config.jwtExpirySeconds, user: user }));
+                }));
+
             } else {
-                res.status(401).send(new ApiResponse(401, 'error', { err: 'email or password not exist : 1' }));
+                res.status(401).send(new ApiResponse(401, 'error', { err: 'email or password not exist ' }));
             }
 
         } else {
-            res.status(401).send(new ApiResponse(401, 'error', { err: 'email or password not exist: 2' }));
+            res.status(401).send(new ApiResponse(401, 'error', { err: 'email or password not exist' }));
         }
     } catch (err) {
         res.status(500).send(new ApiResponse(500, 'error', err));

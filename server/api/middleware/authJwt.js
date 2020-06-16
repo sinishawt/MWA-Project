@@ -10,7 +10,10 @@ const jwt = require('jsonwebtoken');
 const config = require('../config/key');
 
 exports.verifyToken = (req, res, next) => {
-    // console.log(req.headers);
+    console.log("auth : verifyToken() ")
+    console.log(req.headers);
+    //validation 
+    //if (!username || !password || users[username] !== password) {
 
     const authHeader = req.headers['authorization'];
     if (!authHeader) {
@@ -22,6 +25,10 @@ exports.verifyToken = (req, res, next) => {
         if (err) {
             return res.status(401).send(new ApiResponse(401, 'error', { err: 'Unauthorized!' }));
         }
+
+        //if the user is verified then decoded it and put in request 
+        req.user = decoded.user;
+        console.log(req.user);
         next();
     });
 }
