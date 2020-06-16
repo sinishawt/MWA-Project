@@ -7,6 +7,7 @@ router.get('/', seller_Controller.list);
 router.post('/', seller_Controller.insert);
 
 router.get('/products/:sellerId', seller_Controller.findProductsBySellerId);
+router.post('/products/', seller_Controller.addProductsBySellerId);
 
 //get by id
 router.get('/:sellerId', seller_Controller.getById);

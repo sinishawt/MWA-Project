@@ -29,4 +29,8 @@ export class ManageProductsComponent implements OnInit {
     });
   }
 
+  addProduct(): void {
+    this.router.navigate(['seller/manage-products/add-products']);
+  }
+
 }

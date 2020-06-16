@@ -20,11 +20,29 @@ const adminRoutes = require('./api/routes/admin_route');
 const buyerRoutes = require('./api/routes/buyer_route');
 const shoppingCartRoutes = require('./api/routes/shopping_cart_route')
 
+
+//const authRoutes = require('./api/routes/auth_route');
 const authRoutes = require('./api/routes/auth_route');
 const sellerRoutes = require('./api/routes/seller_route');
 const addressRoutes = require('./api/routes/address_route');
-const userRoutes = require('./api/routes/user_route');
-const authMiddleware = require('./api/middleware/authJwt');
+const userRoutes = require('./api/routes/user_route'); <<
+<< << < HEAD
+const authMiddleware = require('./api/middleware/authJwt'); ===
+=== =
+const signupRoutes = require('./api/routes/signUp');
+const buyer = require('./api/models/Buyer');
+
+app.use((req, res, next) => {
+    buyer.findById('5ee7f4966ee3f657846b17c6')
+        .then(userInDB => {
+            req.buyer = userInDB;
+            next();
+        })
+        .catch(err => console.log(err));
+});
+
+>>>
+>>> > 9 f852ab4a993dfa4f43bc98233362dfb25739ac6
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -55,6 +73,7 @@ app.use((req, res, next) => {
 //routers without authMiddleware
 app.use('/auth', authRoutes);
 app.use('/user', userRoutes);
+app.use('/signup', signupRoutes);
 //routers pass through  authMiddleware
 
 //app.use("/buyer", authMiddleware.verifyToken, buyerRoutes);
@@ -68,9 +87,9 @@ app.use('/admin', adminRoutes);
 
 app.use('/order', orderRoutes);
 app.use('/review', reviewRoutes);
+app.use('/cart', shoppingCartRoutes);
 app.use('/shopingCart', shoppingCartRoutes);
 app.use('/address', addressRoutes);
-
 
 app.use((req, res, next) => {
     const error = new Error('Not Found');
