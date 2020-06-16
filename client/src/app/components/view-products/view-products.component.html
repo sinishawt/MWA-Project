@@ -1,0 +1,66 @@
+
+<app-nav></app-nav>
+
+<div>
+  spacer
+</div>
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-3">
+
+      <app-side></app-side>
+
+  </div>
+    <div class="col-lg-9">
+      <app-coursel></app-coursel>
+
+      <div class="row">
+          <div class="col-lg-0 col-md-0" >
+            <div class="card h-100">
+              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+              <div class="card-body">
+                  <h4 class="card-title">
+                      <a href="#">{{title}}</a>
+                  </h4>
+                  <h5>{{price}}</h5>
+                  <p class="card-text">{{description}} </p>
+    
+              </div>
+              <!-- <div *ngIf="reviews"> -->
+              <div class="card-body">
+                <tr *ngFor="let review of reviews">
+                  <div class="card-body">Comment :
+                       <td >{{review.comment}}</td>
+                  </div> 
+                  <div class="card-title">Number of Stars :
+                       <td >{{review.stars}}</td>
+                  </div>
+              </div>
+            <!-- </div> -->
+            <div class="card-body">
+         
+              <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+                
+                  <div class="form-group">
+                      <label for="stars">Star for the product :</label>
+                      <input formControlName="stars" placeholder="stars" name="stars" class="form-control" id="stars">
+                  </div>
+  
+                  <div class="form-group">
+                      <label for="comment">Comment :</label>
+                      <input formControlName="comment" placeholder="comment" name="comment" class="form-control" id="comment">
+                  </div>
+                  
+                  
+                  <p></p>
+                  <button class="btn btn-success">submit</button>
+              </form>
+          </div>
+              
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

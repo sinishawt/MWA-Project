@@ -12,11 +12,11 @@ exports.addToShoppingCart = (req, res, next) => {
 
 exports.getCart = (req, res, next) => {
     req.buyer
-        .populate('cart.items.productId')
+        .populate()
         .execPopulate()
         .then(docs => {
-            res.status(200).send(docs);
-
+          res.status(200).send(docs);
+            
         })
         .catch(err => console.log(err));
 }
