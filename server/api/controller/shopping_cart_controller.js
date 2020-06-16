@@ -1,4 +1,5 @@
 const Product = require('../models/Product');
+const Buyer =  require('../models/Buyer');
 const Cart = require('../models/ShoppingCart')
 const mongoose = require('mongoose');
 
@@ -10,16 +11,46 @@ exports.addToShoppingCart = (req, res, next) => {
         }).catch(err => console.log(err));
 }
 
-exports.getCart = (req, res, next) => {
-    req.buyer
-        .populate()
-        .execPopulate()
-        .then(docs => {
-          res.status(200).send(docs.cart);
+// exports.getCart = (req, res, next) => {
+//     req.buyer
+//         .populate()
+//         .execPopulate()
+//         .then(docs => {
+//           res.status(200).send(docs.cart);
             
-        })
-        .catch(err => console.log(err));
+//         })
+//         .catch(err => console.log(err));
+// }
+
+
+exports.getCart = (req, res, next)=>{
+    const id = req.params.id;
+    Buyer.findById(id)
+            .exec()
+            .then(doc => {
+                
+                if(doc){
+                    console.log("Data from the database: ", doc.cart);
+                    res.status(200).json(doc.cart);
+                } else{
+                    res.status(404).json({message: 'No items in the cart'});
+                }
+            })
+            .catch(err => {
+                console.log(err);
+                res.status(500).json({error: err})
+            });
+
+};
+
+exports.deleteInCart = (req, res, next) => {
+    
+    req.buyer.removeFromCart(req.params.id)
+        .then(() => {
+            res.status(404).json({message: 'The Item is successfully deleted'});
+        }).catch(err => console.log(err));
 }
+
 
 // session start .... not working now
 exports.addShoppingCart = (req, res, next)=>{
