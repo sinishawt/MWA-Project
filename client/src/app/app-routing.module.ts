@@ -8,7 +8,12 @@ import { ViewPendingSellersComponent } from './components/admin/view-pending-sel
 import { ViewPendingReviewsComponent } from './components/admin/view-pending-reviews/view-pending-reviews.component';
 import { SellerComponent } from './components/seller/seller.component';
 import { ManageProductsComponent } from './components/seller/manage-products/manage-products.component';
+import { AddProductComponent } from './components/seller/manage-products/add-product/add-product.component';
+import { BuyerComponent } from './components/buyer/buyer.component';
+import { ViewCartComponent } from './components/buyer/view-cart/view-cart.component';
 import { LoginComponent } from './components/login/login.component';
+import { EditProductComponent } from './components/seller/manage-products/edit-product/edit-product.component';
+import { MaintainOrdersComponent } from './components/seller/maintain-orders/maintain-orders.component';
 
 
 const routes: Routes = [
@@ -56,6 +61,26 @@ const routes: Routes = [
     {
       path: 'seller/manage-products',
       component: ManageProductsComponent
+    },
+    {
+      path: 'seller/manage-products/add-products',
+      component: AddProductComponent
+    },
+    {
+      path: 'seller/manage-products/edit-products',
+      component: EditProductComponent
+    },
+    {
+      path: 'seller/maintain-order',
+      component: MaintainOrdersComponent
+    },
+    {
+      path: 'buyer',
+      component: BuyerComponent
+    },
+    {
+      path: 'buyer/view-cart',
+      component: ViewCartComponent
     },
     
     
