@@ -11,31 +11,31 @@ export class AdminService {
 
   constructor(private http: HttpClient) { }
 
-  baseUrl: string = 'http://localhost:3000/admin/';
+  adminURL: string = 'http://localhost:3000/admin/';
 
   getReviews(): Observable<any> {
-    return this.http.get(this.baseUrl + 'pendingReviews');
+    return this.http.get(this.adminURL + 'pendingReviews');
   }
 
   approveReview(id: string): Observable<ApiResponse> {
    // console.log(this.baseUrl + 'pendingReviews/' + id);
-    return this.http.post<ApiResponse>(this.baseUrl + 'pendingReviews/' + id, id);
+    return this.http.post<ApiResponse>(this.adminURL + 'pendingReviews/' + id, id);
   }
 
   denyReview(id: string): Observable<any> {
-    return this.http.delete(this.baseUrl + 'pendingReviews/' + id);
+    return this.http.delete(this.adminURL + 'pendingReviews/' + id);
   }
 
   getSellers(): Observable<any> {
-    return this.http.get(this.baseUrl + 'pendingSellers');
+    return this.http.get(this.adminURL + 'pendingSellers');
   }
 
   approveSeller(id: string): Observable<ApiResponse> {
-    console.log(this.baseUrl + 'pendingSellers/' + id);
-    return this.http.post<ApiResponse>(this.baseUrl + 'pendingSellers/' + id, id);
+    console.log(this.adminURL + 'pendingSellers/' + id);
+    return this.http.post<ApiResponse>(this.adminURL + 'pendingSellers/' + id, id);
   }
 
   denySeller(id: string): Observable<any> {
-    return this.http.delete(this.baseUrl + 'pendingSellers/' + id);
+    return this.http.delete(this.adminURL + 'pendingSellers/' + id);
   }
 }

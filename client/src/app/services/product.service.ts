@@ -17,6 +17,10 @@ export class ProductService {
     return this.httpClient.get(this.baseUrl);
   }
 
+  getAProduct(id : any) : Observable<any> {
+    return this.httpClient.get(this.baseUrl+id)
+  }
+
 }
 
 // interface GetResponse {

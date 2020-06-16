@@ -12,6 +12,7 @@ import { AddProductComponent } from './components/seller/manage-products/add-pro
 import { BuyerComponent } from './components/buyer/buyer.component';
 import { ViewCartComponent } from './components/buyer/view-cart/view-cart.component';
 import { LoginComponent } from './components/login/login.component';
+import { ViewProductsComponent } from './components/view-products/view-products.component'
 import { EditProductComponent } from './components/seller/manage-products/edit-product/edit-product.component';
 import { MaintainOrdersComponent } from './components/seller/maintain-orders/maintain-orders.component';
 
@@ -34,6 +35,12 @@ const routes: Routes = [
     {
       path: 'signup',
       component: SignUpComponent
+    },
+
+    {
+      path : 'viewProduct',
+      component : ViewProductsComponent
+
     },
 
     {

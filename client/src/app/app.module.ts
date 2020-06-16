@@ -6,7 +6,7 @@ import {FormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {ProductService} from './services/product.service';
 import { CourselComponent } from './common/coursel';
 import { NavComponent } from './common/navbar';
@@ -22,6 +22,7 @@ import { SellerComponent } from './components/seller/seller.component';
 import { ManageProductsComponent } from './components/seller/manage-products/manage-products.component';
 import { MaintainOrdersComponent } from './components/seller/maintain-orders/maintain-orders.component';
 import { SellerSideBarComponent } from './common/sidebar.seller';
+import { ViewProductsComponent } from './components/view-products/view-products.component';
 import { AddProductComponent } from './components/seller/manage-products/add-product/add-product.component';
 
 import { BuyerComponent } from './components/buyer/buyer.component';
@@ -29,6 +30,7 @@ import { ViewCartComponent } from './components/buyer/view-cart/view-cart.compon
 import { BuyerSideBarComponent } from './common/sidebar.buyer';
 import { EditProductComponent } from './components/seller/manage-products/edit-product/edit-product.component';
 import { EditOrderComponent } from './components/seller/maintain-orders/edit-order/edit-order.component';
+import { AuthenticationInterceptors } from './interceptors/AuthenticationInterceptors';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,7 @@ import { EditOrderComponent } from './components/seller/maintain-orders/edit-ord
     SellerComponent,
     ManageProductsComponent,
     MaintainOrdersComponent,
+    ViewProductsComponent,
     AddProductComponent,
     BuyerComponent,
     ViewCartComponent,
@@ -61,7 +64,13 @@ import { EditOrderComponent } from './components/seller/maintain-orders/edit-ord
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [ProductService],
+  providers: [
+    ProductService,
+    { provide: HTTP_INTERCEPTORS,
+      useClass: AuthenticationInterceptors,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

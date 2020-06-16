@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { SignupservicesService } from '../../services/signupservices.service'
+import { authenticationService } from '../../services/authentication.service'
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,7 +12,7 @@ export class SignUpComponent implements OnInit {
 
   addForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private signUpServices : SignupservicesService, private router : Router) { }
+  constructor(private formBuilder: FormBuilder, private authenticationService : authenticationService, private router : Router) { }
 
   ngOnInit(): void {
     this.addForm = this.formBuilder.group({
@@ -24,7 +24,7 @@ export class SignUpComponent implements OnInit {
   }
 
   onSubmit() {
-    this.signUpServices.addUser(this.addForm.value)
+    this.authenticationService.addUser(this.addForm.value)
       .subscribe(data => {
         alert('User Successfully Registered, You can now log in and Start Using');
         this.router.navigate(['product']);
