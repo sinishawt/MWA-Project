@@ -69,11 +69,10 @@ app.use('/admin', adminRoutes);
 app.use('/products', productRoutes);
 app.use('/order', orderRoutes);
 app.use('/review', reviewRoutes);
-app.use('/addShopingCart', shoppingCartRoutes);
+app.use('/cart', shoppingCartRoutes);
 app.use('/shopingCart', shoppingCartRoutes);
 app.use('/address', addressRoutes);
 app.use('/user', userRoutes);
-
 
 
 app.use((req, res, next) => {

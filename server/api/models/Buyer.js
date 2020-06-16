@@ -83,6 +83,4 @@ buyerSchema.methods.addToCart = async function(productId) {
 };
 
 
-
-
 module.exports = mongoose.model('Buyer', buyerSchema);

@@ -7,10 +7,21 @@ exports.addToShoppingCart = (req, res, next) => {
     req.buyer.addToCart(req.params.id)
         .then(() => {
             res.redirect('/');
-            console.log("Pro Id", req.params.id);
         }).catch(err => console.log(err));
 }
 
+exports.getCart = (req, res, next) => {
+    req.buyer
+        .populate('cart.items.productId')
+        .execPopulate()
+        .then(docs => {
+            res.status(200).send(docs);
+
+        })
+        .catch(err => console.log(err));
+}
+
+// session start .... not working now
 exports.addShoppingCart = (req, res, next)=>{
 
     let productId = req.params.id;
@@ -34,3 +45,4 @@ exports.shoppingCart = (req, res, next) => {
     let cart = new Cart(req.session.cart);
     res.status(200).json(cart);
 };
+//session end
