@@ -48,6 +48,12 @@ router.get('/:orderid', orderController.findOrder);
 router.delete('/:orderid' , orderController.removeOrder);
 
 
+router.patch('/:orderid', orderController.patchById);
+
+
+
+
+//router.get('/order/:buyerId', orderController.findOrderByProductId);
 
 module.exports = router;
 
