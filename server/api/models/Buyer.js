@@ -41,13 +41,13 @@ const buyerSchema = mongoose.Schema({
         ref : 'Order',
         required : false
     }],
-    // gainedPoints : [{
-    //     type : Schema.Types.ObjectId,
-    //     ref : 'GainPoints',
-    //     required : false
-    // }],
+    gainedPoints : [{
+        type : Schema.Types.ObjectId,
+        ref : 'GainPoints',
+        required : false
+    }],
 
-    gainedPoints :{type: Number, required: true},
+    //gainedPoints :{type: Number, required: true},
 
 
     billings : [{
@@ -59,7 +59,7 @@ const buyerSchema = mongoose.Schema({
 buyerSchema.methods.addToCart = async function(productId) {
  
     const product = await Product.findById(productId);
-    
+    console.log("Pro Mem: ", productId);
     if (product) {
         const cart = this.cart;
         const isExisting = cart.items.findIndex(objInItems => new String(objInItems.productId).trim() === new String(product._id).trim());
