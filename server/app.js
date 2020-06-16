@@ -20,7 +20,6 @@ const adminRoutes = require('./api/routes/admin_route');
 const buyerRoutes = require('./api/routes/buyer_route');
 const shoppingCartRoutes = require('./api/routes/shopping_cart_route')
 
-
 //const authRoutes = require('./api/routes/auth_route');
 const authRoutes = require('./api/routes/auth_route');
 const sellerRoutes = require('./api/routes/seller_route');
@@ -70,11 +69,11 @@ app.use((req, res, next) => {
 app.use('/auth', authRoutes);
 app.use('/user', userRoutes);
 app.use('/signup', signupRoutes);
+
+
 //routers pass through  authMiddleware
-
+app.use("/products", authMiddleware.verifyToken, productRoutes);
 //app.use("/buyer", authMiddleware.verifyToken, buyerRoutes);
-//app.use("/products", authMiddleware.verifyToken, productRoutes);
-
 app.use('/products', productRoutes);
 app.use('/buyer', buyerRoutes);
 app.use('/buyer', buyerRoutes);
