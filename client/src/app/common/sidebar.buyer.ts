@@ -11,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
                     <a href="buyer/view-orders" class="list-group-item">My Orders</a>
                     <a href="buyer/shipping-address" class="list-group-item">Shipping Address </a>
                     <a href="buyer/payment-settings" class="list-group-item"> Payment Settings</a>
-                    <a href="buyer/notifications" class="list-group-item"> Payment Settings</a>       
+                    <a href="buyer/notifications" class="list-group-item"> Notifications</a>       
                 </div>
   `,
   styles: []
