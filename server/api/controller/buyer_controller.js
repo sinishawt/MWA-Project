@@ -1,5 +1,5 @@
 const buyer = require('../models/Buyer');
-
+const order = require('../models/Order');
 
 
 
@@ -48,7 +48,7 @@ exports.removeBuyer = (req,res, next) =>{
 exports.enterShippingAddress = (req, res, next) => {
     //console.log("////" + req.body.shippingAddress.state);
     
-    buyer.findByIdAndUpdate(req.params.buyerId, {
+    order.findByIdAndUpdate(req.params.buyerId, {
         shippingAddress: {
             zipCode: req.body.zipCode, 
             street: req.body.street, 
@@ -129,6 +129,17 @@ exports.getBillingInfo = (req, res, next) => {
     })
     .catch(err => {
         res.status(500).send({errMsg: err});
+    });
+    
+}
+
+exports.getOrdersByBuyerId = (req, res, next) => {
+    order.find({buyerId: req.params.buyerId})
+    .then(result => {   
+        res.status(200).send(result);
+    })
+    .catch(err => {
+        res.status(500).send({ errMsg: err });
     });
     
 }

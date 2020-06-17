@@ -70,7 +70,9 @@ export class buyerService {
     return this.httpClient.post<any>(this.baseUrl + 'shippingaddress/' + payment.buyerId, payment);
   }
 
-
+  getOrdersByBuyerId(id : String) : Observable<any> {
+    return this.httpClient.get<any>(this.baseUrl + 'orders/' + id);
+  }
 
 }
 
