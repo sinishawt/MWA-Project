@@ -9,5 +9,8 @@ router.get('/:buyerid', buyerController.findBuyer);
 router.delete('/:buyerid' , buyerController.removeBuyer);
 
 
+router.post('/shippingaddress/:buyerId', buyerController.enterShippingAddress);
+
+
 
 module.exports = router;
