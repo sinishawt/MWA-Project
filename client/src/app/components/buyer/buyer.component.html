@@ -14,6 +14,27 @@
     <div class="col-lg-9">
         <app-coursel></app-coursel>
         <p>Buyer Home! Will change to Product List</p>
+
+        <div class="row">
+            <div class="col-lg-4 col-md-6 mb-4" *ngFor="let items of products" >
+              <div class="card h-100">
+                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <button (click)="viewDetail(items._id)" name="submit">{{items.title}}</button>
+                    </h4>
+                    <h5>{{items.price}}</h5>
+                    <p class="card-text">{{items.descreption}} </p>
+  
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                    <button (click)="addCart(items)" class="btn btn-primary">Add to Shopping Cart</button>
+  
+                </div>
+              </div>
+            </div>
+        </div>
     </div>
     </div>
 </div>
