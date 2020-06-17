@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-side-admin',
   template: `
-  <h1 class="my-4">Admin Pannel</h1>
+  <h3 class="my-4">Admin Pannel</h3>
                 <div class="list-group">
                     <a href="admin/" class="list-group-item">Home</a>
                     <a href="admin/view-pending-reviews" class="list-group-item">Manage Pending Reviews</a>

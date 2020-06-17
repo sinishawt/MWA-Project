@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-side',
   template: `
-  <h1 class="my-4">User Name</h1>
+  <h3 class="my-4"> welcome user</h3>
       <div class="list-group">
           <a href="#" class="list-group-item">Category 1</a>
           <a href="#" class="list-group-item">Category 2</a>

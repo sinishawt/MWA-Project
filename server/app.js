@@ -20,7 +20,6 @@ const adminRoutes = require('./api/routes/admin_route');
 const buyerRoutes = require('./api/routes/buyer_route');
 const shoppingCartRoutes = require('./api/routes/shopping_cart_route')
 
-
 //const authRoutes = require('./api/routes/auth_route');
 const authRoutes = require('./api/routes/auth_route');
 const sellerRoutes = require('./api/routes/seller_route');
@@ -66,26 +65,32 @@ app.use((req, res, next) => {
     next();
 });
 
-//routers without authMiddleware
+//public 
 app.use('/auth', authRoutes);
 app.use('/user', userRoutes);
 app.use('/signup', signupRoutes);
-//routers pass through  authMiddleware
+// app.use('/products', productRoutes);
+// app.use('/buyer', buyerRoutes);
+// app.use('/buyer', buyerRoutes);
+// app.use('/seller', sellerRoutes);
+// app.use('/admin', adminRoutes);
+// app.use('/order', orderRoutes);
+// app.use('/review', reviewRoutes);
+// app.use('/cart', shoppingCartRoutes);
+// app.use('/shopingCart', shoppingCartRoutes);
+// app.use('/address', addressRoutes);
 
-//app.use("/buyer", authMiddleware.verifyToken, buyerRoutes);
-//app.use("/products", authMiddleware.verifyToken, productRoutes);
-
-app.use('/products', productRoutes);
-app.use('/buyer', buyerRoutes);
-app.use('/buyer', buyerRoutes);
-app.use('/seller', sellerRoutes);
-app.use('/admin', adminRoutes);
-
-app.use('/order', orderRoutes);
-app.use('/review', reviewRoutes);
-app.use('/cart', shoppingCartRoutes);
-app.use('/shopingCart', shoppingCartRoutes);
-app.use('/address', addressRoutes);
+//authorization Middleware verification 
+app.use('/products', authMiddleware.verifyToken, productRoutes);
+app.use('/buyer', authMiddleware.verifyToken, buyerRoutes);
+app.use('/buyer', authMiddleware.verifyToken, buyerRoutes);
+app.use('/seller', authMiddleware.verifyToken, sellerRoutes);
+app.use('/admin', authMiddleware.verifyToken, adminRoutes);
+app.use('/order', authMiddleware.verifyToken, orderRoutes);
+app.use('/review', authMiddleware.verifyToken, reviewRoutes);
+app.use('/cart', authMiddleware.verifyToken, shoppingCartRoutes);
+app.use('/shopingCart', authMiddleware.verifyToken, shoppingCartRoutes);
+app.use('/address', authMiddleware.verifyToken, addressRoutes);
 
 app.use((req, res, next) => {
     const error = new Error('Not Found');
