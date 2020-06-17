@@ -1,5 +1,4 @@
 export class Payment {
-  id: any;
   nameOnCard: String;
   cardNumber: Number;
   cvv: Number;

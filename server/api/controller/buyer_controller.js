@@ -50,18 +50,18 @@ exports.enterShippingAddress = (req, res, next) => {
     
     buyer.findByIdAndUpdate(req.params.buyerId, {
         shippingAddress: {
-            zipCode: req.body.shippingAddress.zipCode, 
-            street: req.body.shippingAddress.street, 
-            city: req.body.shippingAddress.city, 
-            state: req.body.shippingAddress.state, 
-            phoneNo: req.body.shippingAddress.phoneNo, 
-            country: req.body.shippingAddress.country, 
+            zipCode: req.body.zipCode, 
+            street: req.body.street, 
+            city: req.body.city, 
+            state: req.body.state, 
+            phoneNo: req.body.phoneNo, 
+            country: req.body.country, 
             buyerId: req.params.buyerId,
-            status: req.body.shippingAddress.status, 
+            status: req.body.status, 
         }
     })
     .then(result => {
-        res.status(200).send(result.shippingAddress);
+        res.status(200).send(result);
     })
     .catch(err => {
         res.status(500).send({ errMsg: err });
@@ -88,22 +88,22 @@ exports.getShippingAddress = (req, res, next) => {
 }
 
 exports.enterBillingInfo = (req, res, next) => {
-    //console.log("////" + req.body.billingInfo.state);
+    console.log("////" + req.body.nameOnCard);
     
     buyer.findByIdAndUpdate(req.params.buyerId, {
         billingInfo: {
-            nameOnCard: req.body.billingInfo.nameOnCard,
-            cardNumber: req.body.billingInfo.cardNumber,
-            cvv: req.body.billingInfo.cvv,
-            expiryDate: req.body.billingInfo.expiryDate,
-            zipCode: req.body.billingInfo.zipCode, 
-            street: req.body.billingInfo.street, 
-            city: req.body.billingInfo.city, 
-            state: req.body.billingInfo.state, 
-            phoneNo: req.body.billingInfo.phoneNo, 
-            country: req.body.billingInfo.country, 
+            nameOnCard: req.body.nameOnCard,
+            cardNumber: req.body.cardNumber,
+            cvv: req.body.cvv,
+            expiryDate: req.body.expiryDate,
+            zipCode: req.body.zipCode, 
+            street: req.body.street, 
+            city: req.body.city, 
+            state: req.body.state, 
+            phoneNo: req.body.phoneNo, 
+            country: req.body.country, 
             buyerId: req.params.buyerId,
-            status: req.body.billingInfo.status, 
+            status: req.body.status, 
         }
     })
     .then(result => {

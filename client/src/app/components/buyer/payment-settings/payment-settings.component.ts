@@ -50,8 +50,19 @@ export class PaymentSettingsComponent implements OnInit {
 
   }
 
-  onSubmit(): void {
-
+  onSubmit() {
+    console.log(this.paymentForm.value);
+    this.buyerService.enterProductInfo(this.paymentForm.value)
+    .pipe(first())
+    .subscribe(
+      data => {
+        
+          this.router.navigate(['buyer/']);
+        
+      },
+      error => {
+        alert(error);
+      });
   }
 
 

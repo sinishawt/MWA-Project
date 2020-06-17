@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import { Review } from '../common/review';
+import { Payment } from '../common/payment';
+import { ApiResponse } from '../common/api.response';
 
 
 @Injectable({
@@ -52,6 +54,11 @@ export class buyerService {
 
   getPaymentInfo(id: String): Observable<any> {
     return this.httpClient.get<any>(this.baseUrl + 'billinginfo/' + id);
+  }
+
+  enterProductInfo(payment: Payment): Observable<ApiResponse> {
+    console.log('*////////' + payment.buyerId);
+    return this.httpClient.post<any>(this.baseUrl + 'billinginfo/' + payment.buyerId, payment);
   }
 
 }
