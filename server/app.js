@@ -32,7 +32,7 @@ const signupRoutes = require('./api/routes/signUp');
 const buyer = require('./api/models/Buyer');
 
 app.use((req, res, next) => {
-    buyer.findById('5ee7f4966ee3f657846b17c6')
+    buyer.findById('5ee9201706927d6f944a25ec')
         .then(userInDB => {
             req.buyer = userInDB;
             next();
