@@ -28,6 +28,13 @@ export class LoginComponent implements OnInit {
         //console.log(data.token);
        // alert(data.token);
         localStorage.setItem('token', data.token);
+        localStorage.setItem('userInfo' , data.user);
+        
+        if(data.user.role == "buyer","BUYER","Buyer"){
+            this.router.navigate(['product']);
+        }
+        else if(data.user.role == "seller","SELLER","Seller")
+            this.router.navigate(['seller']);
       });
   }
 
