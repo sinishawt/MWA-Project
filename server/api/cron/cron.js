@@ -3,13 +3,14 @@
 // const User = require("../models/Buyer");
 //
 // const orderModel = require("../models/Order")
+// const productModel = require("../models/Product")
 //
 // exports.run = () => {
 //
-//     cron.schedule("* * * * * ", function() {
+//     cron.schedule("* * * * * * * ", function() {
 //
 //
-//         console.log(orderModel.status)
+//         //console.log(orderModel.status)
 //
 //         orderModel.find()
 //
@@ -19,15 +20,22 @@
 //
 //                     const dateNow = new Date()
 //
-//                     const dateDifference = order.deliveryDate - dateNow
+//                     const dateDifference = dateNow - order.deliveryDate
 //
 //
-//
-//                         if(dateDifference > 1000000 && order.status=="Ordered" ){
+//                                                // 20 days in seconds
+//                         if(dateDifference > 1728000 && order.status=="delivered" ){
 //
 //                             console.log('produid', order.buyerId)
 //
-//                             User.updateOne({_id :order.buyerId}, {$inc:{gainedPoints:111}} ,function (err,data){
+//
+//
+//                               //const gainedPoint = (order.productId.price)*0.5
+//
+//
+//
+//
+//                             User.updateOne({_id :order.buyerId}, {$inc:{gainedPoints:10}} ,function (err,data){
 //                                 console.log(err)
 //                             })
 //
@@ -39,6 +47,7 @@
 //
 //
 //                     console.log("time difference ; ", dateDifference);
+//                     console.log('produid', order.buyerId)
 //
 //                 });
 //

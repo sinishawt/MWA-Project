@@ -2,44 +2,59 @@
 
 const mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+
 const orderSchema = mongoose.Schema({
+    //_id: mongoose.Schema.Types.ObjectId,
+    productId: { type: mongoose.Schema.Types.ObjectId, required: true},
+    buyerId: { type: mongoose.Schema.Types.ObjectId, required: false},
+    status: { type: String, required: true},
+    orderDate: {type: Date, required: false},
+    deliveryDate: {type: Date, required: true}
+});
+
+//const orderSchema = mongoose.Schema({
+    
 
    // _id: mongoose.Schema.Types.ObjectId,
 
-    status: { type: String, default: 'Ordered',required: true},
+//     status: { type: String, default: 'Ordered',required: true},
 
-    orderDate: {type: Date, required: false},
+//     orderDate: {type: Date, required: false},
 
-    deliveryDate: {type: Date, required: true},
 
-    shippedDate: {type: Date, required: false},
+//    deliveryDate: {type: Date, required: true},
 
-    buyerId : {
-        type :Schema.Types.ObjectId,
+//     deliveryDate: {type: Date, required: false},
 
-        ref : 'Buyer',
-        required : true
-    },
 
-    sellerId: {
-        type :Schema.Types.ObjectId,
-        ref : 'seller',
-        required : false
-    },
+//     shippedDate: {type: Date, required: false},
 
-    shippingAddressId: {
-        type :Schema.Types.ObjectId,
-        ref : 'Address',
-        required : false
-    },
+//     buyerId : {
+//         type :Schema.Types.ObjectId,
 
-    billingId: {
-        type :Schema.Types.ObjectId,
-        ref : 'Billing',
-        required : false
-    }
+//         ref : 'Buyer',
+//         required : true
+//     },
 
-});
+//     sellerId: {
+//         type :Schema.Types.ObjectId,
+//         ref : 'seller',
+//         required : false
+//     },
+
+//     shippingAddressId: {
+//         type :Schema.Types.ObjectId,
+//         ref : 'Address',
+//         required : false
+//     },
+
+//     billingId: {
+//         type :Schema.Types.ObjectId,
+//         ref : 'Billing',
+//         required : false
+//     }
+
+// });
 
 
 // buyerId: { type: Number, required : true},
