@@ -33,9 +33,9 @@ export class LoginComponent implements OnInit {
         if(data.user.role == "buyer","BUYER","Buyer"){
             this.router.navigate(['product']);
         }
-        else if(data.user.role == "seller","SELLER","Seller")
+        if(data.user.role == "seller","SELLER","Seller")
             this.router.navigate(['seller']);
-      });
+        });
   }
 
 }

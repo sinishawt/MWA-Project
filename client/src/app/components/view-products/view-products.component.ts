@@ -16,6 +16,7 @@ export class ViewProductsComponent implements OnInit {
   title : any;
   price : any;
   description : any;
+  image : any;
   reviews : Review[];
   addForm: FormGroup;
   
@@ -34,6 +35,7 @@ export class ViewProductsComponent implements OnInit {
     .subscribe(data => {
       this.title = data.title;
       this.price = data.price;
+      this.image = data.imageName;
       this.description = data.descreption;
     });
 
