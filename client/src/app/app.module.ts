@@ -31,6 +31,10 @@ import { BuyerSideBarComponent } from './common/sidebar.buyer';
 import { EditProductComponent } from './components/seller/manage-products/edit-product/edit-product.component';
 import { EditOrderComponent } from './components/seller/maintain-orders/edit-order/edit-order.component';
 import { AuthenticationInterceptors } from './interceptors/AuthenticationInterceptors';
+import { ViewOrdersComponent } from './components/buyer/view-orders/view-orders.component';
+import { ShippingAddressComponent } from './components/buyer/shipping-address/shipping-address.component';
+import { PaymentSettingsComponent } from './components/buyer/payment-settings/payment-settings.component';
+import { NotificationsComponent } from './components/buyer/notifications/notifications.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +59,11 @@ import { AuthenticationInterceptors } from './interceptors/AuthenticationInterce
     BuyerComponent,
     ViewCartComponent,
     EditProductComponent,
-    EditOrderComponent
+    EditOrderComponent,
+    ViewOrdersComponent,
+    ShippingAddressComponent,
+    PaymentSettingsComponent,
+    NotificationsComponent
   ],
   imports: [
     BrowserModule,

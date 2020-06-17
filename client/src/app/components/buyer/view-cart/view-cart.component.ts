@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Cart } from '../../../common/Cart';
 import { Router } from "@angular/router";
 import { buyerService } from '../../../services/buyer.service';
+import { Product } from 'src/app/common/product';
 
 
 @Component({
@@ -15,24 +16,21 @@ export class ViewCartComponent implements OnInit {
   constructor(private router: Router, private buyerService: buyerService) { }
 
   ngOnInit(): void {
-    this.buyerService.getShoppingCart('5ede8265253cba38d44f16c2')
+    this.buyerService.getShoppingCart('5ee9201706927d6f944a25ec')
     .subscribe(data => {
-      this.items = data.cart;
-      console.log(' *****' + data._id);
+       console.log('in view caret compnent data' + data);
+      this.items = data.items;
+      console.log('Cart Items' + this.items);
     });
   }
 
-  // getProductsOfSeller(cart: Cart): void {
-  //   this.buyerService.getShoppingCart('5ede8265253cba38d44f16c2')
-  //   .subscribe(data => {
-  //     this.items = data;
-  //     //console.log("******" + data._id);
-  //   });
-  // }
 
-  deleteFromCart(id: string){
+  deleteFromCart(item: Product)  {
+    this.buyerService.deleteItem(item._id).subscribe(res => res);
+    console.log(item._id);
+}
 
-  }
+
   order(){
 
   }

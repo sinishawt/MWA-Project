@@ -1,0 +1,60 @@
+<p>shipping-address works!</p>
+
+<app-nav></app-nav>
+
+<div>
+   <br><br>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3">
+            <app-side-buyer></app-side-buyer>
+        </div>
+    <div class="col-lg-9"><br><br>
+        <h2>Shipping Address</h2>
+
+        <form [formGroup]="addressForm" (ngSubmit)="onSubmit()">
+
+            <div class="hidden">
+                <input type="hidden" formControlName="_id" placeholder="id" name="_id" class="form-control" id="id">
+            </div>
+            <div class="hidden">
+                <input type="hidden" formControlName="status" placeholder="status" name="status" class="form-control" id="status">
+            </div>
+
+            <div class="form-group">
+                <label for="street">Street:</label>
+                <input formControlName="street" placeholder="Street" name="street" class="form-control" id="street">
+            </div>
+
+            <div class="form-group">
+                <label for="zipCode">Zip Code:</label>
+                <input formControlName="zipCode" placeholder="Zip Code" name="zipCode" class="form-control" id="zipCode">
+            </div>
+    
+            <div class="form-group">
+                <label for="city">City:</label>
+                <input formControlName="city" placeholder="City" name="city" class="form-control" id="city">
+            </div>
+    
+            <div class="form-group">
+                <label for="state">State:</label>
+                <input type="text" formControlName="state" placeholder="State" name="state" class="form-control" id="state">
+            </div>
+    
+            <div class="form-group">
+                <label for="country">Country:</label>
+                <input formControlName="country" placeholder="Country" name="country" class="form-control" id="country">
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone No:</label>
+                <input formControlName="phone" placeholder="phone No." name="phone" class="form-control" id="phone">
+            </div>
+    
+            <button class="btn btn-success">Enter Address</button>
+        </form>
+
+    </div>
+    </div>
+</div>

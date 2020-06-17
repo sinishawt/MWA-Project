@@ -8,7 +8,7 @@ const addressSchema = mongoose.Schema({
     state: { type: String, required : true},
     phoneNo: { type: Number, required : true},
     country: { type: String, required : true},
-    buyerId: {type: mongoose.Schema.Types.ObjectId, ref: 'Buyer', required: true},
+    buyerId: {type: mongoose.Schema.Types.ObjectId, ref: 'Buyer', required: false},
     status: {type: String}
 });
 
