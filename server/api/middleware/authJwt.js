@@ -11,15 +11,18 @@ const config = require('../config/key');
 
 exports.verifyToken = (req, res, next) => {
     console.log("auth : verifyToken() ")
-    console.log(req.headers);
+    console.log(req.headers.authorization);
     //validation 
     //if (!username || !password || users[username] !== password) {
 
     const authHeader = req.headers['authorization'];
+
     if (!authHeader) {
         return res.status(403).send(new ApiResponse(403, 'error', { err: 'No Token Provided!' }));
     }
     const token = authHeader.split(' ')[1];
+
+    console.log("token" , token);
 
     jwt.verify(token, config.jwtKey, (err, decoded) => {
         if (err) {

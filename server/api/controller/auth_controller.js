@@ -26,9 +26,7 @@ exports.signin = async(req, res, next) => {
                 req.user = user;
                 // console.log(user);
                 res.status(200).send(new ApiResponse(200, 'success', {
-                    token: token,
-                    expiresIn: config.jwtExpirySeconds,
-                    user : user
+                    token: token
                 }));
 
             } else {
