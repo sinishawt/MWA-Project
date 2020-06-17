@@ -2,14 +2,14 @@ export class Payment {
   id: any;
   nameOnCard: String;
   cardNumber: Number;
-  cvv: String;
-  expiryDate: string;
-  zipCode: String;
-  street: any;
-  city: any;
-  state: any;
-  phoneNo: any;
-  country: any;
-  buyerId: any;
-  status: any;
+  cvv: Number;
+  expiryDate: String;
+  zipCode: Number;
+  street: String;
+  city: String;
+  state: String;
+  phoneNo: Number;
+  country: String;
+  buyerId: String;
+  status: String;
 }

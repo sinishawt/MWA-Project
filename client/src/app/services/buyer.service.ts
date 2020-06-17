@@ -9,6 +9,8 @@ import { Review } from '../common/review';
 })
 export class buyerService {
 
+  private baseUrl = 'http://localhost:3000/buyer/'
+
   private cartUrl = 'http://localhost:3000/cart/'
 
   private reviewURL = 'http://localhost:3000/review/'
@@ -46,6 +48,10 @@ export class buyerService {
 
   addReview(review : Review) : Observable<any> {
     return this.httpClient.post<any>(this.reviewURL,review);
+  }
+
+  getPaymentInfo(id: String): Observable<any> {
+    return this.httpClient.get<any>(this.baseUrl + 'billinginfo/' + id);
   }
 
 }
