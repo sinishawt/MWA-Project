@@ -1,3 +1,11 @@
+
+
+
+
+
+
+
+
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { authenticationService } from '../../services/authentication.service'
@@ -15,6 +23,7 @@ export class SignUpComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private authenticationService : authenticationService, private router : Router) { }
 
   ngOnInit(): void {
+
     this.addForm = this.formBuilder.group({
       name: ['', Validators.required],
       email: ['', Validators.required],

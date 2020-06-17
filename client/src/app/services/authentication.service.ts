@@ -25,12 +25,12 @@ export class authenticationService{
     return this.httpClient.post<any>(this.signUp ,user);
   }
 
-  getToken() : any {
-    return window.localStorage.getItem("userInfo");
+  getToken() : String {
+    return window.localStorage.getItem("token");
   }
 
   get isLoggedIn(): boolean {
-    let authToken = localStorage.getItem('userInfo');
+    let authToken = localStorage.getItem('token');
     return (authToken !== null) ? true : false;
   }
 
