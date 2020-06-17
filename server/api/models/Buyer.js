@@ -45,13 +45,13 @@ const buyerSchema = mongoose.Schema({
         ref : 'Order',
         required : false
     }],
-    gainedPoints : [{
-        type : Schema.Types.ObjectId,
-        ref : 'GainPoints',
-        required : false
-    }],
+    // gainedPoints : [{
+    //     type : Schema.Types.ObjectId,
+    //     ref : 'GainPoints',
+    //     required : false
+    // }],
 
-    //gainedPoints :{type: Number, required: true},
+    gainedPoints :{type: Number, required: true},
 
     billingInfo: {
         nameOnCard: {type: String, required: false},

@@ -32,20 +32,6 @@ exports.findOrder = (req,res,next) =>{
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 exports.removeOrder = (req,res, next) =>{
     order.findByIdAndDelete(req.params.orderid)
         .then(result=>{
