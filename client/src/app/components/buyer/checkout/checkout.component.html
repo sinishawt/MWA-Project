@@ -1,0 +1,54 @@
+<p>add-product works!</p>
+
+<p>manage-products works!</p>
+
+
+<app-nav></app-nav>
+<p>add wordks!</p>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3">
+            <app-side-seller></app-side-seller>
+        </div>
+    <div class="col-lg-9">
+        <h2>Checkout</h2>
+
+        <form [formGroup]="checkOutForm" (ngSubmit)="checkOut()">
+
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input formControlName="name" placeholder="Enter you Name" name="name" class="form-control" id="name">
+            </div>
+
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <input formControlName="address" placeholder="Enter you Address" name="address" class="form-control" id="address">
+            </div>
+
+            <div class="form-group">
+                <label for="cardHolderName">Card Holder Name:</label>
+                <input formControlName="caredHolderName" placeholder="Enter Card Holder Name" name="cardeHolderName" class="form-control" id="cardHoldeName">
+            </div>
+
+            <div class="form-group">
+                <label for="creditCardNumber">Credit Card Number:</label>
+                <input type="number" formControlName="creditCardNumber" placeholder="Enter Credit Card Number" name="creditCardNumber" class="form-control" id="creditCardNumber">
+            </div>
+
+            <div class="form-group">
+                <label for="expirationDate">Expiration Date:</label>
+                <input type="date" formControlName="expirationDate" placeholder="Enter Card Expiration Data" name="expirationDate" class="form-control" id="expirationDate">
+            </div>
+            <div class="form-group">
+              <label for="cvc">CVC:</label>
+              <input formControlName="cvc" placeholder="Enter CVC" name="cvc" class="form-control" id="cvc">
+          </div>
+
+            <button class="btn btn-success">Place Order</button>
+        </form>
+
+
+    </div>
+    </div>
+</div>

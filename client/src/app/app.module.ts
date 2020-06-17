@@ -31,6 +31,7 @@ import { BuyerSideBarComponent } from './common/sidebar.buyer';
 import { EditProductComponent } from './components/seller/manage-products/edit-product/edit-product.component';
 import { EditOrderComponent } from './components/seller/maintain-orders/edit-order/edit-order.component';
 import { AuthenticationInterceptors } from './interceptors/AuthenticationInterceptors';
+import { CheckoutComponent } from './components/buyer/checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { AuthenticationInterceptors } from './interceptors/AuthenticationInterce
     BuyerComponent,
     ViewCartComponent,
     EditProductComponent,
-    EditOrderComponent
+    EditOrderComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,
