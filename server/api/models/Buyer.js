@@ -53,30 +53,27 @@ const buyerSchema = mongoose.Schema({
 
     gainedPoints :{type: Number, required: true},
 
-
-    billings : [{
-        type : Schema.Types.ObjectId,
-        ref : 'Billing',
-        required : false
-    }],
-
-    billingAddress: {
-        zipCode: {type: Number, required: true},
-        street: { type: String, required : true},
-        city: { type: String, required : true},
-        state: { type: String, required : true},
-        phoneNo: { type: Number, required : true},
-        country: { type: String, required : true},
+    billingInfo: {
+        nameOnCard: {type: String, required: false},
+        cardNumber: {type: Number, required: false},
+        cvv: {type: Number, required: false},
+        expiryDate: {type: String, required: false},
+        zipCode: {type: Number, required: false},
+        street: { type: String, required : false},
+        city: { type: String, required : false},
+        state: { type: String, required : false},
+        phoneNo: { type: Number, required : false},
+        country: { type: String, required : false},
         buyerId: {type: mongoose.Schema.Types.ObjectId, ref: 'Buyer', required: false},
         status: {type: String}
     },
     shippingAddress: {
-        zipCode: {type: Number, required: true},
-        street: { type: String, required : true},
-        city: { type: String, required : true},
-        state: { type: String, required : true},
-        phoneNo: { type: Number, required : true},
-        country: { type: String, required : true},
+        zipCode: {type: Number, required: false},
+        street: { type: String, required : false},
+        city: { type: String, required : false},
+        state: { type: String, required : false},
+        phoneNo: { type: Number, required : false},
+        country: { type: String, required : false},
         buyerId: {type: mongoose.Schema.Types.ObjectId, ref: 'Buyer', required: false},
         status: {type: String}
     }
