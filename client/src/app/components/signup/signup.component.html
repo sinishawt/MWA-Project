@@ -36,7 +36,12 @@
 
                 <div class="form-group">
                     <label for="role">Role:</label>
-                    <input formControlName="role" placeholder="Buyer/Seller" name="role" class="form-control" id="role">
+                    <!-- <input formControlName="role" placeholder="Buyer/Seller" name="role" class="form-control" id="role"> -->
+                    <select class="form-control" id="role" formControlName="role" name="role">
+                        <option>Buyer</option>
+                        <option>Seller</option>
+                        
+                      </select>
                 </div>
 
                 <button class="btn btn-success">Add</button>

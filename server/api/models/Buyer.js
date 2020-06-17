@@ -22,19 +22,19 @@ const buyerSchema = mongoose.Schema({
             productId: {
                 type: mongoose.Schema.Types.ObjectId,
                 ref: 'Product',
-                required: true
+                required: false
             },
             qty: {
                 type: Number,
-                required: true
+                required: false
             },
             title: {
                 type: String,
-                required: true
+                required: false
             },
             price: {
                 type: Number,
-                required: true
+                required: false
             }
         }],
         totalQty: Number,
@@ -51,7 +51,7 @@ const buyerSchema = mongoose.Schema({
     //     required : false
     // }],
 
-    gainedPoints :{type: Number, required: true},
+    gainedPoints :{type: Number, default: 0, required: false},
 
     billingInfo: {
         nameOnCard: {type: String, required: false},
