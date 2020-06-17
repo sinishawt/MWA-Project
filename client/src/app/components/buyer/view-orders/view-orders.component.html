@@ -27,14 +27,15 @@
                     <th></th>
                 </tr>
             </thead>
-            <!-- <tbody>
-                <tr *ngFor="let item of items">
-                    <td>{{item.title}}</td>
-                    <td>{{item.price}}</td>
-                    <td>{{item.qty}}</td>
-                    <td><button class="btn btn-success" (click)="deleteFromCart(item)">Delete </button> </td>
+            <tbody>
+                <tr *ngFor="let order of orders">
+                    <td>{{order.productId}}</td>
+                    <td>{{order.productId}}</td>
+                    <td>{{order.orderDate}}</td>
+                    <td>{{order.shippingAddress.city}}</td>
+                    <td>{{order.status}}</td>
                 </tr>
-            </tbody> -->
+            </tbody>
         </table>
 
                 <button class="btn btn-danger" style="width:300px" (click)="printToPdf()"> Print To PDF</button>

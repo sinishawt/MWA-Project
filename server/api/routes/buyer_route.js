@@ -14,6 +14,6 @@ router.post('/shippingaddress/:buyerId', buyerController.enterShippingAddress);
 router.get('/billinginfo/:buyerId', buyerController.getBillingInfo);
 router.post('/billinginfo/:buyerId', buyerController.enterBillingInfo);
 
-
+router.get('/orders/:buyerId', buyerController.getOrdersByBuyerId);
 
 module.exports = router;
