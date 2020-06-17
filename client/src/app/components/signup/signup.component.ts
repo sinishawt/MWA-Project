@@ -27,7 +27,7 @@ export class SignUpComponent implements OnInit {
     this.authenticationService.addUser(this.addForm.value)
       .subscribe(data => {
         alert('User Successfully Registered, You can now log in and Start Using');
-        this.router.navigate(['product']);
+        this.router.navigate(['product']); //login
       });
   }
 
