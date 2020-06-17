@@ -86,6 +86,7 @@ exports.findOrderBySellerId = (req, res, next) => {
     });
 };
 
+
 exports.getById = (req, res, next) => {
     Product.findById(req.params.productId)
         .then(result => {
@@ -194,4 +195,14 @@ exports.addProductsBySellerId = (req, res, next) => {
                     error: err
                 })
             });  
+};
+
+exports.changeOrderStatusShipped = (req, res, next) => {
+    Order.findByIdAndUpdate(req.params.orderId, {status: "Shipped"})
+    .then(result => {
+        res.status(200).send(result);
+    })
+    .catch(err => {
+        res.status(500).send({ errMsg: err });
+    });
 };

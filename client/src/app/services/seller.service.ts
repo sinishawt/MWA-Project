@@ -40,5 +40,13 @@ export class SellerService {
      return this.http.get(this.baseUrl + 'orders/' + '5ee6d9e5f7d3a669f801f03c');
    }
 
+   getOrderStatusByOrderId(id: string): Observable<any>{
+      return this.http.get(this.baseUrl + 'orders/' + 'edit/' + id); 
+   }
+
+   changeOrderStatustoShipped(id: string): Observable<any>{
+    return this.http.patch(this.baseUrl + 'orders/' + 'edit/' + id, id); 
+ }
+
 
 }

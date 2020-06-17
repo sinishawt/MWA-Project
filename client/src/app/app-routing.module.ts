@@ -20,6 +20,7 @@ import { ShippingAddressComponent } from './components/buyer/shipping-address/sh
 import { PaymentSettingsComponent } from './components/buyer/payment-settings/payment-settings.component';
 import { NotificationsComponent } from './components/buyer/notifications/notifications.component';
 import { AdminGuard } from '.././app/Guards/adminGuard'
+import { EditOrderComponent } from './components/seller/maintain-orders/edit-order/edit-order.component';
 
 
 const routes: Routes = [
@@ -93,6 +94,11 @@ const routes: Routes = [
     {
       path: 'seller/maintain-order',
       component: MaintainOrdersComponent,
+      canActivate: [AdminGuard]
+    },
+    {
+      path: 'seller/maintain-order/update-status',
+      component: EditOrderComponent,
       canActivate: [AdminGuard]
     },
     {
