@@ -13,7 +13,6 @@ import { Product } from 'src/app/common/product';
 export class ViewCartComponent implements OnInit {
 
   items: Cart[];
-  totalPrice: Number;
   constructor(private router: Router, private buyerService: buyerService) { }
 
   ngOnInit(): void {
@@ -21,15 +20,14 @@ export class ViewCartComponent implements OnInit {
     .subscribe(data => {
        console.log('in view caret compnent data' + data);
       this.items = data.items;
-      this.totalPrice = data.totalPrice;
       console.log('Cart Items' + this.items);
     });
   }
 
 
   deleteFromCart(item: Product)  {
-    this.buyerService.deleteItem(item.productId).subscribe(res => res);
-    alert(item.productId);
+    this.buyerService.deleteItem(item._id).subscribe(res => res);
+    console.log(item._id);
 }
 
 

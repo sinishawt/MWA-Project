@@ -8,15 +8,12 @@ import { User } from '../common/userResponse';
   providedIn: 'root'
 })
 export class authenticationService{
-  getToken() {
-    throw new Error("Method not implemented.");
-  }
 
   private baseUrl = 'http://localhost:3000/auth/signin'
 
   private signUp = 'http://localhost:3000/signup'
 
-
+  
 
   constructor(private httpClient: HttpClient) { }
 

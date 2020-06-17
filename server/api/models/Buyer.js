@@ -84,7 +84,7 @@ const buyerSchema = mongoose.Schema({
 });
 
 buyerSchema.methods.addToCart = async function(productId) {
- console.log("memar")
+ 
     const product = await Product.findById(productId);
     if (product) {
         const cart = this.cart;
@@ -117,7 +117,6 @@ buyerSchema.methods.removeFromCart = function(productId) {
     const isExisting = cart.items.findIndex(objInItems => new String(objInItems.productId).trim() === new String(productId).trim());
     if (isExisting >= 0) {
         cart.items.splice(isExisting, 1);
-        cart.items.totalQty -= 1;
         return this.save();
     }
 }
