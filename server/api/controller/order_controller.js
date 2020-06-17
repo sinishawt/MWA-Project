@@ -49,7 +49,7 @@ const order = require('../models/Order')
 
 exports.placeOrder = (req, res, next)=>{
     const id = req.params.id;
-    console.log("BUyer ID: ", id)
+    console.log("shipping address: ", req.body)
     Buyer.findById(id)
             .exec()
             .then(doc => {
@@ -59,9 +59,12 @@ exports.placeOrder = (req, res, next)=>{
                         const ord = new order({               
                             _id: new mongoose.Types.ObjectId(),
                             buyerId: id,
+                            sellerId: doc.cart.items[i].sellerId,
                             productId: doc.cart.items[i].productId,
                             status: "Pending",
-                            orderDate: new Date()   
+                            orderDate: new Date(),
+                           
+                            shippingAddress: req.body   
                         });
                         ord.save()
                         .then(result => {

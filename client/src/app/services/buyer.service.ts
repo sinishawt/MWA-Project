@@ -61,5 +61,18 @@ export class buyerService {
     return this.httpClient.post<any>(this.baseUrl + 'billinginfo/' + payment.buyerId, payment);
   }
 
+  getShippingAddress(id: String): Observable<any> {
+    return this.httpClient.get<any>(this.baseUrl + 'shippingaddress/' + id);
+  }
+
+  enterShippingAddress(payment: Payment): Observable<ApiResponse> {
+    //console.log('*////////' + payment.buyerId);
+    return this.httpClient.post<any>(this.baseUrl + 'shippingaddress/' + payment.buyerId, payment);
+  }
+
+  getOrdersByBuyerId(id : String) : Observable<any> {
+    return this.httpClient.get<any>(this.baseUrl + 'orders/' + id);
+  }
+
 }
 

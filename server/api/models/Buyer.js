@@ -32,6 +32,10 @@ const buyerSchema = mongoose.Schema({
                 type: String,
                 required: false
             },
+            sellerId: {
+                type: mongoose.Schema.Types.ObjectId, 
+                required: true
+            },
             price: {
                 type: Number,
                 required: false
@@ -51,7 +55,7 @@ const buyerSchema = mongoose.Schema({
     //     required : false
     // }],
 
-    gainedPoints :{type: Number, default: 0, required: false},
+    //gainedPoints :{type: Number, required: false},
 
     billingInfo: {
         nameOnCard: {type: String, required: false},
@@ -83,6 +87,7 @@ const buyerSchema = mongoose.Schema({
 buyerSchema.methods.addToCart = async function(productId) {
  
     const product = await Product.findById(productId);
+    console.log("seller ID: ", product.sellerId);
     if (product) {
         const cart = this.cart;
         const isExisting = cart.items.findIndex(objInItems => new String(objInItems.productId).trim() === new String(product._id).trim());
@@ -90,7 +95,7 @@ buyerSchema.methods.addToCart = async function(productId) {
             cart.items[isExisting].qty += 1;
             cart.items[isExisting].price = cart.items[isExisting].price + product.price;
         } else {
-            cart.items.push({ productId: product._id, qty: 1, price: product.price, title: product.title});
+            cart.items.push({ productId: product._id, qty: 1, sellerId: product.sellerId, price: product.price, title: product.title});
         }
         if (!cart.totalPrice) {
             cart.totalPrice = 0;

@@ -83,4 +83,15 @@ import { NotificationsComponent } from './components/buyer/notifications/notific
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+
+  ngOnInit(){
+    localStorage.removeItem('token');
+    localStorage.removeItem('userInfo');
+  }
+
+  ngOnDestryo(){
+    localStorage.removeItem('token');
+    localStorage.removeItem('userInfo');
+  }
+}

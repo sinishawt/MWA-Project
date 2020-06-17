@@ -15,7 +15,8 @@ exports.signin = async(req, res, next) => {
                 });
                 res.status(200).json({
                     token: token,
-                    expiresIn: config.jwtExpirySeconds
+                    expiresIn: config.jwtExpirySeconds,
+                    user : user
                 });
             } else {
                 res.status(401).send(new ApiResponse(401, 'error', { err: 'email or password not exist' }));
