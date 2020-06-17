@@ -70,11 +70,12 @@ app.use('/auth', authRoutes);
 app.use('/user', userRoutes);
 app.use('/signup', signupRoutes);
 
-
 //routers pass through  authMiddleware
 app.use("/products", authMiddleware.verifyToken, productRoutes);
 //app.use("/buyer", authMiddleware.verifyToken, buyerRoutes);
-app.use('/products', productRoutes);
+
+
+//app.use('/products', productRoutes);
 app.use('/buyer', buyerRoutes);
 app.use('/buyer', buyerRoutes);
 app.use('/seller', sellerRoutes);

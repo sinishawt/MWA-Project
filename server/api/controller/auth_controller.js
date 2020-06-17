@@ -1,5 +1,3 @@
-
-
 const User = require('../models/User');
 const ApiResponse = require('../models/api.response');
 const bcrypt = require('bcryptjs');
@@ -24,11 +22,11 @@ exports.signin = async(req, res, next) => {
                 user.password = 'not-visible';
                 //store user info in req.body 
                 req.user = user;
-                // console.log(user);
+                console.log(user);
                 res.status(200).send(new ApiResponse(200, 'success', {
                     token: token,
                     expiresIn: config.jwtExpirySeconds,
-                    user : user
+                    user: user
                 }));
 
             } else {
