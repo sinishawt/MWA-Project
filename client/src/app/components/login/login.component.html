@@ -10,26 +10,29 @@
                     <a href="admin/view-pending-sellers" class="list-group-item">Manage Pending Sellers</a>
                 </div> -->
         </div>
-    
-    <div class="col-lg-9">
-        <div class="col-md-6 user-container">
-         
-            <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
-        
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input formControlName="email" placeholder="Email" name="email" class="form-control" id="email">
-                </div>
 
-                <div class="form-group">
-                    <label for="password">Password:</label>
-                    <input formControlName="password" placeholder="password" name="password" class="form-control" id="password">
-                </div>
-        
-                <button class="btn btn-success">Login</button>
-            </form>
+        <div class="col-lg-9">
+            <div class="col-md-6 user-container">
+
+                <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input formControlName="email" placeholder="Email" name="email" class="form-control" id="email">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input formControlName="password" placeholder="password" name="password" class="form-control" id="password">
+                    </div>
+
+                    <button class="btn btn-success">Login</button>
+                    <p>
+                        Don't have an account? <a href="/signup" class="ml-2">Register</a>
+                    </p>
+
+                </form>
+            </div>
         </div>
-        
-    </div>
     </div>
 </div>
