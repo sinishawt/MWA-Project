@@ -28,6 +28,10 @@ const buyerSchema = mongoose.Schema({
                 type: Number,
                 required: true
             },
+            title: {
+                type: String,
+                required: true
+            },
             price: {
                 type: Number,
                 required: true
@@ -54,7 +58,29 @@ const buyerSchema = mongoose.Schema({
         type : Schema.Types.ObjectId,
         ref : 'Billing',
         required : false
-    }]
+    }],
+
+    billingAddress: {
+        zipCode: {type: Number, required: true},
+        street: { type: String, required : true},
+        city: { type: String, required : true},
+        state: { type: String, required : true},
+        phoneNo: { type: Number, required : true},
+        country: { type: String, required : true},
+        buyerId: {type: mongoose.Schema.Types.ObjectId, ref: 'Buyer', required: false},
+        status: {type: String}
+    },
+    shippingAddress: {
+        zipCode: {type: Number, required: true},
+        street: { type: String, required : true},
+        city: { type: String, required : true},
+        state: { type: String, required : true},
+        phoneNo: { type: Number, required : true},
+        country: { type: String, required : true},
+        buyerId: {type: mongoose.Schema.Types.ObjectId, ref: 'Buyer', required: false},
+        status: {type: String}
+    }
+
 });
 
 buyerSchema.methods.addToCart = async function(productId) {
@@ -67,7 +93,7 @@ buyerSchema.methods.addToCart = async function(productId) {
             cart.items[isExisting].qty += 1;
             cart.items[isExisting].price = cart.items[isExisting].price + product.price;
         } else {
-            cart.items.push({ productId: product._id, qty: 1, price: product.price });
+            cart.items.push({ productId: product._id, qty: 1, price: product.price, title: product.title});
         }
         if (!cart.totalPrice) {
             cart.totalPrice = 0;
@@ -84,6 +110,16 @@ buyerSchema.methods.addToCart = async function(productId) {
     }
 
 };
+
+buyerSchema.methods.removeFromCart = function(productId) {
+    const cart = this.cart;
+   
+    const isExisting = cart.items.findIndex(objInItems => new String(objInItems.productId).trim() === new String(productId).trim());
+    if (isExisting >= 0) {
+        cart.items.splice(isExisting, 1);
+        return this.save();
+    }
+}
 
 
 module.exports = mongoose.model('Buyer', buyerSchema);

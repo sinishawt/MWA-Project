@@ -9,6 +9,28 @@
 
 const Address = require('../models/Address');
 
+// const Product = require('../models/Product');
+// const Cart = require('../models/ShoppingCart')
+// const mongoose = require('mongoose');
+
+// exports.addToShoppingCart = (req, res, next) => {
+  
+//     req.buyer.addToCart(req.params.id)
+//             .then(docs => {
+//                 res.status(200).send(docs.cart);
+//         }).catch(err => console.log(err));
+// }
+
+// exports.getCart = (req, res, next) => {
+//     req.buyer
+//         .populate()
+//         .execPopulate()
+//         .then(docs => {
+//           res.status(200).send(docs.cart);
+            
+//         })
+//         .catch(err => console.log(err));
+// }
 exports.insert = (req, res, next) => {
     Address.create(req.body)
     .then(result => {

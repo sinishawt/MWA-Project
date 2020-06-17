@@ -14,6 +14,7 @@ export class AdminService {
   adminURL: string = 'http://localhost:3000/admin/';
 
   getReviews(): Observable<any> {
+    console.log(this.http.get(this.adminURL + 'pendingReviews'))
     return this.http.get(this.adminURL + 'pendingReviews');
   }
 
