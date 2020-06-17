@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
        // alert(data.token);
         localStorage.setItem('token', data.token);
         localStorage.setItem('userInfo' , data.user);
-        
+      
         if(data.user.role == "buyer","BUYER","Buyer"){
             this.router.navigate(['product']);
         }
