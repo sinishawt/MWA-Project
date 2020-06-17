@@ -7,6 +7,7 @@
 
 const http = require('http');
 const app = require('./app');
+const cron = require('./api/cron/cron.js');
 const connectDB = require('./api/config/dbconnection');
 
 connectDB();
@@ -15,4 +16,5 @@ const port = process.env.PORT || 3000;
 const server = http.createServer(app);
 server.listen(port, () => {
     console.log('The Server is Running in port 3000 .... ');
+    //cron.run();
 });

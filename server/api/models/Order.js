@@ -10,7 +10,7 @@ const orderSchema = mongoose.Schema({
 
     orderDate: {type: Date, required: false},
 
-    deliveryDate: {type: Date, required: false},
+    deliveryDate: {type: Date, required: true},
 
     shippedDate: {type: Date, required: false},
 
