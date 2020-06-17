@@ -19,6 +19,7 @@ import { ViewOrdersComponent } from './components/buyer/view-orders/view-orders.
 import { ShippingAddressComponent } from './components/buyer/shipping-address/shipping-address.component';
 import { PaymentSettingsComponent } from './components/buyer/payment-settings/payment-settings.component';
 import { NotificationsComponent } from './components/buyer/notifications/notifications.component';
+import { AdminGuard } from '.././app/Guards/adminGuard'
 
 
 const routes: Routes = [
@@ -28,32 +29,36 @@ const routes: Routes = [
     {
       path: '',
        redirectTo:'product',
-      pathMatch:'full'
+      pathMatch:'full',
+      canActivate: [AdminGuard]
     },
     {
       path: 'product',
       component:ProductListComponent,
-   
+      canActivate: [AdminGuard]
     },
 
     {
       path: 'signup',
-      component: SignUpComponent
+      component: SignUpComponent,
+      canActivate: [AdminGuard]
     },
 
     {
       path : 'viewProduct',
-      component : ViewProductsComponent
-
+      component : ViewProductsComponent,
+      canActivate: [AdminGuard]
     },
 
     {
       path: 'admin',
-      component: AdminComponent
+      component: AdminComponent,
+    
     },
     {
       path: 'admin/view-pending-sellers',
-      component: ViewPendingSellersComponent
+      component: ViewPendingSellersComponent,
+      
     },
 
     {
@@ -67,47 +72,58 @@ const routes: Routes = [
     },
     {
       path: 'seller',
-      component: SellerComponent
+      component: SellerComponent,
+      canActivate: [AdminGuard]
     },
     {
       path: 'seller/manage-products',
-      component: ManageProductsComponent
+      component: ManageProductsComponent,
+      canActivate: [AdminGuard]
     },
     {
       path: 'seller/manage-products/add-products',
-      component: AddProductComponent
+      component: AddProductComponent,
+      canActivate: [AdminGuard]
     },
     {
       path: 'seller/manage-products/edit-products',
-      component: EditProductComponent
+      component: EditProductComponent,
+      canActivate: [AdminGuard]
     },
     {
       path: 'seller/maintain-order',
-      component: MaintainOrdersComponent
+      component: MaintainOrdersComponent,
+      canActivate: [AdminGuard]
     },
     {
       path: 'buyer',
-      component: BuyerComponent
+      component: BuyerComponent,
+      canActivate: [AdminGuard]
     },
     {
       path: 'buyer/view-cart',
-      component: ViewCartComponent
+      component: ViewCartComponent,
+      canActivate: [AdminGuard]
     },
     {
       path: 'buyer/view-orders',
-      component: ViewOrdersComponent
+      component: ViewOrdersComponent,
+      canActivate: [AdminGuard]
     },
     {
       path: 'buyer/shipping-address',
-      component: ShippingAddressComponent
+      component: ShippingAddressComponent,
+      canActivate: [AdminGuard]
     },
     {
       path: 'buyer/payment-settings',
-      component: PaymentSettingsComponent
+      component: PaymentSettingsComponent,
+      canActivate: [AdminGuard]
     },
     {
       path: 'buyer/notifications',
-      component: NotificationsComponent
+      component: NotificationsComponent,
+      canActivate: [AdminGuard]
     },
     
     
