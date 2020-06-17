@@ -42,13 +42,13 @@ const router = express.Router();
 
 const orderController = require('../controller/order_controller');
 
-router.get('/', orderController.list);
-router.post('/' , orderController.insert);
-router.get('/:orderid', orderController.findOrder);
-router.delete('/:orderid' , orderController.removeOrder);
+router.post('/:id', orderController.placeOrder);
+//router.post('/' , orderController.insert);
+//router.get('/:orderid', orderController.findOrder);
+//router.delete('/:orderid' , orderController.removeOrder);
 
 
-router.patch('/:orderid', orderController.patchById);
+//router.patch('/:orderid', orderController.patchById);
 
 
 
