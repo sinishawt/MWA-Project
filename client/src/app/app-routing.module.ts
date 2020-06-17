@@ -15,6 +15,10 @@ import { LoginComponent } from './components/login/login.component';
 import { ViewProductsComponent } from './components/view-products/view-products.component'
 import { EditProductComponent } from './components/seller/manage-products/edit-product/edit-product.component';
 import { MaintainOrdersComponent } from './components/seller/maintain-orders/maintain-orders.component';
+import { ViewOrdersComponent } from './components/buyer/view-orders/view-orders.component';
+import { ShippingAddressComponent } from './components/buyer/shipping-address/shipping-address.component';
+import { PaymentSettingsComponent } from './components/buyer/payment-settings/payment-settings.component';
+import { NotificationsComponent } from './components/buyer/notifications/notifications.component';
 
 
 const routes: Routes = [
@@ -88,6 +92,22 @@ const routes: Routes = [
     {
       path: 'buyer/view-cart',
       component: ViewCartComponent
+    },
+    {
+      path: 'buyer/view-orders',
+      component: ViewOrdersComponent
+    },
+    {
+      path: 'buyer/shipping-address',
+      component: ShippingAddressComponent
+    },
+    {
+      path: 'buyer/payment-settings',
+      component: PaymentSettingsComponent
+    },
+    {
+      path: 'buyer/notifications',
+      component: NotificationsComponent
     },
     
     

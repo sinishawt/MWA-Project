@@ -1,5 +1,12 @@
 const buyer = require('../models/Buyer');
 
+
+
+
+
+
+
+
 exports.insert = (req,res,next) =>{
     buyer.create(req.body)
     .then(result =>{

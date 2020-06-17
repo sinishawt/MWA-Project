@@ -45,20 +45,42 @@ const buyerSchema = mongoose.Schema({
         ref : 'Order',
         required : false
     }],
-    gainedPoints : [{
-        type : Schema.Types.ObjectId,
-        ref : 'GainPoints',
-        required : false
-    }],
+    // gainedPoints : [{
+    //     type : Schema.Types.ObjectId,
+    //     ref : 'GainPoints',
+    //     required : false
+    // }],
 
-    //gainedPoints :{type: Number, required: true},
+    gainedPoints :{type: Number, required: true},
 
 
     billings : [{
         type : Schema.Types.ObjectId,
         ref : 'Billing',
         required : false
-    }]
+    }],
+
+    billingAddress: {
+        zipCode: {type: Number, required: true},
+        street: { type: String, required : true},
+        city: { type: String, required : true},
+        state: { type: String, required : true},
+        phoneNo: { type: Number, required : true},
+        country: { type: String, required : true},
+        buyerId: {type: mongoose.Schema.Types.ObjectId, ref: 'Buyer', required: false},
+        status: {type: String}
+    },
+    shippingAddress: {
+        zipCode: {type: Number, required: true},
+        street: { type: String, required : true},
+        city: { type: String, required : true},
+        state: { type: String, required : true},
+        phoneNo: { type: Number, required : true},
+        country: { type: String, required : true},
+        buyerId: {type: mongoose.Schema.Types.ObjectId, ref: 'Buyer', required: false},
+        status: {type: String}
+    }
+
 });
 
 buyerSchema.methods.addToCart = async function(productId) {
