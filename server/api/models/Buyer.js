@@ -53,15 +53,11 @@ const buyerSchema = mongoose.Schema({
 
     //gainedPoints :{type: Number, required: true},
 
-
-    billings : [{
-        type : Schema.Types.ObjectId,
-        ref : 'Billing',
-        required : false
-    }],
-
-    billingAddress: {
-
+    billingInfo: {
+        nameOnCard: {type: String, required: false},
+        cardNumber: {type: Number, required: false},
+        cvv: {type: Number, required: false},
+        expiryDate: {type: String, required: false},
         zipCode: {type: Number, required: false},
         street: { type: String, required : false},
         city: { type: String, required : false},
