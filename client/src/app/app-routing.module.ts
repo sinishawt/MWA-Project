@@ -20,6 +20,7 @@ import { ShippingAddressComponent } from './components/buyer/shipping-address/sh
 import { PaymentSettingsComponent } from './components/buyer/payment-settings/payment-settings.component';
 import { NotificationsComponent } from './components/buyer/notifications/notifications.component';
 import { AdminGuard } from '.././app/Guards/adminGuard'
+import { CategorizedProductComponent } from '../app/components/categorized-product/categorized-product.component'
 
 
 const routes: Routes = [
@@ -47,6 +48,11 @@ const routes: Routes = [
     {
       path : 'viewProduct',
       component : ViewProductsComponent,
+      canActivate: [AdminGuard]
+    },
+    {
+      path : 'categorizedView',
+      component : CategorizedProductComponent,
       canActivate: [AdminGuard]
     },
 

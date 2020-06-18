@@ -36,6 +36,7 @@ import { ViewOrdersComponent } from './components/buyer/view-orders/view-orders.
 import { ShippingAddressComponent } from './components/buyer/shipping-address/shipping-address.component';
 import { PaymentSettingsComponent } from './components/buyer/payment-settings/payment-settings.component';
 import { NotificationsComponent } from './components/buyer/notifications/notifications.component';
+import { CategorizedProductComponent } from './components/categorized-product/categorized-product.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { NotificationsComponent } from './components/buyer/notifications/notific
     ShippingAddressComponent,
     PaymentSettingsComponent,
     NotificationsComponent,
-    EditOrderComponent
+    EditOrderComponent,
+    CategorizedProductComponent
   ],
   imports: [
     BrowserModule,
