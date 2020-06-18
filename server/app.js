@@ -30,14 +30,15 @@ const authMiddleware = require('./api/middleware/authJwt');
 const signupRoutes = require('./api/routes/signUp');
 const buyer = require('./api/models/Buyer');
 
-app.use((req, res, next) => {
-    buyer.findById('5ee920a906927d6f944a25ee')
-        .then(userInDB => {
-            req.buyer = userInDB;
-            next();
-        })
-        .catch(err => console.log(err));
-});
+// app.use((req, res, next) => {
+//     console.log("memar : ", req.user._id);
+//     buyer.findById('5ee920a906927d6f944a25ee')
+//         .then(userInDB => {
+//             req.buyer = userInDB;
+//             next();
+//         })
+//         .catch(err => console.log(err));
+// });
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -82,7 +83,6 @@ app.use('/signup', signupRoutes);
 
 //authorization Middleware verification 
 app.use('/products', authMiddleware.verifyToken, productRoutes);
-app.use('/buyer', authMiddleware.verifyToken, buyerRoutes);
 app.use('/buyer', authMiddleware.verifyToken, buyerRoutes);
 app.use('/seller', authMiddleware.verifyToken, sellerRoutes);
 app.use('/admin', authMiddleware.verifyToken, adminRoutes);
