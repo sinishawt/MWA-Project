@@ -13,23 +13,22 @@ import { Product } from 'src/app/common/product';
 export class ViewCartComponent implements OnInit {
 
   items: Cart[];
+  totalPrice: Number;
   constructor(private router: Router, private buyerService: buyerService) { }
 
   ngOnInit(): void {
-    this.buyerService.getShoppingCart('5ee9201706927d6f944a25ec')
+    this.buyerService.getShoppingCart('5eea94955e87931254eaaa90')
     .subscribe(data => {
-       console.log('in view caret compnent data' + data);
       this.items = data.items;
-      console.log('Cart Items' + this.items);
+      this.totalPrice = data.totalPrice;
     });
   }
 
 
   deleteFromCart(item: Product)  {
-    this.buyerService.deleteItem(item._id).subscribe(res => res);
+    this.buyerService.deleteItem(item.productId).subscribe(res => res);
     console.log(item._id);
 }
-
 
   order(){
 
