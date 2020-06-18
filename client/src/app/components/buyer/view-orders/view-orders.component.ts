@@ -16,8 +16,9 @@ export class ViewOrdersComponent implements OnInit {
   ngOnInit(): void {
     let user = localStorage.getItem('userId');
     //let buyerId = user;
-    console.log(user + '/////////////////////')
+    //console.log(user + '/////////////////////')
     let buyerId = user; ///////////////////NEEDS To bE changed static from login
+    //console.log(buyerId);
     this.buyerService.getOrdersByBuyerId(buyerId)
     .subscribe(data => {
       this.orders = data;

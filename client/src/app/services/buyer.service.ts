@@ -30,7 +30,9 @@ export class buyerService {
     return this.httpClient.get(this.cartUrl + 'getCart/' + id);
   }
 
-
+  getNotifications(): Observable<any> {
+    return this.httpClient.get(this.baseUrl + "notification");
+  }
 
 
   addToShoppingCart(id : string): Observable<any> {

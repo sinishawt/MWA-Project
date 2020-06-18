@@ -17,11 +17,11 @@ exports.insert = (req, res, next) => {
 
     User.create(req.body)
     .then(result => {
-        if(result.role === "Buyer"){
+        if(result.role === "buyer"){
             Buyer.create({_id: result._id}).catch(err => {
                 res.status(500).send({errMsg: err});
             });
-        }else if(result.role === "Seller"){
+        }else if(result.role === "seller"){
             Seller.create({_id: result._id}).catch(err => {
                 res.status(500).send({errMsg: err});
             });
@@ -47,7 +47,7 @@ exports.list = (req, res, next) => {
 };
 
 exports.getById = (req, res, next) => {
-    User.findById(req.params.userId)
+    User.findById(req.params.sellerId)
     .then(result => {
         res.status(200).send(result);
     })
@@ -76,5 +76,15 @@ exports.removeById = (req, res, next) => {
     })
     .catch(err => {
         res.status(500).send({ errMsg: err });
+    });
+};
+
+exports.getstatusById = (req, res, next) => {
+    Seller.findById(req.params.userId)
+    .then(result => {
+        res.status(200).send(result);
+    })
+    .catch(err => {
+        res.status(500).send({errMsg: err});
     });
 };

@@ -11,10 +11,14 @@ import { Component, OnInit } from '@angular/core';
                     <a href="buyer/view-orders" class="list-group-item">My Orders</a>
                     <a href="buyer/shipping-address" class="list-group-item">Shipping Address </a>
                     <a href="buyer/payment-settings" class="list-group-item"> Payment Settings</a>
-                    <a href="buyer/notifications" class="list-group-item"> Notifications</a>       
+                    <a href="/buyer/notifications" class="notification"><span>Notifications </span><span class="badge">3</span> </a>      
+                </div>
+                <div style="background-color: lightgrey; width: 200px; border: 6px solid #111109; padding: 20px; margin: 20px; text-align: center; ">
+                    <p style = "text-size: 16px;"> Points </p>
+                    <p style = "text-size: 50px;"> 0 <p>
                 </div>
   `,
-  styleUrls: []
+  styleUrls: ['sidebar.buyer.css']
 })
 export class BuyerSideBarComponent implements OnInit {
 

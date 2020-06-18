@@ -16,7 +16,7 @@
                 <thead>
                     <tr>
                         <th>Seller id</th>
-                        <th>Name</th>
+                        <th>status</th>
                         <th>Email Id</th>
                         <th></th>
                         <th></th>
@@ -25,7 +25,7 @@
                 <tbody>
                     <tr *ngFor="let seller of sellers">
                         <td>{{seller._id}}</td>
-                        <td>{{seller.name}}</td>
+                        <td>{{seller.status}}</td>
                         <td>{{seller.email}}</td>
                         <td><button class="btn btn-success" (click)="approveSeller(seller)"> Approve</button></td>
                         <td>

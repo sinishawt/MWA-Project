@@ -13,7 +13,7 @@
                 <thead>
                     <tr>
                         <th>Comment</th>
-                        <th>Buyer Id</th>
+                        <th>Product Id</th>
                         <th>Star</th>
                         <th>Date</th>
                         <th></th>
@@ -23,7 +23,7 @@
                 <tbody>
                     <tr *ngFor="let review of reviews">
                         <td>{{review.comment}}</td>
-                        <td>{{review.buyerId}}</td>
+                        <td>{{review.orderProductId}}</td>
                         <td>{{review.stars}}</td>
                         <td>{{review.createdDate | date: 'MM/dd/yyyy'}}</td>
                         <td><button class="btn btn-success" (click)="approveComment(review)"> Approve</button> </td>
