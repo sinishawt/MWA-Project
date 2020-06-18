@@ -31,7 +31,7 @@ export class buyerService {
   }
 
   getNotifications(): Observable<any> {
-    return this.httpClient.get(this.baseUrl + "notification");
+    return this.httpClient.post(this.baseUrl + "notification", '');
   }
 
 
@@ -73,6 +73,10 @@ export class buyerService {
 
   getOrdersByBuyerId(id : String) : Observable<any> {
     return this.httpClient.get<any>(this.baseUrl + 'orders/' + id);
+  }
+
+  getBuyerById(id: String): Observable<any> {
+    return this.httpClient.get<any>(this.baseUrl + id);  //////used Static value REPLACED 
   }
 
 }

@@ -18,7 +18,7 @@ export class NotificationsComponent implements OnInit {
     this.buyerService.getNotifications()
     .subscribe(data => {
       this.notifications = data;
-      //console.log(data.result);
+      console.log(this.notifications);
     });
   }
 
