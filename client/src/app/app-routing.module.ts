@@ -21,6 +21,8 @@ import { PaymentSettingsComponent } from './components/buyer/payment-settings/pa
 import { NotificationsComponent } from './components/buyer/notifications/notifications.component';
 import { AdminGuard } from '.././app/Guards/adminGuard'
 import { CategorizedProductComponent } from '../app/components/categorized-product/categorized-product.component'
+import { EditOrderComponent } from './components/seller/maintain-orders/edit-order/edit-order.component';
+import { CheckoutComponent } from './components/buyer/checkout/checkout.component';
 
 
 const routes: Routes = [
@@ -102,6 +104,11 @@ const routes: Routes = [
       canActivate: [AdminGuard]
     },
     {
+      path: 'seller/maintain-order/update-status',
+      component: EditOrderComponent,
+      canActivate: [AdminGuard]
+    },
+    {
       path: 'buyer',
       component: BuyerComponent,
       canActivate: [AdminGuard]
@@ -131,6 +138,11 @@ const routes: Routes = [
       component: NotificationsComponent,
       canActivate: [AdminGuard]
     },
+    {
+      path: 'buyer/checkout',
+      component: CheckoutComponent,
+      canActivate: [AdminGuard]
+    }
     
     
   ]
