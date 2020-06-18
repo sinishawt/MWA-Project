@@ -40,5 +40,23 @@ export class SellerService {
      return this.http.get(this.baseUrl + 'orders/' + '5ee6d9e5f7d3a669f801f03c');
    }
 
+   getOrderStatusByOrderId(id: string): Observable<any>{
+      return this.http.get(this.baseUrl + 'orders/' + 'edit/' + id); 
+   }
+
+   changeOrderStatustoShipped(id: string): Observable<any>{
+    return this.http.patch(this.baseUrl + 'orders/' + 'edit/' + id, id); 
+ }
+ changeOrderStatustoDelivered(id: string): Observable<any>{
+  return this.http.post(this.baseUrl + 'orders/' + 'edit/' + id, id); 
+}
+changeOrderStatustoOnTheWay(id: string): Observable<any>{
+  return this.http.put(this.baseUrl + 'orders/' + 'edit/' + id, id); 
+}
+
+cancelOrder(id: string): Observable<any>{
+  return this.http.delete(this.baseUrl + 'orders/' + 'edit/' + id); 
+}
+
 
 }

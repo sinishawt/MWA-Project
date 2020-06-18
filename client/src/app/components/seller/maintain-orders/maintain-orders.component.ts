@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Order } from '../../../common/order';
 import { Router } from "@angular/router";
 import { SellerService } from '../../../services/seller.service';
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { first } from "rxjs/operators";
 
 @Component({
   selector: 'app-maintain-orders',
@@ -11,23 +13,44 @@ import { SellerService } from '../../../services/seller.service';
 export class MaintainOrdersComponent implements OnInit {
 
   orders: Order[];
+  
 
   constructor(private router: Router, private sellerService: SellerService) { }
 
   ngOnInit(): void {
-    this.sellerService.getOrders('test')
+    let sellerId = localStorage.getItem('userInfo');
+    this.sellerService.getOrders('')  ///////static value added on service
     .subscribe(data => {
       this.orders = data;
       //console.log(data.result);
     });
   }
 
-  cancelOrder(order: Order): void {
+  onSubmit() {
 
   }
 
-  changeOrderStatus(order: Order): void {
+  // cancelOrder(id: string) {
+  //   this.sellerService.cancelOrder(id)
+  //   .pipe(first())
+  //   .subscribe(
+  //     data => {
+        
+  //       this.router.navigate(['seller/maintain-order']);
+        
+  //     },
+  //     error => {
+  //       alert(error);
+  //     });
+  // }
 
+  changeOrderStatus(order: Order): void {
+   // console.log(' Order id is ' + order._id);
+    window.localStorage.removeItem('editOrderStatusId');
+    window.localStorage.removeItem('editOrderStatusStatus');
+    window.localStorage.setItem('editOrderStatusId', order._id.toString());
+    window.localStorage.setItem('editOrderStatusStatus', order.status.toString());
+    this.router.navigate(['seller/maintain-order/update-status']);
   }
 
 }

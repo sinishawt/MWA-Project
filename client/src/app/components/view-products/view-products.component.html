@@ -18,7 +18,7 @@
       <div class="row">
           <div class="col-lg-0 col-md-0" >
             <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+              <a href="#"><img class="card-img-top" src={{image}} alt=""></a>
               <div class="card-body">
                   <h4 class="card-title">
                       <a href="#">{{title}}</a>
@@ -30,6 +30,7 @@
               <!-- <div *ngIf="reviews"> -->
               <div class="card-body">
                 <tr *ngFor="let review of reviews">
+                  
                   <div class="card-body">Comment :
                        <td >{{review.comment}}</td>
                   </div> 

@@ -1,4 +1,5 @@
-<p>payment-settings works!</p>
+<p>checkout works!</p>
+
 
 <app-nav></app-nav>
 
@@ -11,13 +12,15 @@
             <app-side-buyer></app-side-buyer>
         </div>
     <div class="col-lg-9"><br><br>
-        <h2>Payment Setting</h2>
+        <h2>Checkout</h2>
 
         
         
-            <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
+            <form [formGroup]="shippingForm" (ngSubmit)="enterShippingAddress()">
+                <h2>Shipping Address</h2>
                 <div class="row">
                 <div class="col-sm-6">
+                    
                     <!-- <div class="hidden">
                         <input type="hidden" formControlName="_id" placeholder="id" name="_id" class="form-control" id="id">
                     </div> -->
@@ -40,6 +43,10 @@
                         <input formControlName="city" placeholder="City" name="city" class="form-control" id="city">
                     </div>
             
+                    
+                </div>
+    
+                <div class="col-sm-6">
                     <div class="form-group">
                         <label for="state">State:</label>
                         <input type="text" formControlName="state" placeholder="State" name="state" class="form-control" id="state">
@@ -54,9 +61,19 @@
                         <label for="phone">Phone No:</label>
                         <input formControlName="phoneNo" placeholder="phone No." name="phoneNo" class="form-control" id="phoneNo">
                     </div>
+            
+                    <button class="btn btn-success btn-lg btn-block">Enter Shipping Address</button>
                 </div>
-    
+
+            </div>
+            </form>
+
+            <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+                <h2>Payment Info</h2>
+                <div class="row">
+                    
                 <div class="col-sm-6">
+                    
                     <div class="form-group">
                         <label for="name">Name On Card:</label>
                         <input formControlName="nameOnCard" placeholder="Name on Card" name="nameOnCard" class="form-control" id="nameOnCard">
@@ -66,6 +83,10 @@
                         <label for="cardNumber">Card Number:</label>
                         <input type="text" formControlName="cardNumber" placeholder="XXXXXXXXXX" name="cardNumber" class="form-control" id="cardNumber">
                     </div>
+                    
+                </div>
+    
+                <div class="col-sm-6">
         
                     <div class="form-group">
                         <label for="cvv">CVV:</label>
@@ -77,7 +98,7 @@
                         <input formControlName="expiryDate" placeholder="06/20" name="expiryDate" class="form-control" id="expiryDate">
                     </div>
             
-                    <button class="btn btn-success">Enter Payment Setting</button>
+                    <button class="btn btn-danger btn-lg btn-block">Checkout</button>
                 </div>
 
             </div>

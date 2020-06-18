@@ -21,19 +21,17 @@
                     <th>Status</th>
                     <th>Shipping Address</th>
                     <th></th>
-                    <th></th>
+                    
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let order of orders">
                     <td>{{order._id}}</td>
                     <td>{{order.orderDate}}</td>
-                    <td>{{order.status}}</td>
-                    <td>{{order.shippingAddressId}}</td>
+                    <td> {{order.status}}</td>
+                    <td>{{order.shippingAddress.street}}, {{order.shippingAddress.city}}, {{order.shippingAddress.zipCode}}, {{order.shippingAddress.state}}, {{order.shippingAddress.country}}</td>
                     <td><button class="btn btn-success" (click)="changeOrderStatus(order)">Change Status </button> </td>
-                    <td>
-                        <button class="btn btn-warning" (click)="cancelOrder(order)" style="margin-left: 20px;">Cancel </button>
-                    </td>
+                    
                 </tr>
             </tbody>
         </table>
