@@ -26,9 +26,9 @@ export class CheckoutComponent implements OnInit {
       return;
     }
     this.checkoutForm = this.formBuilder.group({
-      
+
       //status: [''],
-     
+
       nameOnCard: [''],
       cardNumber: [''],
       cvv: [''],
@@ -64,7 +64,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   enterShippingAddress(){
-    
+
       //console.log(this.checkoutForm.value);
     this.buyerService.enterShippingAddress(this.shippingForm.value)
     .pipe(first())
@@ -72,7 +72,7 @@ export class CheckoutComponent implements OnInit {
       data => {
         console.log('separe button');
           //this.router.navigate(['buyer/']);
-        
+
       },
       error => {
         alert(error);
@@ -85,15 +85,15 @@ export class CheckoutComponent implements OnInit {
   //   .pipe(first())
   //   .subscribe(
   //     data => {
-        
+
   //         this.router.navigate(['buyer/']);
-        
+
   //     },
   //     error => {
   //       alert(error);
   //     });
    }
 
-   
+
 
 }
