@@ -41,7 +41,7 @@ const routes: Routes = [
     {
       path: 'signup',
       component: SignUpComponent,
-      canActivate: [AdminGuard]
+      //canActivate: [AdminGuard]
     },
 
     {
