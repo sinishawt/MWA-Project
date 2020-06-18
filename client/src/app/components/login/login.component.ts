@@ -27,15 +27,23 @@ export class LoginComponent implements OnInit {
       .subscribe(data => {
         //console.log(data.token);
        // alert(data.token);
-        localStorage.setItem('token', data.token);
-        localStorage.setItem('userInfo' , data.user);
+        window.localStorage.setItem('token' , data.token);
+        window.localStorage.setItem('userId' , data.user._id);
+        window.localStorage.setItem('userName' , data.user.name);
         
-        if(data.user.role == "buyer","BUYER","Buyer"){
+        
+        let role = data.user.role;
+      
+        if(role === "Buyer" || role === "buyer"){
             this.router.navigate(['product']);
         }
-        else if(data.user.role == "seller","SELLER","Seller")
+        else if(role=== "Seller" || role === "buyer"){
             this.router.navigate(['seller']);
+        }
+        else {
+          alert('Unkown Role');
+        }
       });
-  }
-
+  
+}
 }
