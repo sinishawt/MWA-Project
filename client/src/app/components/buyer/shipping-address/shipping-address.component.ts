@@ -17,7 +17,9 @@ export class ShippingAddressComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private router: Router, private buyerService: buyerService) { }
 
   ngOnInit(): void {
-   let buyerId = '5ee920a906927d6f944a25ee';  ////////STATIC VALUE NEED TO COME FROM LOGIN
+    let user = localStorage.getItem('userId');
+    let buyerId = user;
+   //let buyerId = '5ee920a906927d6f944a25ee';  ////////STATIC VALUE NEED TO COME FROM LOGIN
 
    if (!buyerId) {
     alert("Invalid action.")
