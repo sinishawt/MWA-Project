@@ -25,6 +25,7 @@ import { EditOrderComponent } from './components/seller/maintain-orders/edit-ord
 import { CheckoutComponent } from './components/buyer/checkout/checkout.component';
 
 
+
 const routes: Routes = [
   {path:'',
   component: AppComponent ,

@@ -38,6 +38,7 @@ import { PaymentSettingsComponent } from './components/buyer/payment-settings/pa
 import { NotificationsComponent } from './components/buyer/notifications/notifications.component';
 import { CategorizedProductComponent } from './components/categorized-product/categorized-product.component';
 import { CheckoutComponent } from './components/buyer/checkout/checkout.component';
+import { CarouseNewComponent } from './common/carouse-new.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import { CheckoutComponent } from './components/buyer/checkout/checkout.componen
     NotificationsComponent,
     EditOrderComponent,
     CategorizedProductComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    CarouseNewComponent
   ],
   imports: [
     BrowserModule,
