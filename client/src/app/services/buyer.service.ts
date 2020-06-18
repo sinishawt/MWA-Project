@@ -55,7 +55,7 @@ export class buyerService {
     return this.httpClient.get<any>(this.baseUrl + 'billinginfo/' + id);
   }
 
-  enterPaymentInfo(payment: Payment): Observable<ApiResponse> {
+  enterPaymentInfo(payment: Payment): Observable<any> {
     console.log('*////////' + payment.buyerId);
     return this.httpClient.post<any>(this.baseUrl + 'billinginfo/' + payment.buyerId, payment);
   }

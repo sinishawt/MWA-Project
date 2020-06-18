@@ -20,8 +20,10 @@ import { ShippingAddressComponent } from './components/buyer/shipping-address/sh
 import { PaymentSettingsComponent } from './components/buyer/payment-settings/payment-settings.component';
 import { NotificationsComponent } from './components/buyer/notifications/notifications.component';
 import { AdminGuard } from '.././app/Guards/adminGuard'
+import { CategorizedProductComponent } from '../app/components/categorized-product/categorized-product.component'
 import { EditOrderComponent } from './components/seller/maintain-orders/edit-order/edit-order.component';
 import { CheckoutComponent } from './components/buyer/checkout/checkout.component';
+
 
 
 const routes: Routes = [
@@ -42,13 +44,20 @@ const routes: Routes = [
 
     {
       path: 'signup',
-      component: SignUpComponent
+      component: SignUpComponent,
+      //canActivate: [AdminGuard]
+      //component: SignUpComponent
       
     },
 
     {
       path : 'viewProduct',
       component : ViewProductsComponent,
+      canActivate: [AdminGuard]
+    },
+    {
+      path : 'categorizedView',
+      component : CategorizedProductComponent,
       canActivate: [AdminGuard]
     },
 

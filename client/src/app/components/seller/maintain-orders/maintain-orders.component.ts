@@ -18,8 +18,9 @@ export class MaintainOrdersComponent implements OnInit {
   constructor(private router: Router, private sellerService: SellerService) { }
 
   ngOnInit(): void {
-    let sellerId = localStorage.getItem('userInfo');
-    this.sellerService.getOrders('')  ///////static value added on service
+    let user = localStorage.getItem('userId');
+    //let sellerId = localStorage.getItem('userInfo');
+    this.sellerService.getOrders(user)  ///////static value added on service
     .subscribe(data => {
       this.orders = data;
       //console.log(data.result);

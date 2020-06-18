@@ -17,7 +17,9 @@ export class ViewCartComponent implements OnInit {
   constructor(private router: Router, private buyerService: buyerService) { }
 
   ngOnInit(): void {
-    this.buyerService.getShoppingCart('5eea94955e87931254eaaa90')
+    let user = localStorage.getItem('userId');
+    let buyerId = user;
+    this.buyerService.getShoppingCart(buyerId)
     .subscribe(data => {
       this.items = data.items;
       this.totalPrice = data.totalPrice;

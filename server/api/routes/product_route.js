@@ -9,6 +9,7 @@ router.post('/', productController.insertProduct);
 router.get('/:productId', productController.findProduct);
 router.patch('/:productId', productController.updateProduct);
 router.delete('/:productId', productController.deleteProduct);
+router.get('/category/:categoryName', productController.getCategorizedList);
 
 
 module.exports = router;

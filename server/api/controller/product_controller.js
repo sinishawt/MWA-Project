@@ -1,5 +1,6 @@
 const product = require('../models/Product');
 const mongoose = require('mongoose');
+const Product = require('../models/Product');
 
 
 
@@ -110,6 +111,24 @@ exports.deleteProduct = (req, res, next)=>{
             })
             .catch(err => {
                 console.log(err);
+                res.status(500).json({
+                    error: err
+                });
+            });
+}
+
+exports.getCategorizedList = (req,res, next) => {
+    const choice = req.params.categoryName;
+    
+    product.find({ "catagoryId" :  {"$regex" : choice , "$options" : "i"} } )
+            .select('title price _id status imageName descreption')
+            .exec()
+            .then(docs => {
+                res.status(200).send(docs);
+                console.log('hi')
+            })
+            .catch(err => {
+                console.log();
                 res.status(500).json({
                     error: err
                 });
