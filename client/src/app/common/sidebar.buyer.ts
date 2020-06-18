@@ -14,7 +14,7 @@ import { Component, OnInit } from '@angular/core';
                     <a href="buyer/notifications" class="list-group-item"> Notifications</a>       
                 </div>
   `,
-  styles: []
+  styleUrls: []
 })
 export class BuyerSideBarComponent implements OnInit {
 
