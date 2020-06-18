@@ -9,7 +9,7 @@ const productSchema = mongoose.Schema({
     imageName: { type: String, required: true },
     descreption: { type: String, required: true },
     sellerId: { type: mongoose.Schema.Types.ObjectId, required: true },
-    creaateDate: { type: Date, default: dateNow, required: false },
+    createDate: { type: Date, default: dateNow, required: false },
 });
 
 module.exports = mongoose.model('product', productSchema);
