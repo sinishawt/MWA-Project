@@ -54,7 +54,7 @@ exports.removeById = (req, res, next) => {
 };
 
 exports.findReviewByProductId = (req, res, next) => {
-    Review.find({orderProductId: req.params.productId})  //add status posted to prevent unpost reetrival
+    Review.find({orderProductId: req.params.productId, status: 'Posted'})  //add status posted to prevent unpost reetrival
     .then(result => {   
         res.status(200).send(result);
     })

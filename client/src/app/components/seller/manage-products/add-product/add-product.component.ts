@@ -16,13 +16,15 @@ export class AddProductComponent implements OnInit {
   addForm: FormGroup;
 
   ngOnInit(): void {
+    let user = localStorage.getItem('userId');
+    let sellerId = user;
     this.addForm = this.formBuilder.group({
       title: ['', Validators.required],
       catagory: ['', Validators.required],
       price: ['', Validators.required],
       imageName: ['', Validators.required],
       description: ['', Validators.required],
-      sellerId: '5ee773e74f720d6af4eed445'   ///////static for now need to get from login
+      sellerId: sellerId   ///////static for now need to get from login
     });
   }
 

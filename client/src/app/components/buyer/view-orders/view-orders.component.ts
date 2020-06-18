@@ -14,7 +14,10 @@ export class ViewOrdersComponent implements OnInit {
   constructor(private router: Router, private buyerService: buyerService) { }
 
   ngOnInit(): void {
-    let buyerId = '5ee920a906927d6f944a25ee'; ///////////////////NEEDS To bE changed static from login
+    let user = localStorage.getItem('userId');
+    //let buyerId = user;
+    console.log(user + '/////////////////////')
+    let buyerId = user; ///////////////////NEEDS To bE changed static from login
     this.buyerService.getOrdersByBuyerId(buyerId)
     .subscribe(data => {
       this.orders = data;
