@@ -8,7 +8,7 @@ import  { buyerService} from '../services/buyer.service';
   template: `
   <h3 class="my-4">Welcome Buyer</h3>
                 <div class="list-group">
-                    <a href="buyer/" class="list-group-item">Home</a>
+                    <a href="/" class="list-group-item">Home</a>
                     <a href="buyer/view-cart" class="list-group-item">View Cart</a>
                     <a href="buyer/view-orders" class="list-group-item">My Orders</a>
                     <a href="buyer/shipping-address" class="list-group-item">Shipping Address </a>
