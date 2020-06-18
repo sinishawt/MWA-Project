@@ -91,6 +91,7 @@ app.use('/review', authMiddleware.verifyToken, reviewRoutes);
 app.use('/cart', authMiddleware.verifyToken, shoppingCartRoutes);
 app.use('/shopingCart', authMiddleware.verifyToken, shoppingCartRoutes);
 app.use('/address', authMiddleware.verifyToken, addressRoutes);
+app.use('/notify', shoppingCartRoutes);
 
 app.use((req, res, next) => {
     const error = new Error('Not Found');
