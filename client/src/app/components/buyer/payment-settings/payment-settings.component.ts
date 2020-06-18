@@ -52,7 +52,7 @@ export class PaymentSettingsComponent implements OnInit {
 
   onSubmit() {
     console.log(this.paymentForm.value);
-    this.buyerService.enterProductInfo(this.paymentForm.value)
+    this.buyerService.enterPaymentInfo(this.paymentForm.value)
     .pipe(first())
     .subscribe(
       data => {

@@ -55,9 +55,9 @@ exports.enterShippingAddress = (req, res, next) => {
             city: req.body.city, 
             state: req.body.state, 
             phoneNo: req.body.phoneNo, 
-            country: req.body.country, 
-            buyerId: req.params.buyerId,
-            status: req.body.status, 
+            country: req.body.country
+            // buyerId: req.params.buyerId,
+            // status: req.body.status, 
         }
     })
     .then(result => {
