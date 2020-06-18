@@ -13,6 +13,8 @@ const Order = require('../models/Order');
 //     });
 // };
 
+const dateNow = new Date();
+
 exports.insert = (req, res, next) => {
     Seller.create(req.body)
     .then(result => {
@@ -198,7 +200,27 @@ exports.addProductsBySellerId = (req, res, next) => {
 };
 
 exports.changeOrderStatusShipped = (req, res, next) => {
-    Order.findByIdAndUpdate(req.params.orderId, {status: "Shipped"})
+    Order.findByIdAndUpdate(req.params.orderId, {status: "Shipped", shippedDate: dateNow})
+    .then(result => {
+        res.status(200).send(result);
+    })
+    .catch(err => {
+        res.status(500).send({ errMsg: err });
+    });
+};
+
+exports.changeOrderStatusDelivered = (req, res, next) => {
+    Order.findByIdAndUpdate(req.params.orderId, {status: "Delivered", deliveredDate: dateNow})
+    .then(result => {
+        res.status(200).send(result);
+    })
+    .catch(err => {
+        res.status(500).send({ errMsg: err });
+    });
+};
+
+exports.changeOrderStatusOnTheWay = (req, res, next) => {
+    Order.findByIdAndUpdate(req.params.orderId, {status: "On The Way"})
     .then(result => {
         res.status(200).send(result);
     })

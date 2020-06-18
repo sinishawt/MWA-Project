@@ -21,7 +21,7 @@
                     <th>Status</th>
                     <th>Shipping Address</th>
                     <th></th>
-                    <th></th>
+                    
                 </tr>
             </thead>
             <tbody>
@@ -31,9 +31,7 @@
                     <td> {{order.status}}</td>
                     <td>{{order.shippingAddress.street}}, {{order.shippingAddress.city}}, {{order.shippingAddress.zipCode}}, {{order.shippingAddress.state}}, {{order.shippingAddress.country}}</td>
                     <td><button class="btn btn-success" (click)="changeOrderStatus(order)">Change Status </button> </td>
-                    <td>
-                        <button class="btn btn-warning" (click)="cancelOrder(order)" style="margin-left: 20px;">Cancel </button>
-                    </td>
+                    
                 </tr>
             </tbody>
         </table>

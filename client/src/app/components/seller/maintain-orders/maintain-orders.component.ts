@@ -30,9 +30,19 @@ export class MaintainOrdersComponent implements OnInit {
 
   }
 
-  cancelOrder(order: Order): void {
-
-  }
+  // cancelOrder(id: string) {
+  //   this.sellerService.cancelOrder(id)
+  //   .pipe(first())
+  //   .subscribe(
+  //     data => {
+        
+  //       this.router.navigate(['seller/maintain-order']);
+        
+  //     },
+  //     error => {
+  //       alert(error);
+  //     });
+  // }
 
   changeOrderStatus(order: Order): void {
    // console.log(' Order id is ' + order._id);

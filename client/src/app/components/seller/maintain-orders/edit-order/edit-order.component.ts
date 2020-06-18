@@ -59,12 +59,32 @@ export class EditOrderComponent implements OnInit {
 
     }else if (statusidentifier === 'On The Way') {
 
-      this.router.navigate(['seller/maintain-order']);
+      this.sellerService.changeOrderStatustoOnTheWay(this.orderId)
+      .pipe(first())
+      .subscribe(
+        data => {
+          
+          this.router.navigate(['seller/maintain-order']);
+          
+        },
+        error => {
+          alert(error);
+        });
         
     }
     else if (statusidentifier === 'Delivered') {
 
-      this.router.navigate(['seller/maintain-order']);
+      this.sellerService.changeOrderStatustoDelivered(this.orderId)
+      .pipe(first())
+      .subscribe(
+        data => {
+          
+          this.router.navigate(['seller/maintain-order']);
+          
+        },
+        error => {
+          alert(error);
+        });
 
     }else {
 
@@ -84,8 +104,18 @@ export class EditOrderComponent implements OnInit {
 
   }
 
-  cancelOrder(order) {
-
+  cancelOrder() {
+    this.sellerService.cancelOrder(this.orderId)
+    .pipe(first())
+    .subscribe(
+      data => {
+        
+        this.router.navigate(['seller/maintain-order']);
+        
+      },
+      error => {
+        alert(error);
+      });
   }
 
 }
