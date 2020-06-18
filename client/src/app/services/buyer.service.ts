@@ -30,7 +30,9 @@ export class buyerService {
     return this.httpClient.get(this.cartUrl + 'getCart/' + id);
   }
 
-
+  getNotifications(): Observable<any> {
+    return this.httpClient.post(this.baseUrl + "notification", '');
+  }
 
 
   addToShoppingCart(id : string): Observable<any> {
@@ -38,7 +40,6 @@ export class buyerService {
   }
 
   deleteItem(id : string): Observable<any> {
-    alert(id);
     return this.httpClient.delete<any>(this.cartUrl + 'deletCart/' + id);
   }
 
@@ -56,7 +57,7 @@ export class buyerService {
     return this.httpClient.get<any>(this.baseUrl + 'billinginfo/' + id);
   }
 
-  enterProductInfo(payment: Payment): Observable<ApiResponse> {
+  enterPaymentInfo(payment: Payment): Observable<any> {
     console.log('*////////' + payment.buyerId);
     return this.httpClient.post<any>(this.baseUrl + 'billinginfo/' + payment.buyerId, payment);
   }
@@ -72,6 +73,10 @@ export class buyerService {
 
   getOrdersByBuyerId(id : String) : Observable<any> {
     return this.httpClient.get<any>(this.baseUrl + 'orders/' + id);
+  }
+
+  getBuyerById(id: String): Observable<any> {
+    return this.httpClient.get<any>(this.baseUrl + id);  //////used Static value REPLACED 
   }
 
 }

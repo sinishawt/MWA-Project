@@ -1,6 +1,4 @@
 
-
-
 <app-nav></app-nav>
 
 <div>
@@ -12,7 +10,7 @@
             <app-side-buyer></app-side-buyer>
         </div>
     <div class="col-lg-9"><br><br>
-        <h2>Items in your Cart</h2>
+        <h2>Items in your Cart <i class="fas fa-cart-arrow-down"></i></h2>
 
         <table class="table table-striped">
             <thead>
@@ -32,9 +30,9 @@
                 </tr>
             </tbody>
         </table>
-        <p>Total Price</p>
+        <h3>Total Price: ${{totalPrice}}</h3>
 
-                <button class="btn btn-danger" style="width:300px" (click)="order()"> Checkout</button>
+                <button class="btn btn-danger"  (click)="order()"> Checkout</button>
 
     </div>
     </div>

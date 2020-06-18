@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Product = require('../models/Product');
+const { token } = require('morgan');
 
 var Schema = mongoose.Schema;
 
@@ -10,6 +11,7 @@ const buyerSchema = mongoose.Schema({
     // PWD : { type : String, required : true },
     // Role : { type : String , default: "Buyer", required : true },
     _id: {type: Schema.Types.ObjectId, required: true},
+    gainedPoints :{type: Number, required: false},
 
     follows : [{
         type : Schema.Types.ObjectId,
@@ -115,10 +117,11 @@ buyerSchema.methods.addToCart = async function(productId) {
 
 buyerSchema.methods.removeFromCart = function(productId) {
     const cart = this.cart;
-   
+  
     const isExisting = cart.items.findIndex(objInItems => new String(objInItems.productId).trim() === new String(productId).trim());
     if (isExisting >= 0) {
         cart.items.splice(isExisting, 1);
+       
         return this.save();
     }
 }

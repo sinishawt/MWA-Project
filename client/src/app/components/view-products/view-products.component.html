@@ -1,8 +1,36 @@
 
 <app-nav></app-nav>
 
-<div>
-  spacer
+<pre>
+
+</pre>
+<div id="demo" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ul class="carousel-indicators">
+    <li data-target="#demo" data-slide-to="0" class="active"></li>
+    <li data-target="#demo" data-slide-to="1"></li>
+    <li data-target="#demo" data-slide-to="2"></li>
+  </ul>
+  <!-- The slideshow -->
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="https://www.gaslamp.org/wp-content/uploads/2016/02/shop-header.jpg">
+    </div>
+    <div class="carousel-item">
+      <img src="https://lh3.googleusercontent.com/proxy/JunNDBMSdQAoEsFTWXSPDo_Zet0opH15fDHOjTdT72ovHzvKrd8uXAdUE7n12cwgscRpZwkw9_jaEbfBCQgIfU1Kw5AoSa5SRGXhcZ8r9lMnKnKw1nGkxh3gDdmhBIcaNBongsAkN4xbi1Qu" alt="Chicago">
+    </div>
+    <div class="carousel-item">
+      <img src="https://delarosa613.com/wp-content/uploads/2016/08/header-4-where-to-shop.jpg" alt="New York">
+    </div>
+  </div>
+
+  <!-- Left and right controls -->
+  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next" href="#demo" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
 </div>
 <div class="container">
 
@@ -13,31 +41,47 @@
 
   </div>
     <div class="col-lg-9">
-      <app-coursel></app-coursel>
-
+      
+      <pre>
+        
+      </pre>
       <div class="row">
           <div class="col-lg-0 col-md-0" >
             <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+              <a href="#"><img class="card-img-top" src={{image}} alt=""></a>
               <div class="card-body">
                   <h4 class="card-title">
-                      <a href="#">{{title}}</a>
+                      <h1><a href="#">{{title}}</a></h1>
                   </h4>
-                  <h5>{{price}}</h5>
-                  <p class="card-text">{{description}} </p>
+                  <h4>{{price}}</h4>
+                  <h3 class="card-text">{{description}} </h3>
     
               </div>
+              <hr>
               <!-- <div *ngIf="reviews"> -->
-              <div class="card-body">
+              <!-- <div class="card-body">
                 <tr *ngFor="let review of reviews">
-                  <div class="card-body">Comment :
-                       <td >{{review.comment}}</td>
+                  
+                  
+
+                  <div class="card-body">
+                     <td >Comment :   {{review.comment}}</td>
                   </div> 
-                  <div class="card-title">Number of Stars :
-                       <td >{{review.stars}}</td>
+                  <div class="card-body">
+                     <td >Number of Stars :  {{review.stars}}</td>
                   </div>
+              </div> -->
+              <div class="card bg-light mb-3" style="max-width: 50rem" *ngFor="let review of reviews">
+                <div class="card-header">Comment by {{commenter}} </div>
+                <div class="card-body">
+                  <div class="card-body"><p>{{review.comment}}</p></div>
+                </div>
+                <div class="card-header"><p>Number of Stars :  {{review.stars}}</p></div>
               </div>
             <!-- </div> -->
+            <hr>
+             <h2> You can comment on the prduct below :</h2>
+
             <div class="card-body">
          
               <form [formGroup]="addForm" (ngSubmit)="onSubmit()">

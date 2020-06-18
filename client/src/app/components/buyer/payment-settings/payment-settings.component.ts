@@ -17,16 +17,17 @@ export class PaymentSettingsComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private router: Router, private buyerService: buyerService) { }
 
   ngOnInit(): void {
-    let buyerId = '5ee920a906927d6f944a25ee'; ///////Should get from session login
-
+    let user = localStorage.getItem('userId');
+    let buyerId = user; ///////Should get from session login
+   // console.log(user);
     if (!buyerId) {
       alert("Invalid action.")
-      this.router.navigate(['seller/manage-products']);
+      //this.router.navigate(['seller/manage-products']);
       return;
     }
     this.paymentForm = this.formBuilder.group({
       
-      status: [''],
+      
       street: ['', Validators.required],
       zipCode: ['', Validators.required],
       city: ['', Validators.required],
@@ -52,7 +53,7 @@ export class PaymentSettingsComponent implements OnInit {
 
   onSubmit() {
     console.log(this.paymentForm.value);
-    this.buyerService.enterProductInfo(this.paymentForm.value)
+    this.buyerService.enterPaymentInfo(this.paymentForm.value)
     .pipe(first())
     .subscribe(
       data => {

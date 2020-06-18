@@ -20,7 +20,6 @@
             <thead>
                 <tr>
                     <th>Product Name</th>
-                    <th>Price</th>
                     <th>Order Date</th>
                     <th>Shipping Address</th>
                     <th>Status</th>
@@ -30,9 +29,8 @@
             <tbody>
                 <tr *ngFor="let order of orders">
                     <td>{{order.productId}}</td>
-                    <td>{{order.productId}}</td>
                     <td>{{order.orderDate}}</td>
-                    <td>{{order.shippingAddress.city}}</td>
+                    <td>{{order.shippingAddress.street}} {{order.shippingAddress.city}}, {{order.shippingAddress.zipCode}}, {{order.shippingAddress.state}}, {{order.shippingAddress.country}}, {{order.shippingAddress.phoneNo}}</td>
                     <td>{{order.status}}</td>
                 </tr>
             </tbody>

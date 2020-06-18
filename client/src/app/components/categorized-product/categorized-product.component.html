@@ -1,6 +1,5 @@
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-<app-nav></app-nav>
 
+<app-nav></app-nav>
 
 <pre>
 
@@ -33,17 +32,18 @@
     <span class="carousel-control-next-icon"></span>
   </a>
 </div>
-<!-- <app-carouse-new></app-carouse-new> -->
 <div class="container">
 
   <div class="row">
     <div class="col-lg-3">
-      <app-side></app-side>
-    </div>
-    <div class="col-lg-9">
-      <!-- <app-coursel></app-coursel> -->
-      <pre>
 
+      <app-side></app-side>
+
+  </div>
+    <div class="col-lg-9">
+     
+      <pre>
+        
       </pre>
       <div class="row">
           <div class="col-lg-4 col-md-6 mb-4" *ngFor="let items of products" >
@@ -51,7 +51,7 @@
               <a href="#"><img class="card-img-top" src={{items.imageName}} alt=""></a>
               <div class="card-body">
                   <h4 class="card-title">
-                      <button (click)="viewDetail(items._id)" class="titleButton" name="submit">{{items.title}}</button>
+                      <button (click)="viewDetail(items._id)" name="submit">{{items.title}}</button>
                   </h4>
                   <h5>{{items.price}}</h5>
                   <p class="card-text">{{items.descreption}}  </p>
@@ -68,6 +68,7 @@
     </div>
   </div>
 </div>
+
 
 
 

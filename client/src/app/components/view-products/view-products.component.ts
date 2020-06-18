@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Product} from '../../common/product';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { ProductService } from '../../services/product.service';
 import { buyerService } from '../../services/buyer.service';
 import {Review} from '../../common/review';
@@ -9,21 +9,40 @@ import {Review} from '../../common/review';
 @Component({
   selector: 'app-view-products',
   templateUrl: './view-products.component.html',
-  styleUrls: ['./view-products.component.css']
+  styleUrls: ['./view-products.component.css'],
+  styles : ['<link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">']
 })
 export class ViewProductsComponent implements OnInit {
+
+  mySubscription: any;
 
   title : any;
   price : any;
   description : any;
+  image : any;
   reviews : Review[];
   addForm: FormGroup;
+  commenter : any;
   
   
-  constructor(private formBuilder: FormBuilder, private router: Router, private productService : ProductService,private buyerService : buyerService) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private productService : ProductService,private buyerService : buyerService) { 
+    this.router.routeReuseStrategy.shouldReuseRoute = function () {
+      return false;
+    };
+    
+    this.mySubscription = this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        // Trick the Router into believing it's last link wasn't previously loaded
+        this.router.navigated = false;
+      }
+    });
+  }
 
   ngOnInit(): void {
     let productId = window.localStorage.getItem("productId");
+    let userId = window.localStorage.getItem('userId');
+    let name = window.localStorage.getItem('userName');
+    this.commenter = name;
     if(!productId){
       alert('invalid action!')
       this.router.navigate(['product']);
@@ -34,6 +53,7 @@ export class ViewProductsComponent implements OnInit {
     .subscribe(data => {
       this.title = data.title;
       this.price = data.price;
+      this.image = data.imageName;
       this.description = data.descreption;
     });
 
@@ -46,7 +66,8 @@ export class ViewProductsComponent implements OnInit {
       orderProductId : [productId, Validators.required],
       status : ['Created'],
       stars: ['', Validators.required],
-      comment: ['', Validators.required]
+      comment: ['', Validators.required],
+      sellerId : [ userId, Validators.required]
     });
 
   }
@@ -54,8 +75,16 @@ export class ViewProductsComponent implements OnInit {
   onSubmit() {
     this.buyerService.addReview(this.addForm.value)
       .subscribe(data => {
-        this.router.navigate(['']);
+        alert('Thank you for posting your review! we will post it as soon as it is reviewed by an admin');
+        this.reviews.push(data);
+        window.location.reload();
       });
+  }
+
+  ngOnDestroy(){
+    if (this.mySubscription) {
+      this.mySubscription.unsubscribe();
+    }
   }
 
 }

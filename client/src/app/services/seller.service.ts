@@ -15,7 +15,7 @@ export class SellerService {
 
   getProducts(id: string): Observable<any> {    //////////////////Cahange to dynamic value
    // console.log(this.baseUrl + 'products/' + '5ee773e74f720d6af4eed445');
-    return this.http.get(this.baseUrl + 'products/' + '5ee773e74f720d6af4eed445');
+    return this.http.get(this.baseUrl + 'products/' + id);
   }
 
 
@@ -39,9 +39,32 @@ export class SellerService {
   }
 
   getOrders(id: string): Observable<any> {    //////////////////Cahange to dynamic value
+<<<<<<< HEAD
 
      return this.http.get(this.baseUrl + 'orders/' + '5ee6d9e5f7d3a669f801f03c');
+=======
+     
+     return this.http.get(this.baseUrl + 'orders/' + id);
+>>>>>>> 3110b8fca5fbb10624c6cc6920652d1e6206cd65
    }
+
+   getOrderStatusByOrderId(id: string): Observable<any>{
+      return this.http.get(this.baseUrl + 'orders/' + 'edit/' + id); 
+   }
+
+   changeOrderStatustoShipped(id: string): Observable<any>{
+    return this.http.patch(this.baseUrl + 'orders/' + 'edit/' + id, id); 
+ }
+ changeOrderStatustoDelivered(id: string): Observable<any>{
+  return this.http.post(this.baseUrl + 'orders/' + 'edit/' + id, id); 
+}
+changeOrderStatustoOnTheWay(id: string): Observable<any>{
+  return this.http.put(this.baseUrl + 'orders/' + 'edit/' + id, id); 
+}
+
+cancelOrder(id: string): Observable<any>{
+  return this.http.delete(this.baseUrl + 'orders/' + 'edit/' + id); 
+}
 
 
 }
