@@ -4,7 +4,7 @@ const Cart = require('../models/ShoppingCart')
 const mongoose = require('mongoose');
 
 exports.addToShoppingCart = (req, res, next) => {
-  
+ // console.log(buyer.name)
     req.buyer.addToCart(req.params.id)
             .then(docs => {
                 res.status(200).send(docs.cart);

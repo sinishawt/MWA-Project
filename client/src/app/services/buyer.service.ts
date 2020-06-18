@@ -38,7 +38,6 @@ export class buyerService {
   }
 
   deleteItem(id : string): Observable<any> {
-    alert(id);
     return this.httpClient.delete<any>(this.cartUrl + 'deletCart/' + id);
   }
 

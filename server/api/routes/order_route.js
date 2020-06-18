@@ -43,6 +43,7 @@ const router = express.Router();
 const orderController = require('../controller/order_controller');
 
 router.post('/:id', orderController.placeOrder);
+router.get('/payment/:paymentToken', orderController.payBill);
 //router.post('/' , orderController.insert);
 //router.get('/:orderid', orderController.findOrder);
 //router.delete('/:orderid' , orderController.removeOrder);

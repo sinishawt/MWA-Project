@@ -75,6 +75,7 @@ export class ViewProductsComponent implements OnInit {
   onSubmit() {
     this.buyerService.addReview(this.addForm.value)
       .subscribe(data => {
+        alert('Thank you for posting your review! we will post it as soon as it is reviewed by an admin');
         this.reviews.push(data);
         window.location.reload();
       });

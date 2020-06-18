@@ -45,6 +45,7 @@ const Buyer =  require('../models/Buyer');
 const Cart = require('../models/ShoppingCart')
 const mongoose = require('mongoose');
 const order = require('../models/Order')
+//const stripe = require('stripe')('sk_test_51GvETDIHPJPrCVEhSOcy7VSHXwOqxKYZX6BieuyabJcs9T2TvnD2TrMpnqkXZJ3RBy9bJep4A0N5x5qhkMJjjUpj00IvbW8rwY');
 
 
 exports.placeOrder = (req, res, next)=>{
@@ -91,5 +92,42 @@ exports.placeOrder = (req, res, next)=>{
             });
 
 };
+
+exports.payBill = (req, res, next) =>{
+    const stripeToken = req.params.paymentToken;
+    console.log("Th etoken is: ", stripeToken);
+    stripeToken.customer.create({
+        email: "memarez@gmail.com",
+        source: stripeToken,
+    }, (err, customer) => {
+        console.log(err);
+        sonsole.log(customer);
+        if(err){
+            res.send({
+                success: false,
+                message: "Error"
+            });
+            
+        } else{
+            const customer = "cus_HUEqyeah5MGStJ";
+            stripe.subscriptions.create({
+                customer: id,
+                items: [{
+                    plan : "basic-monthly",
+                },
+            ],
+            }, (err, subscription) => {
+                console.log(err);
+                sonsole.log(subscription);
+                if(err){
+                    res.send({
+                        success: true,
+                        message: "success"
+                    });
+                }
+            });
+        }
+    });
+}
 
 

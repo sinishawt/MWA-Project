@@ -18,6 +18,7 @@ export class authenticationService{
   constructor(private httpClient: HttpClient) { }
 
   login(login : any) : Observable<any> {
+    console.log("insed login serveice ")
     return this.httpClient.post<any>(this.baseUrl,login);
   }
 
