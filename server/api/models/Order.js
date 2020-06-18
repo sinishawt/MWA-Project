@@ -1,3 +1,4 @@
+
 const mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
@@ -19,3 +20,6 @@ const orderSchema = mongoose.Schema({
         country: { type: String, required : false}
     }
 });
+
+
+module.exports = mongoose.model('order', orderSchema)

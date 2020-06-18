@@ -18,10 +18,13 @@ export class SellerService {
     return this.http.get(this.baseUrl + 'products/' + '5ee773e74f720d6af4eed445');
   }
 
+
   addProduct(product: Product): Observable<any> {
     //console.log(product);
     return this.http.post<any>(this.baseUrl + 'products/', product);
+
   }
+
 
   getProductById(id: string): Observable<any> {
     return this.http.get<any>(this.baseUrl + 'products/edit/' + id);
@@ -34,9 +37,9 @@ export class SellerService {
   deleteProduct(id: string): Observable<any> {
     return this.http.delete<any>(this.baseUrl + 'products/edit/' + id);
   }
-  
+
   getOrders(id: string): Observable<any> {    //////////////////Cahange to dynamic value
-    
+
      return this.http.get(this.baseUrl + 'orders/' + '5ee6d9e5f7d3a669f801f03c');
    }
 
