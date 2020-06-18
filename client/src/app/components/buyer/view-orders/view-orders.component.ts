@@ -7,8 +7,6 @@ import 'jspdf-autotable';
 import {UserOptions} from  'jspdf-autotable';
 
 
-
-
 interface jsPDFWITHPlugin extends jspdf{
    autoTable:(options: UserOptions)=> jspdf
 }
@@ -42,28 +40,28 @@ export class ViewOrdersComponent implements OnInit {
 
   printToPdf() {
 
-    let buyerId = '5ee920a906927d6f944a25ee'; ///////////////////NEEDS To bE changed static from login
-    this.buyerService.getOrdersByBuyerId(buyerId)
+    let userName = localStorage.getItem('userName');
+    let userId = localStorage.getItem('userId');
+    // let buyerId = user;
+    //alert(userName)
+    //alert(userId)
+    this.buyerService.getOrdersByBuyerId(userId)
       .subscribe(data => {
-
-       // let userName = localStorage.getItem('userName');
-       // let buyerId = user;
-       // alert(userName)
-
       this.orders = data;
-        const doc = new jspdf('portrait', 'px', 'a4') as jsPDFWITHPlugin;
+        const doc = new jspdf('portrait', 'px', 'a3') as jsPDFWITHPlugin;
+
+      //  doc.text('---------------------------------------------'+'/n', 10, 40);
+       // doc.text('             MIU OnlineShop                  '+'/n', 10, 10);
+       // doc.text('---------------------------------------------'+'/n', 10, 10);
+        doc.text('customer :' + userName, 10, 10);
+        doc.text('---------------------Customer Info Billing ', 15, 27);
 
 
+      //  doc.text('Date :' + new Date(), 10, 16);
 
         data.forEach(function (value) {
-
-
-            //for(var i in data) {
-
             console.log(value.shippedDate);
           //  for (let x in value){
-
-
               doc.autoTable({
                 head: [['productName', 'price', 'orderDate', 'shippingAddress', 'status']],
                 body: [
@@ -75,7 +73,8 @@ export class ViewOrdersComponent implements OnInit {
 
 
 
-           // }
+
+          // }
 
 
           });
