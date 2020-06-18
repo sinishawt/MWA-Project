@@ -8,7 +8,7 @@ const sellerSchema = mongoose.Schema({
     // role : { type : String , default: "Seller", required : true },
     _id: {type: mongoose.Schema.Types.ObjectId, required: true},
     status: {type: String, default: 'Pending',required: false},
-
+ 
     products : [{
         type : mongoose.Schema.Types.ObjectId,
         ref : 'Product',

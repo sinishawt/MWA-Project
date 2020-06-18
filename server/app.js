@@ -31,7 +31,8 @@ const signupRoutes = require('./api/routes/signUp');
 const buyer = require('./api/models/Buyer');
 
 app.use((req, res, next) => {
-    buyer.findById('5ee920a906927d6f944a25ee')
+    console.log("Buyer from the Token: ", req.user._id);
+    buyer.findById('5eea94955e87931254eaaa90')
         .then(userInDB => {
             req.buyer = userInDB;
             next();
@@ -91,6 +92,7 @@ app.use('/review', authMiddleware.verifyToken, reviewRoutes);
 app.use('/cart', authMiddleware.verifyToken, shoppingCartRoutes);
 app.use('/shopingCart', authMiddleware.verifyToken, shoppingCartRoutes);
 app.use('/address', authMiddleware.verifyToken, addressRoutes);
+app.use('/notify', shoppingCartRoutes);
 
 app.use((req, res, next) => {
     const error = new Error('Not Found');
