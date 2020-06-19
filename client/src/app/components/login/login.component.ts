@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { authenticationService } from '../../services/authentication.service'
 import { Seller } from '../../common/seller';
+import { CustomvalidationService } from '../../servicescustomvalidation.service';
 
 
 @Component({
@@ -12,10 +13,11 @@ import { Seller } from '../../common/seller';
 })
 export class LoginComponent implements OnInit {
 
+  submitted = false;
   addForm: FormGroup;
   status: string;
   
-  constructor(private router: Router,private formBuilder: FormBuilder, private authenticationService : authenticationService) { }
+  constructor(private router: Router,private formBuilder: FormBuilder, private authenticationService : authenticationService,private customValidator: CustomvalidationService) { }
 
   ngOnInit(): void {
     this.addForm = this.formBuilder.group({
@@ -24,7 +26,15 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  get registerFormControl() {
+    return this.addForm.controls;
+  }
+
+  
   onSubmit() {
+
+    this.submitted = true;
+    if (this.addForm.valid){
     
     this.authenticationService.login(this.addForm.value)
       .subscribe(data => {
@@ -71,7 +81,7 @@ export class LoginComponent implements OnInit {
       });
   
 }
-
+  }
 
 
 }

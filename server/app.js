@@ -1,6 +1,6 @@
 /**
  * MWA Project  
- * Online-shopping application using MEAN stack
+ * Online-shopping application using MINI stack
  * Since june 2020
  * Team-6 
  */
@@ -30,17 +30,7 @@ const authMiddleware = require('./api/middleware/authJwt');
 const signupRoutes = require('./api/routes/signUp');
 const buyer = require('./api/models/Buyer');
 
-// app.use((req, res, next) => {
-//     console.log("Buyer from the Token: ", req.user._id);
-//     buyer.findById('5eea94955e87931254eaaa90')
-//     console.log("memar : ", req.user._id);
-//     buyer.findById('5ee920a906927d6f944a25ee')
-//         .then(userInDB => {
-//             req.buyer = userInDB;
-//             next();
-//         })
-//         .catch(err => console.log(err));
-// });
+
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -72,18 +62,7 @@ app.use((req, res, next) => {
 app.use('/auth', authRoutes);
 app.use('/user', userRoutes);
 app.use('/signup', signupRoutes);
-// app.use('/products', productRoutes);
-// app.use('/buyer', buyerRoutes);
-// app.use('/buyer', buyerRoutes);
-// app.use('/seller', sellerRoutes);
-// app.use('/admin', adminRoutes);
-// app.use('/order', orderRoutes);
-// app.use('/review', reviewRoutes);
-// app.use('/cart', shoppingCartRoutes);
-// app.use('/shopingCart', shoppingCartRoutes);
-// app.use('/address', addressRoutes);
 
-//authorization Middleware verification 
 app.use('/products', authMiddleware.verifyToken, productRoutes);
 app.use('/buyer', authMiddleware.verifyToken, buyerRoutes);
 app.use('/seller', authMiddleware.verifyToken, sellerRoutes);

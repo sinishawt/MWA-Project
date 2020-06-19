@@ -12,6 +12,7 @@ import { buyerService } from '../../../services/buyer.service';
 })
 export class ShippingAddressComponent implements OnInit {
 
+  submitted = false;
   shipping: Shipping;
   addressForm: FormGroup;
   constructor(private formBuilder: FormBuilder, private router: Router, private buyerService: buyerService) { }
@@ -30,11 +31,11 @@ export class ShippingAddressComponent implements OnInit {
     
     //status: [''],
     street: ['', Validators.required],
-    zipCode: ['', Validators.required],
+    zipCode: ['', Validators.compose([Validators.required,Validators.pattern('[0-9]{5}')])],
     city: ['', Validators.required],
     state: ['', Validators.required],
     country: ['', Validators.required],
-    phoneNo: ['']
+    phoneNo: ['' , [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]]
     
     //buyerId: [buyerId]
   });
@@ -49,7 +50,13 @@ export class ShippingAddressComponent implements OnInit {
 
   }
 
+  get registerFormControl() {
+    return this.addressForm.controls;
+  }
+
   onSubmit(): void {
+    this.submitted = true;
+    if (this.addressForm.valid){
     console.log(this.addressForm.value);
     this.buyerService.enterShippingAddress(this.addressForm.value)
     .pipe(first())
@@ -63,5 +70,6 @@ export class ShippingAddressComponent implements OnInit {
         alert(error);
       });
   }
+}
 
 }
