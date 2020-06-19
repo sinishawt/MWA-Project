@@ -31,6 +31,8 @@ const signupRoutes = require('./api/routes/signUp');
 const buyer = require('./api/models/Buyer');
 
 // app.use((req, res, next) => {
+//     console.log("Buyer from the Token: ", req.user._id);
+//     buyer.findById('5eea94955e87931254eaaa90')
 //     console.log("memar : ", req.user._id);
 //     buyer.findById('5ee920a906927d6f944a25ee')
 //         .then(userInDB => {

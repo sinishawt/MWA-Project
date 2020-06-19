@@ -57,7 +57,7 @@ const buyerSchema = mongoose.Schema({
     //     required : false
     // }],
 
-    //gainedPoints :{type: Number, required: false},
+    gainedPoints :{type: Number, required: false},
 
     billingInfo: {
         nameOnCard: {type: String, required: false},

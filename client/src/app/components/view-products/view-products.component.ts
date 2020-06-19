@@ -5,6 +5,7 @@ import { Router, NavigationEnd } from '@angular/router';
 import { ProductService } from '../../services/product.service';
 import { buyerService } from '../../services/buyer.service';
 import {Review} from '../../common/review';
+import { CustomvalidationService } from '../../servicescustomvalidation.service';
 
 @Component({
   selector: 'app-view-products',
@@ -23,9 +24,11 @@ export class ViewProductsComponent implements OnInit {
   reviews : Review[];
   addForm: FormGroup;
   commenter : any;
+
+  submitted = false;
   
   
-  constructor(private formBuilder: FormBuilder, private router: Router, private productService : ProductService,private buyerService : buyerService) { 
+  constructor(private formBuilder: FormBuilder, private router: Router, private productService : ProductService,private buyerService : buyerService,private customValidator: CustomvalidationService) { 
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
     };
@@ -65,20 +68,27 @@ export class ViewProductsComponent implements OnInit {
     this.addForm = this.formBuilder.group({
       orderProductId : [productId, Validators.required],
       status : ['Created'],
-      stars: ['', Validators.required],
+      stars: ['', Validators.compose([Validators.required, this.customValidator.ratingValidator()])],
       comment: ['', Validators.required],
       sellerId : [ userId, Validators.required]
     });
 
   }
 
+  get registerFormControl() {
+    return this.addForm.controls;
+  }
+
   onSubmit() {
+    this.submitted = true;
+    if (this.addForm.valid){
     this.buyerService.addReview(this.addForm.value)
       .subscribe(data => {
         alert('Thank you for posting your review! we will post it as soon as it is reviewed by an admin');
         this.reviews.push(data);
         window.location.reload();
       });
+    }
   }
 
   ngOnDestroy(){
