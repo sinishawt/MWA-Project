@@ -24,6 +24,7 @@
                                 *ngIf="(registerFormControl.email.touched || submitted) && registerFormControl.email.errors?.required">
                                 Email is required to Login
                         </span>
+                       
                     </div>
                     <div class="form-group">
                         <label for="password">Password:</label>
@@ -32,6 +33,7 @@
                                 *ngIf="(registerFormControl.password.touched || submitted) && registerFormControl.password.errors?.required">
                                 Password is required to Login
                         </span>
+                        
                     </div>
 
                     <button class="btn btn-success">Login</button>

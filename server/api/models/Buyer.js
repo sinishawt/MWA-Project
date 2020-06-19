@@ -11,7 +11,7 @@ const buyerSchema = mongoose.Schema({
     // PWD : { type : String, required : true },
     // Role : { type : String , default: "Buyer", required : true },
     _id: {type: Schema.Types.ObjectId, required: true},
-    gainedPoints :{type: Number, required: false},
+    //gainedPoints :{type: Number, required: false},
 
     follows : [{
         type : Schema.Types.ObjectId,
@@ -57,7 +57,7 @@ const buyerSchema = mongoose.Schema({
     //     required : false
     // }],
 
-    gainedPoints :{type: Number, required: false},
+    //gainedPoints :{type: Number, required: false},
 
     billingInfo: {
         nameOnCard: {type: String, required: false},

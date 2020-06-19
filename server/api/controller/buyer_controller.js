@@ -160,3 +160,55 @@ exports.getOrdersByBuyerId = (req, res, next) => {
         });
 
 }
+
+exports.findBuyerCart = (req, res, next) => {
+    let item;
+    
+    buyer.findById(req.params.buyerid)
+        .then(result => {
+        //    item = result.cart;
+        //    addcartye(result);
+        //     console.log(" ///////" + item)
+            res.status(200).send(result);
+        }).catch(err => {
+            res.status(500).send({ errMsg: err });
+    })
+
+    
+    
+};
+
+exports.addProductToCart2 = (req, res, next) => {
+    let productt ;
+    //console.log("seller ID: ", product.sellerId);
+    product.findById(res.params.buyerid).then(result => {
+            productt = result;
+        //    addcartye(result);
+        //     console.log(" ///////" + item)
+            res.status(200).send(result);
+        }).catch(err => {
+            res.status(500).send({ errMsg: err });
+    })
+    if (productt) {
+        const cart = productt.cart;
+        const isExisting = cart.items.findIndex(objInItems => new String(objInItems.productId).trim() === new String(product._id).trim());
+        if (isExisting >= 0) {
+            cart.items[isExisting].qty += 1;
+            cart.items[isExisting].price = cart.items[isExisting].price + productt.price;
+        } else {
+            cart.items.push({ productId: "product._id", qty: 1, sellerId: "product.sellerId", price: "product.price", title: "product.title"});
+        }
+        if (!cart.totalPrice) {
+            cart.totalPrice = 0;
+            
+        }
+        if (!cart.totalQty) {
+            cart.totalQty = 0;
+        }
+        cart.totalPrice += productt.price;
+        cart.totalQty += 1;
+        
+        console.log("Total quantity", cart.totalQty);
+        return this.save();
+    }
+};
