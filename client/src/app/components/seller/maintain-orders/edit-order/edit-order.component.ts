@@ -105,7 +105,10 @@ export class EditOrderComponent implements OnInit {
   }
 
   cancelOrder() {
-    this.sellerService.cancelOrder(this.orderId)
+    let statusIdentifier = this.statusForm.value.status;
+    console.log(" 0000000000000" + statusIdentifier);
+    //if(statusIdentifier === 'Pending'){
+      this.sellerService.cancelOrder(this.orderId)
     .pipe(first())
     .subscribe(
       data => {
@@ -116,6 +119,8 @@ export class EditOrderComponent implements OnInit {
       error => {
         alert(error);
       });
-  }
+  //}
+    }
+    
 
 }
