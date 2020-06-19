@@ -89,11 +89,23 @@
                   <div class="form-group">
                       <label for="stars">Star for the product :</label>
                       <input formControlName="stars" placeholder="stars" name="stars" class="form-control" id="stars">
+                      <span class="text-danger"
+                        *ngIf="(registerFormControl.stars.touched || submitted) && registerFormControl.stars.errors?.required">
+                        Number of stars is required
+                      </span>
+                      <span class="text-danger"
+                        *ngIf="registerFormControl.stars.touched && registerFormControl.stars.errors?.invalidPassword">
+                        Number of stars shoul be 1 letter from 1 to 5 and it should only be a number
+                      </span>
                   </div>
   
                   <div class="form-group">
                       <label for="comment">Comment :</label>
                       <input formControlName="comment" placeholder="comment" name="comment" class="form-control" id="comment">
+                      <span class="text-danger"
+                                *ngIf="(registerFormControl.comment.touched || submitted) && registerFormControl.comment.errors?.required">
+                                Comment is required
+                      </span>
                   </div>
                   
                   

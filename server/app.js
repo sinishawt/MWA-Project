@@ -30,15 +30,15 @@ const authMiddleware = require('./api/middleware/authJwt');
 const signupRoutes = require('./api/routes/signUp');
 const buyer = require('./api/models/Buyer');
 
-app.use((req, res, next) => {
-    console.log("Buyer from the Token: ", req.user._id);
-    buyer.findById('5eea94955e87931254eaaa90')
-        .then(userInDB => {
-            req.buyer = userInDB;
-            next();
-        })
-        .catch(err => console.log(err));
-});
+// app.use((req, res, next) => {
+//     console.log("Buyer from the Token: ", req.user._id);
+//     buyer.findById('5eea94955e87931254eaaa90')
+//         .then(userInDB => {
+//             req.buyer = userInDB;
+//             next();
+//         })
+//         .catch(err => console.log(err));
+// });
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
