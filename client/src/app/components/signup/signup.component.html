@@ -48,7 +48,7 @@
                     <div class="form-group">
                         <label for="password">Password:</label>
                         <input formControlName="password" placeholder="password" type="password" name="password" class="form-control" id="password">
-                        <span class="text-danger"
+                    <span class="text-danger"
                         *ngIf="(registerFormControl.password.touched || submitted) && registerFormControl.password.errors?.required">
                         Password is required
                     </span>
