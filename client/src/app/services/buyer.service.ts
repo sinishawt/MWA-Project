@@ -19,6 +19,7 @@ export class buyerService {
   private reviewURL = 'http://localhost:3000/review/'
 
   private retrieveURL = 'http://localhost:3000/review/productReview/'
+  private baseOrderUrl = 'http://localhost:3000/order/'
 
 
   constructor(private httpClient: HttpClient) { }
@@ -40,8 +41,8 @@ export class buyerService {
     return this.httpClient.post<any>(this.cartUrl  + productId + "/" + buyerId, buyerId);
   }
 
-  deleteItem(id : string): Observable<any> {
-    return this.httpClient.delete<any>(this.cartUrl + 'deletCart/' + id);
+  deleteItem(id : string, buyerId: any): Observable<any> {
+    return this.httpClient.delete<any>(this.cartUrl + 'deletCart/' + id + "/" + buyerId);
   }
 
 
@@ -77,7 +78,11 @@ export class buyerService {
   }
 
   getBuyerById(id: String): Observable<any> {
-    return this.httpClient.get<any>(this.baseUrl + id);  //////used Static value REPLACED 
+    return this.httpClient.get<any>(this.baseUrl + id);  //////used Static value REPLACED
+  }
+
+  checkOut(buyerId: any):Observable<any> {
+    return this.httpClient.post<any>(this.baseOrderUrl + buyerId, buyerId);  //////used Static value REPLACED
   }
 
 }

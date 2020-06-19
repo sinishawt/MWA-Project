@@ -55,13 +55,13 @@ exports.getCart = (req, res, next)=>{
 
 exports.deleteInCart = async (req, res, next) => {
 
-    console.log("Buyer ID:", req.body.buyerId);
+    console.log("Buyer ID:", req.params.buyerId);
  
-    const buyer = await Buyer.findById(req.body.buyerId);
+    const buyer = await Buyer.findById(req.params.buyerId);
     console.log("Buyer", buyer);
 
      
-    const updatedBuyer = await buyer.removeFromCart(req.params.id)
+    const updatedBuyer = await buyer.removeFromCart(req.params.productId)
     res.status(200).send(updatedBuyer);
     updatedBuyer.save();
         // .then(() => {

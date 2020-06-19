@@ -8,7 +8,7 @@ const shoppingCartController = require('../controller/shopping_cart_controller')
 //router.post('/addToCart/:productId', shoppingCartController.addToShoppingCart);
 
 router.get('/getCart/:id', shoppingCartController.getCart);
-router.delete('/deletCart/:id', shoppingCartController.deleteInCart);
+router.delete('/deletCart/:productId/:buyerId', shoppingCartController.deleteInCart);
 //routes for session ..start
 router.get('/add-to-cart/:id', shoppingCartController.addShoppingCart);
 router.get('/listShoppingCart', shoppingCartController.shoppingCart);

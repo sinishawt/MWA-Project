@@ -50,7 +50,7 @@ const order = require('../models/Order')
 
 exports.placeOrder = (req, res, next)=>{
     const id = req.params.id;
-    console.log("shipping address: ", req.body)
+   console.log("shipping address: ", id)
     Buyer.findById(id)
             .exec()
             .then(doc => {

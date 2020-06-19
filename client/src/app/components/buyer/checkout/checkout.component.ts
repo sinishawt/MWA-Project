@@ -5,6 +5,7 @@ import { first } from "rxjs/operators";
 import { Payment } from '../../../common/payment';
 import { buyerService } from '../../../services/buyer.service';
 
+
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
@@ -12,6 +13,8 @@ import { buyerService } from '../../../services/buyer.service';
 })
 export class CheckoutComponent implements OnInit {
 
+  buyerId : any;
+  totalPrice : any;
   payment: Payment;
   checkoutForm: FormGroup;
   shippingForm: FormGroup;
@@ -19,6 +22,12 @@ export class CheckoutComponent implements OnInit {
 
   ngOnInit(): void {
     let buyerId = '5ee920a906927d6f944a25ee'; ///////Should get from session login
+    let price = window.localStorage.getItem('totalPrice');
+    this.totalPrice = price;
+
+    let user = localStorage.getItem('userId');
+    this.buyerId = user;
+
 
     if (!buyerId) {
       alert("Invalid action.")
@@ -79,19 +88,12 @@ export class CheckoutComponent implements OnInit {
       });
   }
 
-  onSubmit() {
-  //   console.log(this.checkoutForm.value);
-  //   this.buyerService.enterProductInfo(this.checkoutForm.value)
-  //   .pipe(first())
-  //   .subscribe(
-  //     data => {
-
-  //         this.router.navigate(['buyer/']);
-
-  //     },
-  //     error => {
-  //       alert(error);
-  //     });
+  checkout() {
+    console.log("*******" + this.buyerId)
+    this.buyerService.checkOut(this.buyerId)
+    .subscribe(data => {
+    alert("Items are successfully checked out");
+    });
    }
 
 
