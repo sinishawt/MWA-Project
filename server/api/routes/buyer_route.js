@@ -6,6 +6,7 @@ const buyerController = require('../controller/buyer_controller');
 router.get('/', buyerController.list);
 router.post('/', buyerController.insert);
 router.get('/:buyerid', buyerController.findBuyer);
+router.post('/cart/:buyerid', buyerController.addProductToCart2);
 router.delete('/:buyerid', buyerController.removeBuyer);
 
 router.get('/shippingaddress/:buyerId', buyerController.getShippingAddress);
