@@ -34,28 +34,28 @@ export class SellerService {
   deleteProduct(id: string): Observable<any> {
     return this.http.delete<any>(this.baseUrl + 'products/edit/' + id);
   }
-  
+
   getOrders(id: string): Observable<any> {    //////////////////Cahange to dynamic value
-     
+
      return this.http.get(this.baseUrl + 'orders/' + id);
    }
 
    getOrderStatusByOrderId(id: string): Observable<any>{
-      return this.http.get(this.baseUrl + 'orders/' + 'edit/' + id); 
+      return this.http.get(this.baseUrl + 'orders/' + 'edit/' + id);
    }
 
    changeOrderStatustoShipped(id: string): Observable<any>{
-    return this.http.patch(this.baseUrl + 'orders/' + 'edit/' + id, id); 
+    return this.http.patch(this.baseUrl + 'orders/' + 'edit/' + id, id);
  }
  changeOrderStatustoDelivered(id: string): Observable<any>{
-  return this.http.post(this.baseUrl + 'orders/' + 'edit/' + id, id); 
+  return this.http.post(this.baseUrl + 'orders/' + 'edit/' + id, id);
 }
 changeOrderStatustoOnTheWay(id: string): Observable<any>{
-  return this.http.put(this.baseUrl + 'orders/' + 'edit/' + id, id); 
+  return this.http.put(this.baseUrl + 'orders/' + 'edit/' + id, id);
 }
 
 cancelOrder(id: string): Observable<any>{
-  return this.http.delete(this.baseUrl + 'orders/' + 'edit/' + id); 
+  return this.http.delete(this.baseUrl + 'orders/' + 'edit/' + id);
 }
 
 

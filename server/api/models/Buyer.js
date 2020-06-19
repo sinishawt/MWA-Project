@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const Product = require('../models/Product');
-const { token } = require('morgan');
 
 var Schema = mongoose.Schema;
 
@@ -116,11 +115,10 @@ buyerSchema.methods.addToCart = async function(productId) {
 
 buyerSchema.methods.removeFromCart = function(productId) {
     const cart = this.cart;
-  
+   
     const isExisting = cart.items.findIndex(objInItems => new String(objInItems.productId).trim() === new String(productId).trim());
     if (isExisting >= 0) {
         cart.items.splice(isExisting, 1);
-       
         return this.save();
     }
 }

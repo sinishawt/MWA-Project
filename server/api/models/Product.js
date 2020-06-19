@@ -14,4 +14,6 @@ const productSchema = mongoose.Schema({
     createDate: { type: Date, default: dateNow, required: false },
 });
 
+
+
 module.exports = mongoose.model('product', productSchema);

@@ -3,12 +3,20 @@ const Buyer =  require('../models/Buyer');
 const Cart = require('../models/ShoppingCart')
 const mongoose = require('mongoose');
 
-exports.addToShoppingCart = (req, res, next) => {
- // console.log(buyer.name)
-    req.buyer.addToCart(req.params.id)
-            .then(docs => {
-                res.status(200).send(docs.cart);
-        }).catch(err => console.log(err));
+exports.addToShoppingCart = async (req, res, next) => {
+   
+    //console.log("Buyer ID:", req.body.buyerId);
+ console.log("************")
+    const buyer = await Buyer.findById(req.params.buyerId);
+    console.log("Buyer", req.params.buyerId);
+    const updatedBuyer = await buyer.addToCart(req.params.productId);
+    updatedBuyer.save();
+    console.log("------------------------------------------------");
+    res.status(200).send(updatedBuyer);
+    console.log("UPdated Buyer", updatedBuyer);
+    //         .then(docs => {
+    //             res.status(200).send(docs.cart);
+    //     }).catch(err => console.log(err));
 }
 
 // exports.getCart = (req, res, next) => {
@@ -43,12 +51,22 @@ exports.getCart = (req, res, next)=>{
 
 };
 
-exports.deleteInCart = (req, res, next) => {
-    
-    req.buyer.removeFromCart(req.params.id)
-        .then(() => {
-            res.status(404).json({message: 'The Item is successfully deleted'});
-        }).catch(err => console.log(err));
+
+
+exports.deleteInCart = async (req, res, next) => {
+
+    console.log("Buyer ID:", req.body.buyerId);
+ 
+    const buyer = await Buyer.findById(req.body.buyerId);
+    console.log("Buyer", buyer);
+
+     
+    const updatedBuyer = await buyer.removeFromCart(req.params.id)
+    res.status(200).send(updatedBuyer);
+    updatedBuyer.save();
+        // .then(() => {
+        //     res.status(404).json({message: 'The Item is successfully deleted'});
+        // }).catch(err => console.log(err));
 }
 
 
@@ -75,5 +93,13 @@ exports.shoppingCart = (req, res, next) => {
     }
     let cart = new Cart(req.session.cart);
     res.status(200).json(cart);
-};
+}
 //session end
+
+exports.addSC = (req,res,next) =>{
+    let pid = req.params.productId;
+
+    console.log(pid);
+
+    res.status(200).json({message: 'this works'});
+}

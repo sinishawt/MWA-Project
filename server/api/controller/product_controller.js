@@ -61,6 +61,7 @@ exports.insertProduct = (req, res, next) => {
 };
 
 exports.findProduct = (req, res, next) => {
+    console.log(req.params.productId);
 
     const id = req.params.productId;
     product.findById(id)

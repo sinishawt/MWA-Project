@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import { Review } from '../common/review';
 import { Payment } from '../common/payment';
 import { ApiResponse } from '../common/api.response';
+import { CartInfo } from '../common/buyer';
 
 
 @Injectable({
@@ -35,8 +36,8 @@ export class buyerService {
   }
 
 
-  addToShoppingCart(id : string): Observable<any> {
-    return this.httpClient.post<any>(this.cartUrl + 'addToCart/' + id, id);
+  addToShoppingCart(buyerId: any, productId : any): Observable<any> {
+    return this.httpClient.post<any>(this.cartUrl  + productId + "/" + buyerId, buyerId);
   }
 
   deleteItem(id : string): Observable<any> {
