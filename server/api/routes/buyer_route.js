@@ -16,5 +16,6 @@ router.post('/billinginfo/:buyerId', buyerController.enterBillingInfo);
 
 router.get('/orders/:buyerId', buyerController.getOrdersByBuyerId);
 router.get('/notification', buyerController.getNotification);
+router.post('/notification', buyerController.getNotification);
 
 module.exports = router;

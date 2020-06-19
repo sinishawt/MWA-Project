@@ -4,16 +4,25 @@ const product = require('../models/Product');
 
 
 exports.getNotification = (req, res, next) => {
-    product.find({})
-        .exec()
-        .then(result => {
-            res.status(200).send(result);
+
+    //console.log("notification here ");
+    //res.status(200).send("notifiction here ");
+
+    product.find({}, { "_id": 1, "title": 1, "price": 1, "descreption": 1, "sellerId": 1, "createDate": 1 })
+        .sort({ createDate: -1 })
+        .limit(4)
+        //.exec()
+        .then(docs => {
+            res.status(200).send(docs);
+
         })
         .catch(err => {
-            res.status(500).send({ errMsg: err });
+            console.log();
+            res.status(500).json({
+                error: err
+            });
         });
-
-}
+};
 
 exports.insert = (req, res, next) => {
     buyer.create(req.body)

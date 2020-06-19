@@ -33,6 +33,8 @@ const buyer = require('./api/models/Buyer');
 // app.use((req, res, next) => {
 //     console.log("Buyer from the Token: ", req.user._id);
 //     buyer.findById('5eea94955e87931254eaaa90')
+//     console.log("memar : ", req.user._id);
+//     buyer.findById('5ee920a906927d6f944a25ee')
 //         .then(userInDB => {
 //             req.buyer = userInDB;
 //             next();
@@ -84,7 +86,6 @@ app.use('/signup', signupRoutes);
 //authorization Middleware verification 
 app.use('/products', authMiddleware.verifyToken, productRoutes);
 app.use('/buyer', authMiddleware.verifyToken, buyerRoutes);
-app.use('/buyer', authMiddleware.verifyToken, buyerRoutes);
 app.use('/seller', authMiddleware.verifyToken, sellerRoutes);
 app.use('/admin', authMiddleware.verifyToken, adminRoutes);
 app.use('/order', authMiddleware.verifyToken, orderRoutes);
@@ -92,7 +93,6 @@ app.use('/review', authMiddleware.verifyToken, reviewRoutes);
 app.use('/cart', authMiddleware.verifyToken, shoppingCartRoutes);
 app.use('/shopingCart', authMiddleware.verifyToken, shoppingCartRoutes);
 app.use('/address', authMiddleware.verifyToken, addressRoutes);
-app.use('/notify', shoppingCartRoutes);
 
 app.use((req, res, next) => {
     const error = new Error('Not Found');

@@ -9,10 +9,13 @@ import { Router } from "@angular/router";
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
+
+
 export class ProductListComponent implements OnInit {
 
 
   products: Product[];
+
   constructor(private router: Router, private productService: ProductService, private buyerService :buyerService) { }
 
   ngOnInit() {

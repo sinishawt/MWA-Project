@@ -12,7 +12,7 @@ import { Component, OnInit } from '@angular/core';
   </ol>
   <div class="carousel-inner" role="listbox">
       <div class="carousel-item active">
-          <img class="d-block img-fluid" src="https://image.shutterstock.com/image-photo/happy-teenage-girl-holding-bags-260nw-556167601.jpg" alt="First slide">
+          <img class="d-block img-fluid" src="https://www.discovermuskoka.ca/content/uploads/girls-night-out-shopping-blog-header-1000x417.jpg" alt="First slide">
       </div>
       <div class="carousel-item">
           <img class="d-block img-fluid" src="https://cdn.pixabay.com/photo/2016/05/06/09/25/human-1375492_960_720.png" alt="Second slide">

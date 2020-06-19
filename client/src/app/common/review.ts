@@ -1,6 +1,7 @@
-export class Review {
 
-    _id: string;
+
+export class Review {
+   _id: string;
     orderProductId: string;
     status: string;
     buyerId: string;

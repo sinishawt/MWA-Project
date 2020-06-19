@@ -43,8 +43,17 @@ export class SignUpComponent implements OnInit {
     if (this.addForm.valid){
     this.authenticationService.addUser(this.addForm.value)
       .subscribe(data => {
-        alert('User Successfully Registered, You can now log in and Start Using');
-        this.router.navigate(['login']); //login
+       // console.log('waiting for approval' + this.addForm.value.role);
+        if(this.addForm.value.role == 'seller'){
+          alert('Seller Successfully Registered, Awaiting Approval');
+          console.log('waiting for approval' + this.addForm.value.role);
+          this.router.navigate(['login']); 
+        }else {
+          alert('User Successfully Registered, You can now log in and Start Using');
+        this.router.navigate(['login']); 
+        }
+        // alert('User Successfully Registered, You can now log in and Start Using');
+        // this.router.navigate(['login']); //login
       });
   }
   }

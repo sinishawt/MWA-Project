@@ -30,7 +30,9 @@ export class buyerService {
     return this.httpClient.get(this.cartUrl + 'getCart/' + id);
   }
 
-
+  getNotifications(): Observable<any> {
+    return this.httpClient.post(this.baseUrl + "notification", '');
+  }
 
 
   addToShoppingCart(id : string): Observable<any> {
@@ -71,6 +73,10 @@ export class buyerService {
 
   getOrdersByBuyerId(id : String) : Observable<any> {
     return this.httpClient.get<any>(this.baseUrl + 'orders/' + id);
+  }
+
+  getBuyerById(id: String): Observable<any> {
+    return this.httpClient.get<any>(this.baseUrl + id);  //////used Static value REPLACED 
   }
 
 }

@@ -15,8 +15,12 @@
     <div class="col-lg-9"><br><br>
         <h2>Your Notifications</h2>
 
-        
+        <div class="list-group" *ngFor="let notification of notifications">
+            <a href="buyer/notifications" class="list-group-item list-group-item-action"><strong>Product:</strong>  {{notification.title}} with a <b>Price</b> ${{notification.price}} <br> <b>Description</b>: <i>{{notification.descreption}}</i> <br> <b>created on</b> {{notification.createDate}} </a>
+            
+          </div>
 
     </div>
     </div>
 </div>
+

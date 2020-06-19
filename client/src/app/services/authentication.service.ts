@@ -13,11 +13,12 @@ export class authenticationService{
 
   private signUp = 'http://localhost:3000/signup'
 
-  
+  private ckecksSellerStatusUrl = 'http://localhost:3000/user/status/'
 
   constructor(private httpClient: HttpClient) { }
 
   login(login : any) : Observable<any> {
+    console.log("insed login serveice ")
     return this.httpClient.post<any>(this.baseUrl,login);
   }
 
@@ -33,5 +34,8 @@ export class authenticationService{
     let authToken = localStorage.getItem('token');
     return (authToken !== null) ? true : false;
   }
-
+  
+  getSellerStatusById(id : String) : Observable<any> {
+    return this.httpClient.get<any>(this.ckecksSellerStatusUrl +  id);
+  }
 }
