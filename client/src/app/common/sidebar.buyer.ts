@@ -15,7 +15,7 @@ import  { buyerService} from '../services/buyer.service';
                     <a href="buyer/payment-settings" class="list-group-item"> Payment Settings</a>
                     <a href="/buyer/notifications" class="notification"><span>Notifications </span><span class="badge">4</span> </a>      
                 </div>
-                <div style="background-color: lightgrey; width: 200px; border: 6px solid #111109; padding: 20px; margin: 20px; text-align: center; ">
+                <div style="background-color: white; width: 200px; border: 1px solid grey; padding: 20px; margin: 20px; text-align: center; ">
                     <p style = "text-size: 16px;"> Points </p>
                     <p style = "text-size: 50px;"> {{gainPoints}} <p>
                 </div>
