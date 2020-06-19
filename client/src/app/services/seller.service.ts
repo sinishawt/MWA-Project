@@ -18,10 +18,13 @@ export class SellerService {
     return this.http.get(this.baseUrl + 'products/' + id);
   }
 
+
   addProduct(product: Product): Observable<any> {
     //console.log(product);
     return this.http.post<any>(this.baseUrl + 'products/', product);
+
   }
+
 
   getProductById(id: string): Observable<any> {
     return this.http.get<any>(this.baseUrl + 'products/edit/' + id);

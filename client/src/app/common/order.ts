@@ -1,5 +1,5 @@
 export class Order {
-    _id: any;
+  _id:any;
     status: String;
     orderDate: Date;
     deliveryDate: Date;
@@ -9,4 +9,3 @@ export class Order {
     shippingAddressId: any;
     billingId: any;
   }
-  

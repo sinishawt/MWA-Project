@@ -10,11 +10,14 @@ import { CartInfo } from 'src/app/common/buyer';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
+
+
 export class ProductListComponent implements OnInit {
 
   cartInfo : CartInfo;
   buyerId : any;
   products: Product[];
+
   constructor(private router: Router, private productService: ProductService, private buyerService :buyerService) { }
 
   ngOnInit() {
